@@ -652,7 +652,9 @@ footer {
 
 /* ===================== RESPONSIVE SHARED ===================== */
 @media (max-width: 900px) {
+  .navbar { padding: 0 16px; }
   .navbar-links { display: none; }
+  .navbar-cta .btn-outline-white { display: none; }
   .hamburger { display: flex; }
   .mobile-bar { display: flex; }
   body { padding-bottom: 70px; }
@@ -660,6 +662,9 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .navbar-logo img { height: 32px; }
+  .navbar-cta { gap: 6px; }
+  .navbar-cta .btn-orange { padding: 8px 12px; font-size: 13px; }
   .section { padding: 56px 16px; }
   .footer-top { grid-template-columns: 1fr; }
   .wizard-modal { max-height: 95vh; }
