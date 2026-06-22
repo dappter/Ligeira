@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Ligeira Telecom — Dicas de Internet, Tecnologia e Conectividade no Cariri</title>
+  <meta name="description" content="Leia artigos sobre internet fibra, dicas de conectividade, home office, jogos online e novidades da Ligeira Telecom no Cariri." />
+  <meta property="og:title" content="Blog Ligeira — Tecnologia e Internet no Cariri" />
+  <meta property="og:description" content="Dicas de internet, home office, jogos e novidades da Ligeira Telecom." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/blog.js"></script>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" role="navigation" aria-label="Menu principal">
+  <a href="index.html" class="navbar-logo" aria-label="Ligeira Telecom — Início">
+    <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+         alt="Logo Ligeira Telecom" />
+  </a>
+
+  <ul class="navbar-links" aria-label="Links de navegação">
+    <li><a href="index.html#planos">Planos</a></li>
+    <li><a href="index.html#cobertura">Cobertura</a></li>
+    <li><a href="empresas.html">Empresas</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+  </ul>
+
+  <div class="navbar-cta">
+    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-outline-white">
+      <i data-lucide="message-circle"></i> Atendimento
+    </a>
+    <a href="index.html#planos" class="btn-orange">
+      <i data-lucide="zap"></i> Ver planos
+    </a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===================== BLOG HERO ===================== -->
+<section class="blog-hero" aria-label="Blog Ligeira Telecom">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-badge">
+      <i data-lucide="rss"></i> Blog Ligeira
+    </div>
+    <h1 class="blog-hero-title">Dicas, novidades e<br>tudo sobre internet</h1>
+    <p class="blog-hero-subtitle">Conteúdo sobre tecnologia, conectividade e as novidades da Ligeira Telecom no Cariri.</p>
+  </div>
+</section>
+
+<!-- ===================== CATEGORIES BAR ===================== -->
+<div class="blog-categories-bar" role="navigation" aria-label="Categorias do blog">
+  <div class="blog-categories-inner">
+    <button class="blog-cat-btn active" data-cat="todos">Todos</button>
+    <button class="blog-cat-btn" data-cat="internet">Internet & Fibra</button>
+    <button class="blog-cat-btn" data-cat="homeoffice">Home Office</button>
+    <button class="blog-cat-btn" data-cat="jogos">Jogos</button>
+    <button class="blog-cat-btn" data-cat="streaming">Streaming</button>
+    <button class="blog-cat-btn" data-cat="dicas">Dicas Gerais</button>
+    <button class="blog-cat-btn" data-cat="novidades">Novidades Ligeira</button>
+  </div>
+</div>
+
+<!-- ===================== BLOG CONTENT ===================== -->
+<section class="blog-content-section" aria-label="Artigos do blog">
+  <div class="blog-content-inner">
+
+    <!-- Featured Articles -->
+    <h2 class="blog-section-title">
+      <i data-lucide="zap"></i> Destaques
+    </h2>
+
+    <div class="blog-featured" role="list">
+
+      <!-- Featured Main Article -->
+      <a class="blog-card featured" href="#" role="listitem" aria-label="Artigo em destaque: Por que fibra óptica é melhor que cabo coaxial?">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#1a0066,#6028FF);min-height:240px;">
+          <i data-lucide="wifi" style="color:rgba(255,255,255,0.25);width:64px;height:64px;"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category">
+            <i data-lucide="tag"></i> Internet & Fibra
+          </div>
+          <h3 class="blog-card-title">Por que a internet fibra óptica é muito superior ao cabo coaxial?</h3>
+          <p class="blog-card-excerpt">Descubra as diferenças técnicas entre tecnologias de internet e por que a fibra óptica entrega velocidades mais altas, menor latência e muito mais estabilidade para o seu dia a dia.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left">
+              <div class="blog-card-time">
+                <i data-lucide="clock"></i> 8 min de leitura
+              </div>
+              <span>· 12 Jun 2025</span>
+            </div>
+            <div class="blog-read-more">
+              Ler artigo <i data-lucide="chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Secondary Featured -->
+      <div role="list" style="display:flex;flex-direction:column;gap:20px;">
+        <a class="blog-card" href="#" role="listitem" aria-label="Artigo: Como melhorar o sinal Wi-Fi em casa">
+          <div class="blog-card-image" style="background:linear-gradient(135deg,#10B981,#059669);min-height:140px;">
+            <i data-lucide="wifi" style="color:rgba(255,255,255,0.25);"></i>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-category">
+              <i data-lucide="tag"></i> Dicas Gerais
+            </div>
+            <h3 class="blog-card-title">5 dicas para melhorar o sinal Wi-Fi em toda a casa</h3>
+            <div class="blog-card-meta">
+              <div class="blog-card-meta-left">
+                <div class="blog-card-time"><i data-lucide="clock"></i> 5 min</div>
+                <span>· 5 Jun 2025</span>
+              </div>
+              <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="blog-card" href="#" role="listitem" aria-label="Artigo: Internet para home office: o que você precisa saber">
+          <div class="blog-card-image" style="background:linear-gradient(135deg,#f97316,#FFBF1A);min-height:140px;">
+            <i data-lucide="home" style="color:rgba(255,255,255,0.25);"></i>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-category">
+              <i data-lucide="tag"></i> Home Office
+            </div>
+            <h3 class="blog-card-title">Internet para home office: velocidade mínima e o que realmente importa</h3>
+            <div class="blog-card-meta">
+              <div class="blog-card-meta-left">
+                <div class="blog-card-time"><i data-lucide="clock"></i> 6 min</div>
+                <span>· 28 Mai 2025</span>
+              </div>
+              <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- More Articles -->
+    <h2 class="blog-section-title" style="margin-top:48px;">
+      <i data-lucide="book-open"></i> Mais artigos
+    </h2>
+
+    <div class="blog-grid" role="list">
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#6028FF,#9B59B6);min-height:180px;">
+          <i data-lucide="gamepad-2" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Jogos</div>
+          <h3 class="blog-card-title">Como a latência afeta sua experiência em jogos online</h3>
+          <p class="blog-card-excerpt">Ping alto é inimigo dos gamers. Saiba como a fibra óptica reduz o ping e melhora tudo no seu jogo favorito.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 7 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);min-height:180px;">
+          <i data-lucide="wifi" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Internet & Fibra</div>
+          <h3 class="blog-card-title">Wi-Fi 6: o que é e por que faz diferença nos planos 600 e 800 MEGA</h3>
+          <p class="blog-card-excerpt">A nova geração de Wi-Fi chegou aos planos mais rápidos da Ligeira. Entenda as vantagens do Wi-Fi 6.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 5 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#10B981,#065f46);min-height:180px;">
+          <i data-lucide="zap" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Novidades Ligeira</div>
+          <h3 class="blog-card-title">Ligeira expande cobertura: veja se sua rua já tem fibra disponível</h3>
+          <p class="blog-card-excerpt">A Ligeira continua crescendo no Cariri. Confira as últimas expansões e saiba como verificar a cobertura.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 4 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#f97316,#dc2626);min-height:180px;">
+          <i data-lucide="home" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Home Office</div>
+          <h3 class="blog-card-title">Reunião por videochamada sem travar: configurações essenciais</h3>
+          <p class="blog-card-excerpt">Guia prático para garantir que sua próxima videoconferência seja estável e de alta qualidade.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 6 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#8B5CF6,#1a0066);min-height:180px;">
+          <i data-lucide="book-open" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Novidades Ligeira</div>
+          <h3 class="blog-card-title">Clube de Vantagens Ligeira: conheça todos os benefícios do seu plano</h3>
+          <p class="blog-card-excerpt">Saiba como acessar o Clube de Vantagens, o App de Revistas e o App de Livros inclusos em todos os planos.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 3 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#" role="listitem">
+        <div class="blog-card-image" style="background:linear-gradient(135deg,#FFBF1A,#10B981);min-height:180px;">
+          <i data-lucide="wifi" style="color:rgba(255,255,255,0.25);"></i>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-category"><i data-lucide="tag"></i> Streaming</div>
+          <h3 class="blog-card-title">Qual velocidade de internet você precisa para assistir em 4K?</h3>
+          <p class="blog-card-excerpt">Netflix, YouTube, Disney+: descobra a velocidade mínima para cada plataforma e resolução de vídeo.</p>
+          <div class="blog-card-meta">
+            <div class="blog-card-meta-left"><div class="blog-card-time"><i data-lucide="clock"></i> 5 min</div></div>
+            <div class="blog-read-more">Ler <i data-lucide="chevron-right"></i></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER CTA ===================== -->
+<section class="blog-newsletter-section" aria-label="Newsletter Ligeira">
+  <div class="blog-newsletter-inner">
+    <h2 class="blog-newsletter-title">Receba novidades da Ligeira</h2>
+    <p class="blog-newsletter-sub">Dicas de internet, novidades e promoções exclusivas direto no seu e-mail.</p>
+    <form id="newsletter-form" class="blog-newsletter-form" aria-label="Formulário de newsletter">
+      <input type="email" id="newsletter-email" placeholder="Seu melhor e-mail" required aria-label="E-mail para newsletter" />
+      <button type="submit" class="btn-orange">
+        <i data-lucide="mail"></i> Assinar
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+             alt="Logo Ligeira Telecom" style="height:40px;width:auto;" />
+        <p class="footer-brand-desc">Internet fibra óptica de verdade para o Cariri. Conectando famílias e empresas.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Blog</div>
+        <ul class="footer-links">
+          <li><a href="#">Internet & Fibra</a></li>
+          <li><a href="#">Home Office</a></li>
+          <li><a href="#">Jogos</a></li>
+          <li><a href="#">Streaming</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Ligeira</div>
+        <ul class="footer-links">
+          <li><a href="index.html#planos">Planos</a></li>
+          <li><a href="index.html#cobertura">Cobertura</a></li>
+          <li><a href="empresas.html">Empresas</a></li>
+          <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Cidades</div>
+        <div class="footer-cities">
+          <span class="footer-city">Juazeiro do Norte</span>
+          <span class="footer-city">Brejo Santo</span>
+          <span class="footer-city">Mauriti</span>
+          <span class="footer-city">Milagres</span>
+          <span class="footer-city">Penaforte</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Ligeira Telecom. Todos os direitos reservados.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/ligeiranet" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+          <i data-lucide="instagram"></i>
+        </a>
+        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
+          <i data-lucide="message-circle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Bottom Bar -->
+<div class="mobile-bar">
+  <a href="index.html" class="mobile-bar-btn ghost">
+    <i data-lucide="home"></i> Início
+  </a>
+  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green">
+    <i data-lucide="message-circle"></i> WhatsApp
+  </a>
+  <a href="index.html#planos" class="mobile-bar-btn purple">
+    <i data-lucide="zap"></i> Planos
+  </a>
+</div>
+
+</body>
+</html>
