@@ -25,7 +25,8 @@ const ICONS = {
   Film, BookOpen, BookMarked, Leaf, Palette, Gamepad2, Music, Radio, Telescope,
   BarChart2, Instagram, Users, MessageCircle, X, Plus, CheckCircle,
   CheckCircle2, Check, ArrowRight, Phone, Mail, LayoutGrid, ChevronDown,
-  Star, Smartphone, Signal, Shield, Building2, Rss, Clock
+  ChevronLeft, ChevronRight,
+  Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag
 }
 
 window.lucide = { createIcons: () => createIcons({ icons: ICONS }) }

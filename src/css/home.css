@@ -2,7 +2,7 @@
 .nio-responsive-hero {
   position: relative;
   overflow: hidden; /* Avoid any horizontal scroll/overflow globally on the hero */
-  background: radial-gradient(129.63% 106.09% at -54.67% 26.52%, #6028ff 0%, #f0ecff 75.57%);
+  background: linear-gradient(135deg, #1a0033 0%, var(--purple-mid) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +120,7 @@
 }
 
 .slide-headline {
-  color: #1a0033;
+  color: white;
   /* Fluid typography perfectly scaling from 320px to large screens */
   font-size: clamp(32px, 8vw, 64px); 
   font-weight: 900;
@@ -130,7 +130,7 @@
 }
 
 .slide-headline .accent {
-  color: #ff2a5f;
+  color: var(--orange);
 }
 
 /* Mobile: Image centered */
@@ -189,7 +189,7 @@
 .nio-cep-pill-title {
   font-size: clamp(16px, 4vw, 20px);
   font-weight: 800;
-  color: #1a0033;
+  color: white;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -240,7 +240,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #ff2a5f;
+  background-color: var(--orange);
   color: white;
   border: none;
   display: flex;
@@ -252,7 +252,7 @@
 }
 
 .nio-cep-btn:hover {
-  background-color: #e01b4b;
+  background-color: #e64500;
   transform: scale(1.05);
 }
 
@@ -261,7 +261,7 @@
   background: none;
   border: none;
   font-size: 13px;
-  color: #1a0033;
+  color: white;
   opacity: 0.8;
   text-decoration: underline;
   cursor: pointer;
