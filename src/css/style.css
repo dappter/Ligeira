@@ -53,8 +53,7 @@ body {
   top: 0;
   z-index: 100;
   background: var(--purple-dark);
-  padding: 0 24px;
-  height: 64px;
+  padding: 20px 60px; /* Aumentado padding superior/inferior e lateral */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -105,7 +104,7 @@ body {
   border-radius: var(--radius-sm);
   color: white;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 300; /* Reduzido o peso da fonte (mais fina) */
   background: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -122,7 +121,7 @@ body {
   background: var(--orange);
   color: #1a1a2e;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400; /* Reduzido o peso da fonte (mais fina) */
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -652,7 +651,7 @@ footer {
 
 /* ===================== RESPONSIVE SHARED ===================== */
 @media (max-width: 900px) {
-  .navbar { padding: 0 16px; }
+  .navbar { padding: 10px 16px; }
   .navbar-links { display: none; }
   .navbar-cta .btn-outline-white { display: none; }
   .hamburger { display: flex; }

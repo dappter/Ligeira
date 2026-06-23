@@ -9,7 +9,7 @@ import {
   createIcons,
   Zap, MapPin, Wifi, Shield, Building2, Instagram, Users, MessageCircle,
   CheckCircle, Check, ArrowRight, Phone, Mail, Headphones, BarChart2,
-  Globe, Lock, Clock, Server, Layers, Home
+  Globe, Lock, Clock, Server, Layers, Home, X
 } from 'lucide'
 
 import { initNavbar } from './js/navbar.js'
@@ -17,11 +17,13 @@ import { initNavbar } from './js/navbar.js'
 const ICONS = {
   Zap, MapPin, Wifi, Shield, Building2, Instagram, Users, MessageCircle,
   CheckCircle, Check, ArrowRight, Phone, Mail, Headphones, BarChart2,
-  Globe, Lock, Clock, Server, Layers, Home
+  Globe, Lock, Clock, Server, Layers, Home, X
 }
 
-createIcons({ icons: ICONS })
-initNavbar()
+document.addEventListener('DOMContentLoaded', () => {
+  createIcons({ icons: ICONS })
+  initNavbar()
+})
 
 // WhatsApp B2B form
 const submitBtn = document.getElementById('btn-b2b-submit')

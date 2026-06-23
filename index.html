@@ -1,732 +1,844 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ligeira Telecom — Internet Fibra no Cariri | 300 a 800 MEGA</title>
-  <meta name="description" content="Internet fibra óptica de verdade no Cariri. Planos de 300 a 800 MEGA com Wi-Fi incluso. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
-  <meta name="keywords" content="internet fibra, ligeira telecom, juazeiro do norte, brejo santo, cariri, plano internet residencial" />
+  <meta name="description"
+    content="Internet fibra óptica de verdade no Cariri. Planos de 300 a 800 MEGA com Wi-Fi incluso. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
+  <meta name="keywords"
+    content="internet fibra, ligeira telecom, juazeiro do norte, brejo santo, cariri, plano internet residencial" />
   <meta property="og:title" content="Ligeira Telecom — Fibra de Verdade no Cariri" />
   <meta property="og:description" content="Planos de 300 a 800 MEGA com Wi-Fi incluso. 100% fibra óptica." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <script type="module" src="/src/main.js"></script>
 </head>
+
 <body>
 
-<!-- ===================== NAVBAR ===================== -->
-<nav class="navbar" role="navigation" aria-label="Menu principal">
-  <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Início">
-    <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
-         alt="Logo Ligeira Telecom" />
-  </a>
-
-  <ul class="navbar-links" id="desktop-nav" aria-label="Links de navegação">
-    <li><a href="#planos">Planos</a></li>
-    <li><a href="#cobertura">Cobertura</a></li>
-    <li><a href="empresas.html">Empresas</a></li>
-    <li><a href="blog.html">Blog</a></li>
-  </ul>
-
-  <div class="navbar-cta">
-    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-outline-white" aria-label="Falar com atendimento pelo WhatsApp">
-      <i data-lucide="message-circle"></i> Atendimento
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" role="navigation" aria-label="Menu principal">
+    <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Início">
+      <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png" alt="Logo Ligeira Telecom" />
     </a>
-    <button class="btn-orange" onclick="abrirWizard('600')" id="navbar-contratar-btn">
+
+    <ul class="navbar-links" id="desktop-nav" aria-label="Links de navegação">
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="cobertura.html">Cobertura</a></li>
+      <li><a href="empresas.html">Empresas</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+
+    <div class="navbar-cta">
+      <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-outline-white"
+        aria-label="Falar com atendimento pelo WhatsApp">
+        <i data-lucide="message-circle"></i> Atendimento
+      </a>
+      <button class="btn-orange" onclick="abrirWizard('600')" id="navbar-contratar-btn">
+        <i data-lucide="zap"></i> Contratar
+      </button>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu"
+    style="display:none;position:fixed;inset:0;z-index:99;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
+    class="" aria-label="Menu mobile">
+    <style>
+      #mobile-menu.open {
+        display: flex !important;
+      }
+
+      #mobile-menu a {
+        display: block;
+        padding: 16px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 12px;
+      }
+
+      #mobile-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      #mobile-menu .close-menu {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <button class="close-menu" onclick="document.getElementById('mobile-menu').classList.remove('open')"
+      aria-label="Fechar menu">
+      <i data-lucide="x"></i>
+    </button>
+    <a href="#planos">Planos</a>
+    <a href="cobertura.html">Cobertura</a>
+    <a href="empresas.html">Empresas</a>
+    <a href="blog.html">Blog</a>
+    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
+  </div>
+
+  <!-- ===================== TRUST BAR ===================== -->
+  <div class="trust-bar" role="region" aria-label="Diferenciais rápidos">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="trust-icon green"><i data-lucide="check-circle"></i></div>
+        <span>100% Fibra Óptica</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon purple"><i data-lucide="zap"></i></div>
+        <span>Instalação rápida</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon orange"><i data-lucide="smartphone"></i></div>
+        <span>Suporte 24h</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon green"><i data-lucide="check-circle"></i></div>
+        <span>Wi-Fi incluso</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon purple"><i data-lucide="map-pin"></i></div>
+        <span>Equipe local Cariri</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HERO (RESPONSIVE NIO-STYLE) ===================== -->
+  <section class="hero nio-responsive-hero" id="inicio" aria-label="Seção principal">
+    
+    <!-- Slides Wrapper for Carousel -->
+    <div class="hero-slides-wrapper">
+      <div class="hero-slides" id="hero-slides">
+
+        <!-- SLIDE 1 -->
+        <div class="hero-slide nio-style" aria-label="Slide 1: Internet ultra-rápida">
+          <div class="hero-inner-container">
+            <div class="hero-content">
+              <div class="hero-text-col">
+                <h1 class="slide-headline">
+                  A internet fibra<br>com preço fixo<br><span class="accent">até Jan/2028</span>
+                </h1>
+              </div>
+              <div class="hero-image-col">
+                <img src="https://www.niointernet.com.br/data/files/49/14/C2/68/DAE8E9100E96B8E9504B08A8/img_img-house-with-tag_gd.webp" 
+                     alt="Casa conectada com fibra óptica Ligeira" 
+                     class="slide-hero-img" 
+                     loading="eager" 
+                     fetchpriority="high" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="hero-slide nio-style" aria-label="Slide 2: A fibra mais estável">
+          <div class="hero-inner-container">
+            <div class="hero-content">
+              <div class="hero-text-col">
+                <h2 class="slide-headline">
+                  A fibra óptica mais<br><span class="accent">estável</span> do Cariri
+                </h2>
+              </div>
+              <div class="hero-image-col">
+                <img src="/src/images/hero-slide-2.png" 
+                     alt="Infraestrutura de rede premium Ligeira Telecom" 
+                     class="slide-hero-img" 
+                     loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="hero-slide nio-style" aria-label="Slide 3: Apps inclusos">
+          <div class="hero-inner-container">
+            <div class="hero-content">
+              <div class="hero-text-col">
+                <h2 class="slide-headline">
+                  <span class="accent">Globoplay</span> e Telecine<br>inclusos no plano
+                </h2>
+              </div>
+              <div class="hero-image-col">
+                <img src="/src/images/hero-slide-3.png" 
+                     alt="Apps e vantagens inclusos nos planos Ligeira" 
+                     class="slide-hero-img" 
+                     loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /hero-slides -->
+
+      <!-- Navigation Arrows -->
+      <button class="carousel-arrow carousel-arrow-left" id="carousel-prev" aria-label="Slide anterior">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="carousel-arrow carousel-arrow-right" id="carousel-next" aria-label="Próximo slide">
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+    </div><!-- /hero-slides-wrapper -->
+
+    <!-- Fixed CEP Form Overlay & Carousel Dots -->
+    <div class="nio-cep-pill-wrapper">
+      <h2 class="nio-cep-pill-title">Será que a Ligeira chegou aí?</h2>
+      <form class="nio-cep-form" id="cep-form-hero">
+        <div class="nio-cep-input-group">
+          <input type="text" id="hero-cep-input" class="nio-cep-input" placeholder="Digite seu CEP" maxlength="9" aria-label="CEP para verificação de cobertura" />
+        </div>
+        <div class="nio-cep-divider" aria-hidden="true"></div>
+        <div class="nio-cep-input-group nio-cep-num-group">
+          <input type="text" id="hero-num-input" class="nio-cep-input" placeholder="Nº casa/apto" aria-label="Número da residência" />
+        </div>
+        <button type="submit" class="nio-cep-btn" aria-label="Verificar disponibilidade">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </form>
+      <button class="hero-nao-sei" id="hero-nao-sei-btn" type="button">
+        Não sei meu CEP / Não tenho CEP
+      </button>
+
+      <!-- Carousel Dots -->
+      <div class="hero-carousel-dots" id="carousel-dots" role="tablist" aria-label="Slides do carousel">
+        <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================== APROVEITE COM A LIGEIRA (NIO STYLE APPS) ===================== -->
+  <section class="nio-apps-section" aria-label="Aplicativos e Serviços Ligeira">
+    <div class="nio-apps-inner">
+      <div class="nio-apps-header">
+        <h2 class="nio-apps-title">Aproveite com a Ligeira</h2>
+        <a href="#planos" class="nio-apps-btn">Ver serviços adicionais incluídos</a>
+      </div>
+      <div class="nio-apps-grid">
+
+        <!-- Card 1: Globoplay Esportes -->
+        <div class="nio-app-card"
+          style="background-image: url('https://www.niointernet.com.br/data/files/5B/84/27/79/69CBE910FA389BE9504B08A8/copa.png');">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: white; color: #ff0038;">
+              <b>globoplay</b>
+            </div>
+            <h3 class="nio-app-name">Entre no clima da maior Copa de todos os tempos</h3>
+            <p class="nio-app-desc">É muita Copa! Assine o Globoplay Plano Premium e acompanhe a programação do sportv e
+              outros 24 canais ao vivo.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Telecine -->
+        <div class="nio-app-card"
+          style="background-image: url('https://www.niointernet.com.br/data/files/D6/84/54/79/69CBE910FA389BE9504B08A8/hbo_jogos.png');">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: #0000ff; color: white;">
+              <b>TELECINE</b>
+            </div>
+            <h3 class="nio-app-name">O mais completo acervo de Cinema está aqui</h3>
+            <p class="nio-app-desc">Grandes clássicos e lançamentos com dublagem em português e curadoria de quem ama
+              filmes. Assine agora e prepare sua pipoca.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Globoplay Filmes -->
+        <div class="nio-app-card"
+          style="background-image: url('https://www.niointernet.com.br/data/files/D2/84/22/69/69CBE910FA389BE9504B08A8/globo_filme.png');">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: #ff0038; color: white;">
+              <b>globoplay</b>
+            </div>
+            <h3 class="nio-app-name">Cliente Ligeira Super ou Ultra tem Globoplay por 12 meses</h3>
+            <p class="nio-app-desc">A diversão no entretenimento, a informação no jornalismo e a emoção no esporte. Tudo
+              isso no Globoplay Padrão com Anúncios.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLANS ===================== -->
+  <section class="section" id="planos" aria-label="Planos de internet">
+    <div class="section-inner">
+      <div class="section-label">Planos residenciais</div>
+      <h2 class="section-title">Escolha o plano ideal para você</h2>
+      <p class="section-subtitle">Todos os planos com Wi-Fi incluso, App de Revistas, App de Livros e Clube de Vantagens
+        Ligeira.</p>
+
+      <div class="plans-grid" role="list" aria-label="Grade de planos">
+
+        <!-- PLANO 300 MEGA -->
+        <div class="plan-card" role="listitem">
+          <div class="plan-speed">Plano</div>
+          <div class="plan-speed-number">300</div>
+          <div class="plan-speed-unit">MEGA download</div>
+          <div class="plan-price-area">
+            <div class="plan-price-old">De R$ 85,90/mês</div>
+            <div class="plan-price-mid">Por R$ 75,90/mês (12 meses)</div>
+            <div class="plan-price">R$ 69,<small>90</small></div>
+            <div class="plan-price-note">
+              <i data-lucide="check"></i> Pagando até o vencimento
+            </div>
+          </div>
+          <ul class="plan-features" aria-label="Benefícios do plano 300 MEGA">
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Revistas
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Livros
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
+            </li>
+          </ul>
+          <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
+          <button class="btn-plan-secondary"
+            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            cobertura</button>
+        </div>
+
+        <!-- PLANO 400 MEGA -->
+        <div class="plan-card" role="listitem">
+          <div class="plan-speed">Plano</div>
+          <div class="plan-speed-number">400</div>
+          <div class="plan-speed-unit">MEGA download</div>
+          <div class="plan-price-area">
+            <div class="plan-price-old">De R$ 95,90/mês</div>
+            <div class="plan-price-mid">Por R$ 85,90/mês (12 meses)</div>
+            <div class="plan-price">R$ 74,<small>90</small></div>
+            <div class="plan-price-note">
+              <i data-lucide="check"></i> Pagando até o vencimento
+            </div>
+          </div>
+          <ul class="plan-features" aria-label="Benefícios do plano 400 MEGA">
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Revistas
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Livros
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
+            </li>
+          </ul>
+          <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
+          <button class="btn-plan-secondary"
+            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            cobertura</button>
+        </div>
+
+        <!-- PLANO 600 MEGA — FEATURED -->
+        <div class="plan-card featured" role="listitem">
+          <div class="plan-badge">
+            <i data-lucide="star"></i> Mais popular
+          </div>
+          <div class="plan-speed">Plano</div>
+          <div class="plan-speed-number" style="color:var(--purple-mid)">600</div>
+          <div class="plan-speed-unit">MEGA download</div>
+          <div class="plan-price-area">
+            <div class="plan-price-old">De R$ 99,90/mês</div>
+            <div class="plan-price-mid">Por R$ 89,90/mês (12 meses)</div>
+            <div class="plan-price" style="color:var(--purple-dark)">R$ 83,<small>90</small></div>
+            <div class="plan-price-note">
+              <i data-lucide="check"></i> Pagando até o vencimento
+            </div>
+          </div>
+          <ul class="plan-features" aria-label="Benefícios do plano 600 MEGA">
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Revistas
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Livros
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Instalação prioritária
+            </li>
+          </ul>
+          <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este
+            plano</button>
+          <button class="btn-plan-secondary"
+            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            cobertura</button>
+        </div>
+
+        <!-- PLANO 800 MEGA -->
+        <div class="plan-card" role="listitem">
+          <div class="plan-speed">Plano</div>
+          <div class="plan-speed-number">800</div>
+          <div class="plan-speed-unit">MEGA download</div>
+          <div class="plan-price-area">
+            <div class="plan-price-old">De R$ 119,90/mês</div>
+            <div class="plan-price-mid">Por R$ 109,90/mês (12 meses)</div>
+            <div class="plan-price">R$ 99,<small>90</small></div>
+            <div class="plan-price-note">
+              <i data-lucide="check"></i> Pagando até o vencimento
+            </div>
+          </div>
+          <ul class="plan-features" aria-label="Benefícios do plano 800 MEGA">
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Revistas
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> App de Livros
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
+            </li>
+            <li>
+              <div class="check"><i data-lucide="check"></i></div> Suporte VIP dedicado
+            </li>
+          </ul>
+          <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
+          <button class="btn-plan-secondary"
+            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            cobertura</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BENEFITS ===================== -->
+  <section class="benefits-section section" id="beneficios" aria-label="Benefícios da Ligeira">
+    <div class="section-inner">
+      <div class="section-label">Por que escolher a Ligeira</div>
+      <h2 class="section-title">Conexão que transforma o seu dia</h2>
+      <p class="section-subtitle">Mais do que internet rápida — é confiança, suporte local e qualidade de verdade.</p>
+
+      <div class="benefits-grid" role="list">
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon purple"><i data-lucide="zap"></i></div>
+          <h3 class="benefit-title">Velocidade real garantida</h3>
+          <p class="benefit-desc">Sua velocidade contratada é a que você recebe. Sem travamento nos horários de pico.
+          </p>
+        </div>
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon green"><i data-lucide="wifi"></i></div>
+          <h3 class="benefit-title">Wi-Fi de última geração</h3>
+          <p class="benefit-desc">Roteador Wi-Fi 5G ou Wi-Fi 6 incluso no plano, sem mensalidade extra.</p>
+        </div>
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon orange"><i data-lucide="timer"></i></div>
+          <h3 class="benefit-title">Latência ultra baixa</h3>
+          <p class="benefit-desc">Ideal para jogos, videochamadas e streaming em 4K sem atrasos.</p>
+        </div>
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon blue"><i data-lucide="wrench"></i></div>
+          <h3 class="benefit-title">Suporte técnico 24h</h3>
+          <p class="benefit-desc">Time de técnicos locais do Cariri prontos para atender quando você precisar.</p>
+        </div>
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon purple"><i data-lucide="home"></i></div>
+          <h3 class="benefit-title">Perfeita para home office</h3>
+          <p class="benefit-desc">Upload simétrico e conexão estável para você trabalhar em casa com tranquilidade.</p>
+        </div>
+        <div class="benefit-card" role="listitem">
+          <div class="benefit-icon green"><i data-lucide="film"></i></div>
+          <h3 class="benefit-title">Streaming sem travamento</h3>
+          <p class="benefit-desc">Assista seus filmes, séries e transmissões ao vivo em qualidade máxima.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== APPS ===================== -->
+  <section class="apps-section section" id="apps" aria-label="Aplicativos e benefícios inclusos">
+    <div class="section-inner">
+      <div class="apps-header">
+        <div>
+          <div class="section-label">Inclusos no seu plano</div>
+          <h2 class="section-title" style="margin-bottom:0">Apps e vantagens exclusivas</h2>
+        </div>
+        <p style="font-size:15px;color:var(--gray-600);max-width:320px;text-align:right;">
+          Todos os planos já vêm com acesso a apps de conteúdo e ao nosso Clube de Vantagens.
+        </p>
+      </div>
+
+      <div class="apps-grid" role="list" aria-label="Aplicativos inclusos">
+        <!-- App de Revistas -->
+        <div class="app-card" role="listitem" tabindex="0" aria-label="App de Revistas incluso no plano">
+          <div class="app-icon" style="background:linear-gradient(135deg,#6028FF,#9B59B6);">
+            <i data-lucide="book-open" style="color:white;"></i>
+          </div>
+          <div class="app-name">App de Revistas</div>
+          <div class="app-desc">Leia as melhores publicações</div>
+        </div>
+
+        <!-- App de Livros -->
+        <div class="app-card" role="listitem" tabindex="0" aria-label="App de Livros incluso no plano">
+          <div class="app-icon" style="background:linear-gradient(135deg,#10B981,#059669);">
+            <i data-lucide="book-marked" style="color:white;"></i>
+          </div>
+          <div class="app-name">App de Livros</div>
+          <div class="app-desc">Biblioteca digital ilimitada</div>
+        </div>
+
+        <!-- Clube de Vantagens -->
+        <div class="app-card" role="listitem" tabindex="0" aria-label="Clube de Vantagens Ligeira incluso no plano">
+          <div class="app-icon" style="background:linear-gradient(135deg,#FFBF1A,#f97316);">
+            <i data-lucide="star" style="color:white;"></i>
+          </div>
+          <div class="app-name">Clube Ligeira</div>
+          <div class="app-desc">Descontos e vantagens exclusivos</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:16px;">
+        <p style="font-size:14px;color:var(--gray-500);">
+          Aplicativos disponíveis para clientes ativos da Ligeira Telecom em todos os planos residenciais.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIFFERENTIALS ===================== -->
+  <section class="diff-section section" id="diferenciais" aria-label="Diferenciais técnicos">
+    <div class="diff-inner">
+      <!-- Left: Text -->
+      <div>
+        <div class="section-label diff-label">Nossa infraestrutura</div>
+        <h2 class="section-title diff-title">Tecnologia que você sente na velocidade</h2>
+        <p class="section-subtitle diff-subtitle">A Ligeira investe constantemente em infraestrutura para entregar a
+          melhor experiência do Cariri.</p>
+
+        <div class="diff-list" role="list" aria-label="Diferenciais técnicos">
+          <div class="diff-item" role="listitem">
+            <div class="diff-item-icon"><i data-lucide="telescope"></i></div>
+            <div>
+              <div class="diff-item-title">Rede 100% GPON</div>
+              <div class="diff-item-desc">Tecnologia óptica passiva de última geração para máxima estabilidade e
+                velocidade.</div>
+            </div>
+          </div>
+          <div class="diff-item" role="listitem">
+            <div class="diff-item-icon"><i data-lucide="shield"></i></div>
+            <div>
+              <div class="diff-item-title">Backbone com redundância</div>
+              <div class="diff-item-desc">Múltiplos links de backbone garantem disponibilidade mesmo em falhas de
+                operadoras.</div>
+            </div>
+          </div>
+          <div class="diff-item" role="listitem">
+            <div class="diff-item-icon"><i data-lucide="map-pin"></i></div>
+            <div>
+              <div class="diff-item-title">Equipe técnica regional</div>
+              <div class="diff-item-desc">Técnicos morando no Cariri, com atendimento ágil e conhecimento local da
+                região.</div>
+            </div>
+          </div>
+          <div class="diff-item" role="listitem">
+            <div class="diff-item-icon"><i data-lucide="bar-chart-2"></i></div>
+            <div>
+              <div class="diff-item-title">Monitoramento em tempo real</div>
+              <div class="diff-item-desc">Nossa rede é monitorada 24h por dia para garantir a melhor qualidade do
+                serviço.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Numbers -->
+      <div>
+        <div class="diff-numbers" role="list" aria-label="Números da Ligeira">
+          <div class="diff-number-card highlight" role="listitem">
+            <div class="diff-number">10k<span class="unit">+</span></div>
+            <div class="diff-number-label">Assinantes ativos</div>
+          </div>
+          <div class="diff-number-card" role="listitem">
+            <div class="diff-number">99<span class="unit">%</span></div>
+            <div class="diff-number-label">Disponibilidade</div>
+          </div>
+          <div class="diff-number-card" role="listitem">
+            <div class="diff-number">5</div>
+            <div class="diff-number-label">Cidades atendidas</div>
+          </div>
+          <div class="diff-number-card" role="listitem">
+            <div class="diff-number">24<span class="unit">h</span></div>
+            <div class="diff-number-label">Suporte técnico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="faq-section section" id="faq" aria-label="Perguntas frequentes">
+    <div class="section-inner">
+      <div class="section-label">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas e Respostas</h2>
+      <p class="section-subtitle">Respondemos as dúvidas mais comuns dos nossos clientes.</p>
+
+      <div class="faq-grid" role="list">
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">O que está incluído em todos os planos?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">Todos os planos residenciais incluem App de Revistas, App de Livros e Clube de
+            Vantagens Ligeira. Planos de 300 e 400 MEGA incluem Wi-Fi 5G; planos de 600 e 800 MEGA incluem Wi-Fi Super
+            Ligeiro (Wi-Fi 6). O roteador é fornecido sem mensalidade adicional.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">Como funciona a estrutura de preços?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">Nossos planos têm até 3 valores: preço cheio, preço com fidelidade de 12 meses, e o
+            menor preço para quem paga até o vencimento. Você garante o desconto máximo sendo pontual no pagamento —
+            simples assim.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">Minha cidade tem cobertura da Ligeira?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte. Use a seção
+            de cobertura acima para verificar se seu endereço específico já tem fibra disponível.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">A instalação tem custo?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">A instalação é realizada pela nossa equipe técnica. Entre em contato pelo WhatsApp
+            para verificar as condições atuais de instalação na sua região e aproveitar nossas promoções.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">Qual a velocidade de upload?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">A velocidade de upload nos planos residenciais é de 50% da velocidade de download
+            contratada. Nos planos de 600 e 800 MEGA, o upload pode chegar a proporções mais altas, dependendo da
+            infraestrutura do ponto de instalação.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">Como acessar o App de Revistas e App de Livros?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">Após a ativação do plano, você receberá as instruções de acesso via WhatsApp. Os
+            aplicativos estão disponíveis para Android e iOS e o cadastro é feito com o CPF vinculado ao contrato.</div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">Posso mudar de plano depois?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento. Basta
+            entrar em contato com nosso atendimento pelo WhatsApp e nossa equipe realizará a alteração sem burocracia.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-question">
+            <span class="faq-q-text">O que é o Clube de Vantagens Ligeira?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer">O Clube de Vantagens Ligeira é um benefício exclusivo para clientes ativos que oferece
+            descontos em estabelecimentos parceiros da região do Cariri, além de promoções e ofertas especiais. Os
+            detalhes são comunicados pelo WhatsApp após a ativação do plano.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="cta-section section" id="contratar" aria-label="Contrate agora">
+    <div class="cta-inner">
+      <div class="section-label" style="display:block;text-align:center;">Pronto para começar?</div>
+      <h2 class="section-title cta-title" style="text-align:center;">
+        Leve a fibra da Ligeira<br>para a sua casa hoje
+      </h2>
+      <p class="section-subtitle cta-subtitle" style="text-align:center;margin-left:auto;margin-right:auto;">
+        Escolha seu plano, verifique a cobertura e nossa equipe entra em contato rapidinho.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn-primary-lg" onclick="abrirWizard('600')" id="cta-contratar-btn">
+          <i data-lucide="zap"></i> Escolher meu plano
+        </button>
+        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-whatsapp-lg">
+          <i data-lucide="message-circle"></i> Falar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div>
+          <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png" alt="Logo Ligeira Telecom"
+            style="height:40px;width:auto;" />
+          <p class="footer-brand-desc">
+            Internet fibra óptica de verdade para o Cariri. Conectando famílias e empresas com velocidade, estabilidade
+            e suporte local.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <div class="footer-col-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#cobertura">Cobertura</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#faq">Dúvidas</a></li>
+            <li><a href="empresas.html">Empresas</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-col-title">Atendimento</div>
+          <ul class="footer-links">
+            <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">(88) 9637-0021</a></li>
+            <li><a href="mailto:atendimento@ligeiranet.com.br">atendimento@ligeiranet.com.br</a></li>
+            <li><a href="#">Central do Assinante</a></li>
+            <li><a href="#">Segunda-feira a Sábado</a></li>
+            <li><a href="#">08h às 18h</a></li>
+          </ul>
+        </div>
+
+        <!-- Cities -->
+        <div>
+          <div class="footer-col-title">Cidades atendidas</div>
+          <div class="footer-cities">
+            <span class="footer-city">Juazeiro do Norte</span>
+            <span class="footer-city">Brejo Santo</span>
+            <span class="footer-city">Mauriti</span>
+            <span class="footer-city">Milagres</span>
+            <span class="footer-city">Penaforte</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2025 Ligeira Telecom. Todos os direitos reservados. CNPJ: 30.000.000/0001-00
+        </p>
+        <div class="footer-social" aria-label="Redes sociais">
+          <a href="https://instagram.com/ligeiranet" target="_blank" rel="noopener" class="social-btn"
+            aria-label="Instagram da Ligeira">
+            <i data-lucide="instagram"></i>
+          </a>
+          <a href="https://facebook.com/ligeiranet" target="_blank" rel="noopener" class="social-btn"
+            aria-label="Facebook da Ligeira">
+            <i data-lucide="users"></i>
+          </a>
+          <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="social-btn"
+            aria-label="WhatsApp da Ligeira">
+            <i data-lucide="message-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== MOBILE BOTTOM BAR ===================== -->
+  <div class="mobile-bar" role="navigation" aria-label="Ações rápidas mobile">
+    <button class="mobile-bar-btn ghost" id="mobile-btn-planos" onclick="abrirWizard()" aria-label="Ver planos">
+      <i data-lucide="layout-grid"></i> Planos
+    </button>
+    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green"
+      aria-label="WhatsApp">
+      <i data-lucide="message-circle"></i> WhatsApp
+    </a>
+    <button class="mobile-bar-btn purple" onclick="abrirWizard('600')" id="mobile-btn-contratar"
+      aria-label="Contratar plano">
       <i data-lucide="zap"></i> Contratar
     </button>
   </div>
 
-  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Mobile menu overlay -->
-<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
-     class="" aria-label="Menu mobile">
-  <style>
-    #mobile-menu.open { display:flex !important; }
-    #mobile-menu a { display:block;padding:16px;color:white;font-size:18px;font-weight:700;text-decoration:none;border-radius:12px; }
-    #mobile-menu a:hover { background:rgba(255,255,255,0.1); }
-    #mobile-menu .close-menu { position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;color:white;display:flex;align-items:center;justify-content:center; }
-  </style>
-  <button class="close-menu" onclick="document.getElementById('mobile-menu').classList.remove('open')" aria-label="Fechar menu">
-    <i data-lucide="x"></i>
-  </button>
-  <a href="#planos">Planos</a>
-  <a href="#cobertura">Cobertura</a>
-  <a href="empresas.html">Empresas</a>
-  <a href="blog.html">Blog</a>
-  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
-</div>
-
-<!-- ===================== TRUST BAR ===================== -->
-<div class="trust-bar" role="region" aria-label="Diferenciais rápidos">
-  <div class="trust-bar-inner">
-    <div class="trust-item">
-      <div class="trust-icon green"><i data-lucide="check-circle"></i></div>
-      <span>100% Fibra Óptica</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon purple"><i data-lucide="zap"></i></div>
-      <span>Instalação rápida</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon orange"><i data-lucide="smartphone"></i></div>
-      <span>Suporte 24h</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon green"><i data-lucide="check-circle"></i></div>
-      <span>Wi-Fi incluso</span>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon purple"><i data-lucide="map-pin"></i></div>
-      <span>Equipe local Cariri</span>
-    </div>
-  </div>
-</div>
-
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="inicio" aria-label="Seção principal">
-  <div class="hero-inner">
-    <!-- Left -->
-    <div class="hero-content">
-      <div class="hero-badge">
-        <i data-lucide="zap"></i> 100% Fibra Óptica no Cariri
-      </div>
-
-      <h1 class="hero-title">
-        Internet <span class="accent">ultra-rápida</span><br>
-        para o seu lar
-      </h1>
-
-      <p class="hero-subtitle">
-        Fibra óptica de verdade em Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte.
-        Conexão estável, velocidade de verdade.
-      </p>
-
-      <!-- CEP Search Box -->
-      <div class="hero-search-box" role="search" aria-label="Verificar cobertura por CEP">
-        <div class="hero-search-icon"><i data-lucide="map-pin"></i></div>
-        <input type="text" id="hero-cep" placeholder="Digite seu CEP para verificar cobertura"
-               maxlength="9" aria-label="CEP" />
-        <button class="btn-search" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">
-          Verificar
-        </button>
-      </div>
-
-      <div class="hero-search-options" role="group" aria-label="Ações rápidas">
-        <button class="search-option-btn" onclick="abrirWizard('600')">
-          <i data-lucide="layout-grid"></i> Ver planos
-        </button>
-        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="search-option-btn">
-          <i data-lucide="message-circle"></i> WhatsApp
-        </a>
-        <a href="https://wa.me/5588963700021?text=Quero+falar+com+um+consultor" target="_blank" rel="noopener" class="search-option-btn">
-          <i data-lucide="phone"></i> Falar com consultor
-        </a>
-      </div>
-    </div>
-
-    <!-- Right: Speed Display Widget -->
-    <div class="hero-right" aria-label="Demonstração de velocidade">
-      <div class="speed-display">
-        <div class="speed-bolt" aria-hidden="true">
-          <i data-lucide="zap"></i>
+  <!-- ===================== WIZARD MODAL ===================== -->
+  <div id="wizard-overlay" class="wizard-overlay" role="dialog" aria-modal="true"
+    aria-label="Assistente de contratação">
+    <div class="wizard-modal">
+      <div class="wizard-header">
+        <div class="wizard-step-info">
+          <span class="wizard-step-label">Passo 1 de 4</span>
+          <button class="wizard-close" aria-label="Fechar">
+            <i data-lucide="x"></i>
+          </button>
         </div>
-        <div class="speed-label-top">ATÉ</div>
-        <div class="speed-number">80<span>0</span></div>
-        <div class="speed-unit">MEGA download</div>
-
-        <div class="speed-pills" role="list">
-          <div class="speed-pill green" role="listitem">
-            <i data-lucide="check"></i> Fibra óptica
-          </div>
-          <div class="speed-pill purple" role="listitem">
-            <i data-lucide="wifi"></i> Wi-Fi incluso
-          </div>
-          <div class="speed-pill orange" role="listitem">
-            <i data-lucide="zap"></i> Sem interrupção
-          </div>
+        <div class="wizard-progress">
+          <div class="wizard-progress-fill" style="width:25%"></div>
         </div>
-
-        <div class="hero-stats" aria-label="Estatísticas">
-          <div class="hero-stat">
-            <div class="hero-stat-num">10k+</div>
-            <div class="hero-stat-label">Assinantes</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">5</div>
-            <div class="hero-stat-label">Cidades</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">99%</div>
-            <div class="hero-stat-label">Satisfação</div>
-          </div>
-        </div>
+        <div class="wizard-title">Escolha seu plano</div>
+      </div>
+      <div class="wizard-body">
+        <!-- Conteúdo dinâmico renderizado pelo wizard.js -->
       </div>
     </div>
   </div>
-</section>
-
-<!-- ===================== PLANS ===================== -->
-<section class="section" id="planos" aria-label="Planos de internet">
-  <div class="section-inner">
-    <div class="section-label">Planos residenciais</div>
-    <h2 class="section-title">Escolha o plano ideal para você</h2>
-    <p class="section-subtitle">Todos os planos com Wi-Fi incluso, App de Revistas, App de Livros e Clube de Vantagens Ligeira.</p>
-
-    <div class="plans-grid" role="list" aria-label="Grade de planos">
-
-      <!-- PLANO 300 MEGA -->
-      <div class="plan-card" role="listitem">
-        <div class="plan-speed">Plano</div>
-        <div class="plan-speed-number">300</div>
-        <div class="plan-speed-unit">MEGA download</div>
-        <div class="plan-price-area">
-          <div class="plan-price-old">De R$ 85,90/mês</div>
-          <div class="plan-price-mid">Por R$ 75,90/mês (12 meses)</div>
-          <div class="plan-price">R$ 69,<small>90</small></div>
-          <div class="plan-price-note">
-            <i data-lucide="check"></i> Pagando até o vencimento
-          </div>
-        </div>
-        <ul class="plan-features" aria-label="Benefícios do plano 300 MEGA">
-          <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
-          <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
-          <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
-        </ul>
-        <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
-        <button class="btn-plan-secondary" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar cobertura</button>
-      </div>
-
-      <!-- PLANO 400 MEGA -->
-      <div class="plan-card" role="listitem">
-        <div class="plan-speed">Plano</div>
-        <div class="plan-speed-number">400</div>
-        <div class="plan-speed-unit">MEGA download</div>
-        <div class="plan-price-area">
-          <div class="plan-price-old">De R$ 95,90/mês</div>
-          <div class="plan-price-mid">Por R$ 85,90/mês (12 meses)</div>
-          <div class="plan-price">R$ 74,<small>90</small></div>
-          <div class="plan-price-note">
-            <i data-lucide="check"></i> Pagando até o vencimento
-          </div>
-        </div>
-        <ul class="plan-features" aria-label="Benefícios do plano 400 MEGA">
-          <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
-          <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
-          <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
-        </ul>
-        <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
-        <button class="btn-plan-secondary" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar cobertura</button>
-      </div>
-
-      <!-- PLANO 600 MEGA — FEATURED -->
-      <div class="plan-card featured" role="listitem">
-        <div class="plan-badge">
-          <i data-lucide="star"></i> Mais popular
-        </div>
-        <div class="plan-speed">Plano</div>
-        <div class="plan-speed-number" style="color:var(--purple-mid)">600</div>
-        <div class="plan-speed-unit">MEGA download</div>
-        <div class="plan-price-area">
-          <div class="plan-price-old">De R$ 99,90/mês</div>
-          <div class="plan-price-mid">Por R$ 89,90/mês (12 meses)</div>
-          <div class="plan-price" style="color:var(--purple-dark)">R$ 83,<small>90</small></div>
-          <div class="plan-price-note">
-            <i data-lucide="check"></i> Pagando até o vencimento
-          </div>
-        </div>
-        <ul class="plan-features" aria-label="Benefícios do plano 600 MEGA">
-          <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
-          <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)</li>
-          <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Instalação prioritária</li>
-        </ul>
-        <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este plano</button>
-        <button class="btn-plan-secondary" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar cobertura</button>
-      </div>
-
-      <!-- PLANO 800 MEGA -->
-      <div class="plan-card" role="listitem">
-        <div class="plan-speed">Plano</div>
-        <div class="plan-speed-number">800</div>
-        <div class="plan-speed-unit">MEGA download</div>
-        <div class="plan-price-area">
-          <div class="plan-price-old">De R$ 119,90/mês</div>
-          <div class="plan-price-mid">Por R$ 109,90/mês (12 meses)</div>
-          <div class="plan-price">R$ 99,<small>90</small></div>
-          <div class="plan-price-note">
-            <i data-lucide="check"></i> Pagando até o vencimento
-          </div>
-        </div>
-        <ul class="plan-features" aria-label="Benefícios do plano 800 MEGA">
-          <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
-          <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)</li>
-          <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
-          <li><div class="check"><i data-lucide="check"></i></div> Suporte VIP dedicado</li>
-        </ul>
-        <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
-        <button class="btn-plan-secondary" onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar cobertura</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===================== COVERAGE ===================== -->
-<section class="coverage-section" id="cobertura" aria-label="Verificar cobertura">
-  <div class="coverage-inner">
-    <!-- Left: Search -->
-    <div>
-      <div class="section-label coverage-label">Verificação de cobertura</div>
-      <h2 class="coverage-title">A Ligeira chegou<br>na sua rua?</h2>
-      <p class="coverage-subtitle">Verifique agora em poucos segundos se sua região tem cobertura de fibra óptica.</p>
-
-      <!-- Method tabs -->
-      <div class="coverage-methods" role="group" aria-label="Método de verificação">
-        <div class="coverage-method active" data-method="cep" tabindex="0" role="button" aria-pressed="true">
-          <div class="coverage-method-icon"><i data-lucide="hash"></i></div>
-          <div>
-            <div class="coverage-method-label">Por CEP</div>
-            <div class="coverage-method-desc">Digite o CEP do seu endereço</div>
-          </div>
-        </div>
-        <div class="coverage-method" data-method="address" tabindex="0" role="button" aria-pressed="false">
-          <div class="coverage-method-icon"><i data-lucide="map-pin"></i></div>
-          <div>
-            <div class="coverage-method-label">Por Endereço</div>
-            <div class="coverage-method-desc">Informe rua e cidade</div>
-          </div>
-        </div>
-        <div class="coverage-method" data-method="gps" tabindex="0" role="button" aria-pressed="false">
-          <div class="coverage-method-icon"><i data-lucide="locate"></i></div>
-          <div>
-            <div class="coverage-method-label">Usar GPS</div>
-            <div class="coverage-method-desc">Localização automática</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CEP Input -->
-      <div id="coverage-cep-input" class="hero-search-box coverage-input-box" style="display:flex;">
-        <div class="hero-search-icon"><i data-lucide="hash"></i></div>
-        <input type="text" id="cep-input" placeholder="00000-000" maxlength="9" aria-label="CEP" />
-        <button class="btn-search btn-coverage-search">Verificar</button>
-      </div>
-
-      <!-- Address Input -->
-      <div id="coverage-address-input" class="hero-search-box coverage-input-box" style="display:none;">
-        <div class="hero-search-icon"><i data-lucide="map-pin"></i></div>
-        <input type="text" id="address-input" placeholder="Ex: Juazeiro do Norte, Rua das Flores" aria-label="Endereço" />
-        <button class="btn-search btn-coverage-search">Verificar</button>
-      </div>
-
-      <!-- GPS Input -->
-      <div id="coverage-gps-input" style="display:none;">
-        <button class="btn-search" id="use-gps-btn" style="width:100%;padding:14px;">
-          <i data-lucide="locate"></i> Usar minha localização atual
-        </button>
-        <div id="gps-status" style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:8px;"></div>
-      </div>
-
-      <!-- Result -->
-      <div id="coverage-result" class="coverage-result-box" role="alert" aria-live="polite"></div>
-    </div>
-
-    <!-- Right: Map Mockup -->
-    <div class="coverage-map-mockup" aria-label="Mapa de cobertura da Ligeira Telecom" role="img">
-      <div class="map-placeholder">
-        <div class="map-grid"></div>
-        <div class="map-dot" style="top:35%;left:45%;"></div>
-        <div class="map-dot green" style="top:55%;left:35%;"></div>
-        <div class="map-dot green" style="top:25%;left:60%;"></div>
-        <div class="map-dot" style="top:65%;left:55%;"></div>
-        <div class="map-dot green" style="top:45%;left:25%;"></div>
-        <div class="map-area" style="top:28%;left:38%;width:30%;height:35%;"></div>
-      </div>
-      <div class="map-overlay">
-        <div class="map-overlay-icon"><i data-lucide="check-circle"></i></div>
-        <div>
-          <div class="map-overlay-text">5 cidades com cobertura ativa</div>
-          <div class="map-overlay-sub">Juazeiro · Brejo Santo · Mauriti · Milagres · Penaforte</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BENEFITS ===================== -->
-<section class="benefits-section section" id="beneficios" aria-label="Benefícios da Ligeira">
-  <div class="section-inner">
-    <div class="section-label">Por que escolher a Ligeira</div>
-    <h2 class="section-title">Conexão que transforma o seu dia</h2>
-    <p class="section-subtitle">Mais do que internet rápida — é confiança, suporte local e qualidade de verdade.</p>
-
-    <div class="benefits-grid" role="list">
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon purple"><i data-lucide="zap"></i></div>
-        <h3 class="benefit-title">Velocidade real garantida</h3>
-        <p class="benefit-desc">Sua velocidade contratada é a que você recebe. Sem travamento nos horários de pico.</p>
-      </div>
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon green"><i data-lucide="wifi"></i></div>
-        <h3 class="benefit-title">Wi-Fi de última geração</h3>
-        <p class="benefit-desc">Roteador Wi-Fi 5G ou Wi-Fi 6 incluso no plano, sem mensalidade extra.</p>
-      </div>
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon orange"><i data-lucide="timer"></i></div>
-        <h3 class="benefit-title">Latência ultra baixa</h3>
-        <p class="benefit-desc">Ideal para jogos, videochamadas e streaming em 4K sem atrasos.</p>
-      </div>
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon blue"><i data-lucide="wrench"></i></div>
-        <h3 class="benefit-title">Suporte técnico 24h</h3>
-        <p class="benefit-desc">Time de técnicos locais do Cariri prontos para atender quando você precisar.</p>
-      </div>
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon purple"><i data-lucide="home"></i></div>
-        <h3 class="benefit-title">Perfeita para home office</h3>
-        <p class="benefit-desc">Upload simétrico e conexão estável para você trabalhar em casa com tranquilidade.</p>
-      </div>
-      <div class="benefit-card" role="listitem">
-        <div class="benefit-icon green"><i data-lucide="film"></i></div>
-        <h3 class="benefit-title">Streaming sem travamento</h3>
-        <p class="benefit-desc">Assista seus filmes, séries e transmissões ao vivo em qualidade máxima.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== APPS ===================== -->
-<section class="apps-section section" id="apps" aria-label="Aplicativos e benefícios inclusos">
-  <div class="section-inner">
-    <div class="apps-header">
-      <div>
-        <div class="section-label">Inclusos no seu plano</div>
-        <h2 class="section-title" style="margin-bottom:0">Apps e vantagens exclusivas</h2>
-      </div>
-      <p style="font-size:15px;color:var(--gray-600);max-width:320px;text-align:right;">
-        Todos os planos já vêm com acesso a apps de conteúdo e ao nosso Clube de Vantagens.
-      </p>
-    </div>
-
-    <div class="apps-grid" role="list" aria-label="Aplicativos inclusos">
-      <!-- App de Revistas -->
-      <div class="app-card" role="listitem" tabindex="0" aria-label="App de Revistas incluso no plano">
-        <div class="app-icon" style="background:linear-gradient(135deg,#6028FF,#9B59B6);">
-          <i data-lucide="book-open" style="color:white;"></i>
-        </div>
-        <div class="app-name">App de Revistas</div>
-        <div class="app-desc">Leia as melhores publicações</div>
-      </div>
-
-      <!-- App de Livros -->
-      <div class="app-card" role="listitem" tabindex="0" aria-label="App de Livros incluso no plano">
-        <div class="app-icon" style="background:linear-gradient(135deg,#10B981,#059669);">
-          <i data-lucide="book-marked" style="color:white;"></i>
-        </div>
-        <div class="app-name">App de Livros</div>
-        <div class="app-desc">Biblioteca digital ilimitada</div>
-      </div>
-
-      <!-- Clube de Vantagens -->
-      <div class="app-card" role="listitem" tabindex="0" aria-label="Clube de Vantagens Ligeira incluso no plano">
-        <div class="app-icon" style="background:linear-gradient(135deg,#FFBF1A,#f97316);">
-          <i data-lucide="star" style="color:white;"></i>
-        </div>
-        <div class="app-name">Clube Ligeira</div>
-        <div class="app-desc">Descontos e vantagens exclusivos</div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:16px;">
-      <p style="font-size:14px;color:var(--gray-500);">
-        Aplicativos disponíveis para clientes ativos da Ligeira Telecom em todos os planos residenciais.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== DIFFERENTIALS ===================== -->
-<section class="diff-section section" id="diferenciais" aria-label="Diferenciais técnicos">
-  <div class="diff-inner">
-    <!-- Left: Text -->
-    <div>
-      <div class="section-label diff-label">Nossa infraestrutura</div>
-      <h2 class="section-title diff-title">Tecnologia que você sente na velocidade</h2>
-      <p class="section-subtitle diff-subtitle">A Ligeira investe constantemente em infraestrutura para entregar a melhor experiência do Cariri.</p>
-
-      <div class="diff-list" role="list" aria-label="Diferenciais técnicos">
-        <div class="diff-item" role="listitem">
-          <div class="diff-item-icon"><i data-lucide="telescope"></i></div>
-          <div>
-            <div class="diff-item-title">Rede 100% GPON</div>
-            <div class="diff-item-desc">Tecnologia óptica passiva de última geração para máxima estabilidade e velocidade.</div>
-          </div>
-        </div>
-        <div class="diff-item" role="listitem">
-          <div class="diff-item-icon"><i data-lucide="shield"></i></div>
-          <div>
-            <div class="diff-item-title">Backbone com redundância</div>
-            <div class="diff-item-desc">Múltiplos links de backbone garantem disponibilidade mesmo em falhas de operadoras.</div>
-          </div>
-        </div>
-        <div class="diff-item" role="listitem">
-          <div class="diff-item-icon"><i data-lucide="map-pin"></i></div>
-          <div>
-            <div class="diff-item-title">Equipe técnica regional</div>
-            <div class="diff-item-desc">Técnicos morando no Cariri, com atendimento ágil e conhecimento local da região.</div>
-          </div>
-        </div>
-        <div class="diff-item" role="listitem">
-          <div class="diff-item-icon"><i data-lucide="bar-chart-2"></i></div>
-          <div>
-            <div class="diff-item-title">Monitoramento em tempo real</div>
-            <div class="diff-item-desc">Nossa rede é monitorada 24h por dia para garantir a melhor qualidade do serviço.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Numbers -->
-    <div>
-      <div class="diff-numbers" role="list" aria-label="Números da Ligeira">
-        <div class="diff-number-card highlight" role="listitem">
-          <div class="diff-number">10k<span class="unit">+</span></div>
-          <div class="diff-number-label">Assinantes ativos</div>
-        </div>
-        <div class="diff-number-card" role="listitem">
-          <div class="diff-number">99<span class="unit">%</span></div>
-          <div class="diff-number-label">Disponibilidade</div>
-        </div>
-        <div class="diff-number-card" role="listitem">
-          <div class="diff-number">5</div>
-          <div class="diff-number-label">Cidades atendidas</div>
-        </div>
-        <div class="diff-number-card" role="listitem">
-          <div class="diff-number">24<span class="unit">h</span></div>
-          <div class="diff-number-label">Suporte técnico</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FAQ ===================== -->
-<section class="faq-section section" id="faq" aria-label="Perguntas frequentes">
-  <div class="section-inner">
-    <div class="section-label">Dúvidas frequentes</div>
-    <h2 class="section-title">Perguntas e Respostas</h2>
-    <p class="section-subtitle">Respondemos as dúvidas mais comuns dos nossos clientes.</p>
-
-    <div class="faq-grid" role="list">
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">O que está incluído em todos os planos?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">Todos os planos residenciais incluem App de Revistas, App de Livros e Clube de Vantagens Ligeira. Planos de 300 e 400 MEGA incluem Wi-Fi 5G; planos de 600 e 800 MEGA incluem Wi-Fi Super Ligeiro (Wi-Fi 6). O roteador é fornecido sem mensalidade adicional.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">Como funciona a estrutura de preços?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">Nossos planos têm até 3 valores: preço cheio, preço com fidelidade de 12 meses, e o menor preço para quem paga até o vencimento. Você garante o desconto máximo sendo pontual no pagamento — simples assim.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">Minha cidade tem cobertura da Ligeira?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte. Use a seção de cobertura acima para verificar se seu endereço específico já tem fibra disponível.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">A instalação tem custo?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">A instalação é realizada pela nossa equipe técnica. Entre em contato pelo WhatsApp para verificar as condições atuais de instalação na sua região e aproveitar nossas promoções.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">Qual a velocidade de upload?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">A velocidade de upload nos planos residenciais é de 50% da velocidade de download contratada. Nos planos de 600 e 800 MEGA, o upload pode chegar a proporções mais altas, dependendo da infraestrutura do ponto de instalação.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">Como acessar o App de Revistas e App de Livros?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">Após a ativação do plano, você receberá as instruções de acesso via WhatsApp. Os aplicativos estão disponíveis para Android e iOS e o cadastro é feito com o CPF vinculado ao contrato.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">Posso mudar de plano depois?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento. Basta entrar em contato com nosso atendimento pelo WhatsApp e nossa equipe realizará a alteração sem burocracia.</div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <div class="faq-question">
-          <span class="faq-q-text">O que é o Clube de Vantagens Ligeira?</span>
-          <div class="faq-toggle">+</div>
-        </div>
-        <div class="faq-answer">O Clube de Vantagens Ligeira é um benefício exclusivo para clientes ativos que oferece descontos em estabelecimentos parceiros da região do Cariri, além de promoções e ofertas especiais. Os detalhes são comunicados pelo WhatsApp após a ativação do plano.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA FINAL ===================== -->
-<section class="cta-section section" id="contratar" aria-label="Contrate agora">
-  <div class="cta-inner">
-    <div class="section-label" style="display:block;text-align:center;">Pronto para começar?</div>
-    <h2 class="section-title cta-title" style="text-align:center;">
-      Leve a fibra da Ligeira<br>para a sua casa hoje
-    </h2>
-    <p class="section-subtitle cta-subtitle" style="text-align:center;margin-left:auto;margin-right:auto;">
-      Escolha seu plano, verifique a cobertura e nossa equipe entra em contato rapidinho.
-    </p>
-    <div class="cta-buttons">
-      <button class="btn-primary-lg" onclick="abrirWizard('600')" id="cta-contratar-btn">
-        <i data-lucide="zap"></i> Escolher meu plano
-      </button>
-      <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-whatsapp-lg">
-        <i data-lucide="message-circle"></i> Falar pelo WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <!-- Brand -->
-      <div>
-        <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
-             alt="Logo Ligeira Telecom" style="height:40px;width:auto;" />
-        <p class="footer-brand-desc">
-          Internet fibra óptica de verdade para o Cariri. Conectando famílias e empresas com velocidade, estabilidade e suporte local.
-        </p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <div class="footer-col-title">Navegação</div>
-        <ul class="footer-links">
-          <li><a href="#planos">Planos</a></li>
-          <li><a href="#cobertura">Cobertura</a></li>
-          <li><a href="#beneficios">Benefícios</a></li>
-          <li><a href="#faq">Dúvidas</a></li>
-          <li><a href="empresas.html">Empresas</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <div class="footer-col-title">Atendimento</div>
-        <ul class="footer-links">
-          <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">(88) 9637-0021</a></li>
-          <li><a href="mailto:atendimento@ligeiranet.com.br">atendimento@ligeiranet.com.br</a></li>
-          <li><a href="#">Central do Assinante</a></li>
-          <li><a href="#">Segunda-feira a Sábado</a></li>
-          <li><a href="#">08h às 18h</a></li>
-        </ul>
-      </div>
-
-      <!-- Cities -->
-      <div>
-        <div class="footer-col-title">Cidades atendidas</div>
-        <div class="footer-cities">
-          <span class="footer-city">Juazeiro do Norte</span>
-          <span class="footer-city">Brejo Santo</span>
-          <span class="footer-city">Mauriti</span>
-          <span class="footer-city">Milagres</span>
-          <span class="footer-city">Penaforte</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        &copy; 2025 Ligeira Telecom. Todos os direitos reservados. CNPJ: 30.000.000/0001-00
-      </p>
-      <div class="footer-social" aria-label="Redes sociais">
-        <a href="https://instagram.com/ligeiranet" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram da Ligeira">
-          <i data-lucide="instagram"></i>
-        </a>
-        <a href="https://facebook.com/ligeiranet" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook da Ligeira">
-          <i data-lucide="users"></i>
-        </a>
-        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp da Ligeira">
-          <i data-lucide="message-circle"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ===================== MOBILE BOTTOM BAR ===================== -->
-<div class="mobile-bar" role="navigation" aria-label="Ações rápidas mobile">
-  <button class="mobile-bar-btn ghost" id="mobile-btn-planos" onclick="abrirWizard()" aria-label="Ver planos">
-    <i data-lucide="layout-grid"></i> Planos
-  </button>
-  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener"
-     class="mobile-bar-btn green" aria-label="WhatsApp">
-    <i data-lucide="message-circle"></i> WhatsApp
-  </a>
-  <button class="mobile-bar-btn purple" onclick="abrirWizard('600')" id="mobile-btn-contratar" aria-label="Contratar plano">
-    <i data-lucide="zap"></i> Contratar
-  </button>
-</div>
-
-<!-- ===================== WIZARD MODAL ===================== -->
-<div id="wizard-overlay" class="wizard-overlay" role="dialog" aria-modal="true" aria-label="Assistente de contratação">
-  <div class="wizard-modal">
-    <div class="wizard-header">
-      <div class="wizard-step-info">
-        <span class="wizard-step-label">Passo 1 de 4</span>
-        <button class="wizard-close" aria-label="Fechar">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-      <div class="wizard-progress">
-        <div class="wizard-progress-fill" style="width:25%"></div>
-      </div>
-      <div class="wizard-title">Escolha seu plano</div>
-    </div>
-    <div class="wizard-body">
-      <!-- Conteúdo dinâmico renderizado pelo wizard.js -->
-    </div>
-  </div>
-</div>
 
 </body>
+
 </html>

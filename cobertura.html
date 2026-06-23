@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verificar Cobertura — Ligeira Telecom Fibra no Cariri</title>
+  <meta name="description" content="Verifique se a internet fibra da Ligeira Telecom já chegou na sua rua. Consulte por CEP, endereço ou GPS. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
+  <meta property="og:title" content="Verificar Cobertura — Ligeira Telecom" />
+  <meta property="og:description" content="Descubra se a fibra da Ligeira já chegou na sua rua. Consulta rápida por CEP, endereço ou localização GPS." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/cobertura.js"></script>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" role="navigation" aria-label="Menu principal">
+  <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Início">
+    <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+         alt="Logo Ligeira Telecom" />
+  </a>
+
+  <ul class="navbar-links" aria-label="Links de navegação">
+    <li><a href="index.html#planos">Planos</a></li>
+    <li><a href="cobertura.html" class="active">Cobertura</a></li>
+    <li><a href="empresas.html">Empresas</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+
+  <div class="navbar-cta">
+    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-outline-white" aria-label="Falar com atendimento pelo WhatsApp">
+      <i data-lucide="message-circle"></i> Atendimento
+    </a>
+    <a href="index.html#planos" class="btn-orange" id="navbar-contratar-btn">
+      <i data-lucide="zap"></i> Ver planos
+    </a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
+     class="" aria-label="Menu mobile">
+  <style>
+    #mobile-menu.open { display:flex !important; }
+    #mobile-menu a { display:block;padding:16px;color:white;font-size:18px;font-weight:700;text-decoration:none;border-radius:12px; }
+    #mobile-menu a:hover { background:rgba(255,255,255,0.1); }
+    #mobile-menu .close-menu { position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;color:white;display:flex;align-items:center;justify-content:center; }
+  </style>
+  <button class="close-menu" onclick="document.getElementById('mobile-menu').classList.remove('open')" aria-label="Fechar menu">
+    <i data-lucide="x"></i>
+  </button>
+  <a href="index.html#planos">Planos</a>
+  <a href="cobertura.html">Cobertura</a>
+  <a href="empresas.html">Empresas</a>
+  <a href="blog.html">Blog</a>
+  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
+</div>
+
+<!-- ===================== HERO COMPACTO ===================== -->
+<section class="cobertura-hero" aria-label="Verificar cobertura de fibra">
+  <div class="cobertura-hero-inner">
+    <div class="cobertura-hero-badge">
+      <i data-lucide="map-pin"></i> Verificação de cobertura
+    </div>
+    <h1 class="cobertura-hero-title">
+      A Ligeira chegou<br>na <span class="accent">sua rua?</span>
+    </h1>
+    <p class="cobertura-hero-subtitle">
+      Consulte agora se sua região já tem fibra óptica disponível. Basta informar o CEP, endereço ou usar sua localização.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== CIDADES ATENDIDAS ===================== -->
+<div class="cobertura-cities-bar" role="region" aria-label="Cidades atendidas">
+  <div class="cobertura-cities-inner">
+    <span class="cobertura-cities-label">Cidades atendidas:</span>
+    <span class="footer-city">Juazeiro do Norte</span>
+    <span class="footer-city">Brejo Santo</span>
+    <span class="footer-city">Mauriti</span>
+    <span class="footer-city">Milagres</span>
+    <span class="footer-city">Penaforte</span>
+  </div>
+</div>
+
+<!-- ===================== COBERTURA ===================== -->
+<section class="coverage-section" id="cobertura" aria-label="Verificar cobertura">
+  <div class="coverage-inner">
+    <!-- Left: Search -->
+    <div>
+      <div class="section-label coverage-label">Verifique agora</div>
+      <h2 class="coverage-title">Escolha como<br>quer verificar</h2>
+      <p class="coverage-subtitle">Mais de 5 cidades atendidas com fibra óptica de verdade no Cariri.</p>
+
+      <!-- Method tabs -->
+      <div class="coverage-methods" role="group" aria-label="Método de verificação">
+        <div class="coverage-method active" data-method="cep" tabindex="0" role="button" aria-pressed="true">
+          <div class="coverage-method-icon"><i data-lucide="hash"></i></div>
+          <div>
+            <div class="coverage-method-label">Por CEP</div>
+            <div class="coverage-method-desc">Digite o CEP do seu endereço</div>
+          </div>
+        </div>
+        <div class="coverage-method" data-method="address" tabindex="0" role="button" aria-pressed="false">
+          <div class="coverage-method-icon"><i data-lucide="map-pin"></i></div>
+          <div>
+            <div class="coverage-method-label">Por Endereço</div>
+            <div class="coverage-method-desc">Informe rua e cidade</div>
+          </div>
+        </div>
+        <div class="coverage-method" data-method="gps" tabindex="0" role="button" aria-pressed="false">
+          <div class="coverage-method-icon"><i data-lucide="locate"></i></div>
+          <div>
+            <div class="coverage-method-label">Usar minha localização</div>
+            <div class="coverage-method-desc">Detecção automática por GPS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CEP Input -->
+      <div id="coverage-cep-input" class="hero-search-box coverage-input-box" style="display:flex;">
+        <div class="hero-search-icon"><i data-lucide="hash"></i></div>
+        <input type="text" id="cep-input" placeholder="00000-000" maxlength="9" aria-label="CEP" />
+        <button class="btn-search btn-coverage-search">Verificar</button>
+      </div>
+
+      <!-- Address Input -->
+      <div id="coverage-address-input" class="hero-search-box coverage-input-box" style="display:none;">
+        <div class="hero-search-icon"><i data-lucide="map-pin"></i></div>
+        <input type="text" id="address-input" placeholder="Ex: Juazeiro do Norte, Rua das Flores" aria-label="Endereço" />
+        <button class="btn-search btn-coverage-search">Verificar</button>
+      </div>
+
+      <!-- GPS Input -->
+      <div id="coverage-gps-input" style="display:none;">
+        <button class="btn-search" id="use-gps-btn" style="width:100%;padding:14px;">
+          <i data-lucide="locate"></i> Usar minha localização atual
+        </button>
+        <div id="gps-status"></div>
+      </div>
+
+      <!-- Result -->
+      <div id="coverage-result" class="coverage-result-box" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Right: Map Mockup -->
+    <div class="coverage-map-mockup" aria-label="Mapa de cobertura da Ligeira Telecom" role="img">
+      <div class="map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-dot" style="top:35%;left:45%;"></div>
+        <div class="map-dot green" style="top:55%;left:35%;"></div>
+        <div class="map-dot green" style="top:25%;left:60%;"></div>
+        <div class="map-dot" style="top:65%;left:55%;"></div>
+        <div class="map-dot green" style="top:45%;left:25%;"></div>
+        <div class="map-area" style="top:28%;left:38%;width:30%;height:35%;"></div>
+      </div>
+      <div class="map-overlay">
+        <div class="map-overlay-icon"><i data-lucide="check-circle"></i></div>
+        <div>
+          <div class="map-overlay-text">5 cidades com cobertura ativa</div>
+          <div class="map-overlay-sub">Juazeiro · Brejo Santo · Mauriti · Milagres · Penaforte</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div>
+        <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+             alt="Logo Ligeira Telecom" style="height:40px;width:auto;" />
+        <p class="footer-brand-desc">
+          Internet fibra óptica de verdade para o Cariri. Conectando famílias e empresas com velocidade, estabilidade e suporte local.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="index.html#planos">Planos</a></li>
+          <li><a href="cobertura.html">Cobertura</a></li>
+          <li><a href="index.html#beneficios">Benefícios</a></li>
+          <li><a href="index.html#faq">Dúvidas</a></li>
+          <li><a href="empresas.html">Empresas</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="footer-col-title">Atendimento</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">(88) 9637-0021</a></li>
+          <li><a href="mailto:atendimento@ligeiranet.com.br">atendimento@ligeiranet.com.br</a></li>
+          <li><a href="#">Segunda-feira a Sábado</a></li>
+          <li><a href="#">08h às 18h</a></li>
+        </ul>
+      </div>
+
+      <!-- Cities -->
+      <div>
+        <div class="footer-col-title">Cidades atendidas</div>
+        <div class="footer-cities">
+          <span class="footer-city">Juazeiro do Norte</span>
+          <span class="footer-city">Brejo Santo</span>
+          <span class="footer-city">Mauriti</span>
+          <span class="footer-city">Milagres</span>
+          <span class="footer-city">Penaforte</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2025 Ligeira Telecom. Todos os direitos reservados.
+      </p>
+      <div class="footer-social" aria-label="Redes sociais">
+        <a href="https://instagram.com/ligeiranet" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+          <i data-lucide="instagram"></i>
+        </a>
+        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
+          <i data-lucide="message-circle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Bottom Bar -->
+<div class="mobile-bar" role="navigation" aria-label="Ações rápidas mobile">
+  <a href="index.html" class="mobile-bar-btn ghost">
+    <i data-lucide="home"></i> Início
+  </a>
+  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green">
+    <i data-lucide="message-circle"></i> WhatsApp
+  </a>
+  <a href="index.html#planos" class="mobile-bar-btn purple">
+    <i data-lucide="zap"></i> Planos
+  </a>
+</div>
+
+</body>
+</html>

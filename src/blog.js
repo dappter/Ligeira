@@ -8,18 +8,20 @@ import './css/blog.css'
 import {
   createIcons,
   Zap, MapPin, Instagram, Users, MessageCircle, ArrowRight, Clock,
-  BookOpen, Wifi, Home, Gamepad2, Tag, Rss, ChevronRight, Mail
+  BookOpen, Wifi, Home, Gamepad2, Tag, Rss, ChevronRight, Mail, X
 } from 'lucide'
 
 import { initNavbar } from './js/navbar.js'
 
 const ICONS = {
   Zap, MapPin, Instagram, Users, MessageCircle, ArrowRight, Clock,
-  BookOpen, Wifi, Home, Gamepad2, Tag, Rss, ChevronRight, Mail
+  BookOpen, Wifi, Home, Gamepad2, Tag, Rss, ChevronRight, Mail, X
 }
 
-createIcons({ icons: ICONS })
-initNavbar()
+document.addEventListener('DOMContentLoaded', () => {
+  createIcons({ icons: ICONS })
+  initNavbar()
+})
 
 // Category filter
 const catBtns = document.querySelectorAll('.blog-cat-btn')

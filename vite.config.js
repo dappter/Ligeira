@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         empresas: resolve(__dirname, 'empresas.html'),
         blog: resolve(__dirname, 'blog.html'),
+        cobertura: resolve(__dirname, 'cobertura.html'),
       }
     }
   }
