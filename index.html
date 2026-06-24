@@ -142,11 +142,19 @@
                 </h1>
               </div>
               <div class="hero-image-col">
-                <img src="https://www.niointernet.com.br/data/files/49/14/C2/68/DAE8E9100E96B8E9504B08A8/img_img-house-with-tag_gd.webp" 
-                     alt="Casa conectada com fibra óptica Ligeira" 
-                     class="slide-hero-img" 
-                     loading="eager" 
-                     fetchpriority="high" />
+                <div style="position: relative; display: inline-block; width: 100%; text-align: center;">
+                  <!-- Elementos 3D flutuantes -->
+                  <img src="/src/images/WIFI%20%203D.png" 
+                       alt="Wi-Fi 3D" 
+                       class="floating-fiber" 
+                       style="position: absolute; top: -10%; left: -10%; width: 130px; animation: float 6s ease-in-out infinite; z-index: 2; pointer-events: none;" />
+
+                  <img src="/src/images/CASA%20SITE.png" 
+                       alt="Casa conectada com fibra óptica Ligeira" 
+                       class="slide-hero-img" 
+                       loading="eager" 
+                       fetchpriority="high" />
+                </div>
               </div>
             </div>
           </div>
@@ -162,10 +170,18 @@
                 </h2>
               </div>
               <div class="hero-image-col">
-                <img src="/src/images/hero-slide-2.png" 
-                     alt="Infraestrutura de rede premium Ligeira Telecom" 
-                     class="slide-hero-img" 
-                     loading="lazy" />
+                <div style="position: relative; display: inline-block; width: 100%; text-align: center;">
+                  <!-- Elementos 3D flutuantes -->
+                  <img src="/src/images/ROTEADOR%20PATTERN%203D.png" 
+                       alt="Roteador Pattern 3D" 
+                       class="floating-fiber" 
+                       style="position: absolute; bottom: 0%; left: -15%; width: 160px; animation: float 7s ease-in-out infinite reverse; z-index: 2; pointer-events: none; transform: rotate(-20deg);" />
+
+                  <img src="/src/images/ROTEADOR%203D.png" 
+                       alt="Roteador Wi-Fi Ligeira Telecom" 
+                       class="slide-hero-img" 
+                       loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
@@ -181,9 +197,10 @@
                 </h2>
               </div>
               <div class="hero-image-col">
-                <img src="/src/images/hero-slide-3.png" 
+                <img src="/src/images/ilustracao_globoplay.png" 
                      alt="Apps e vantagens inclusos nos planos Ligeira" 
                      class="slide-hero-img" 
+                     style="transform: scale(1.5);"
                      loading="lazy" />
               </div>
             </div>
@@ -242,7 +259,7 @@
 
         <!-- Card 1: Globoplay Esportes -->
         <div class="nio-app-card"
-          style="background-image: url('https://www.niointernet.com.br/data/files/5B/84/27/79/69CBE910FA389BE9504B08A8/copa.png');">
+          style="background-image: url('/src/images/copa_2026.png');">
           <div class="nio-app-overlay"></div>
           <div class="nio-app-content-box">
             <div class="nio-app-badge" style="background: white; color: #ff0038;">
@@ -256,7 +273,7 @@
 
         <!-- Card 2: Telecine -->
         <div class="nio-app-card"
-          style="background-image: url('https://www.niointernet.com.br/data/files/D6/84/54/79/69CBE910FA389BE9504B08A8/hbo_jogos.png');">
+          style="background-image: url('/src/images/mosaico_telecine.png');">
           <div class="nio-app-overlay"></div>
           <div class="nio-app-content-box">
             <div class="nio-app-badge" style="background: #0000ff; color: white;">
@@ -270,7 +287,7 @@
 
         <!-- Card 3: Globoplay Filmes -->
         <div class="nio-app-card"
-          style="background-image: url('https://www.niointernet.com.br/data/files/D2/84/22/69/69CBE910FA389BE9504B08A8/globo_filme.png');">
+          style="background-image: url('/src/images/mosaico_globo.png');">
           <div class="nio-app-overlay"></div>
           <div class="nio-app-content-box">
             <div class="nio-app-badge" style="background: #ff0038; color: white;">
@@ -328,7 +345,7 @@
           </ul>
           <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
           <button class="btn-plan-secondary"
-            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            onclick="window.location.href='cobertura.html'">Verificar
             cobertura</button>
         </div>
 
@@ -364,7 +381,7 @@
           </ul>
           <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
           <button class="btn-plan-secondary"
-            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            onclick="window.location.href='cobertura.html'">Verificar
             cobertura</button>
         </div>
 
@@ -407,7 +424,7 @@
           <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este
             plano</button>
           <button class="btn-plan-secondary"
-            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            onclick="window.location.href='cobertura.html'">Verificar
             cobertura</button>
         </div>
 
@@ -446,7 +463,7 @@
           </ul>
           <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
           <button class="btn-plan-secondary"
-            onclick="document.getElementById('cobertura').scrollIntoView({behavior:'smooth'})">Verificar
+            onclick="window.location.href='cobertura.html'">Verificar
             cobertura</button>
         </div>
 
@@ -465,33 +482,32 @@
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon purple"><i data-lucide="zap"></i></div>
           <h3 class="benefit-title">Velocidade real garantida</h3>
-          <p class="benefit-desc">Sua velocidade contratada é a que você recebe. Sem travamento nos horários de pico.
-          </p>
+          <p class="benefit-desc">Chega de vídeos travando e páginas demorando para carregar. Tenha a velocidade que você paga.</p>
         </div>
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon green"><i data-lucide="wifi"></i></div>
           <h3 class="benefit-title">Wi-Fi de última geração</h3>
-          <p class="benefit-desc">Roteador Wi-Fi 5G ou Wi-Fi 6 incluso no plano, sem mensalidade extra.</p>
+          <p class="benefit-desc">Nada de brigar pelo sinal. Conexão forte para todos usarem ao mesmo tempo.</p>
         </div>
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon orange"><i data-lucide="timer"></i></div>
           <h3 class="benefit-title">Latência ultra baixa</h3>
-          <p class="benefit-desc">Ideal para jogos, videochamadas e streaming em 4K sem atrasos.</p>
+          <p class="benefit-desc">Diga adeus ao lag nos jogos e às chamadas que travam nos momentos mais importantes.</p>
         </div>
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon blue"><i data-lucide="wrench"></i></div>
-          <h3 class="benefit-title">Suporte técnico 24h</h3>
-          <p class="benefit-desc">Time de técnicos locais do Cariri prontos para atender quando você precisar.</p>
+          <h3 class="benefit-title">Suporte técnico</h3>
+          <p class="benefit-desc">Ficar sem internet é estressante. Por isso, nossa equipe está pronta para ajudar quando você precisar.</p>
         </div>
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon purple"><i data-lucide="home"></i></div>
           <h3 class="benefit-title">Perfeita para home office</h3>
-          <p class="benefit-desc">Upload simétrico e conexão estável para você trabalhar em casa com tranquilidade.</p>
+          <p class="benefit-desc">Não perca reuniões nem produtividade por causa de uma conexão instável.</p>
         </div>
         <div class="benefit-card" role="listitem">
           <div class="benefit-icon green"><i data-lucide="film"></i></div>
           <h3 class="benefit-title">Streaming sem travamento</h3>
-          <p class="benefit-desc">Assista seus filmes, séries e transmissões ao vivo em qualidade máxima.</p>
+          <p class="benefit-desc">Sua série não precisa parar na melhor cena. Assista tudo sem interrupções.</p>
         </div>
       </div>
     </div>
@@ -547,70 +563,77 @@
     </div>
   </section>
 
-  <!-- ===================== DIFFERENTIALS ===================== -->
-  <section class="diff-section section" id="diferenciais" aria-label="Diferenciais técnicos">
-    <div class="diff-inner">
-      <!-- Left: Text -->
-      <div>
-        <div class="section-label diff-label">Nossa infraestrutura</div>
-        <h2 class="section-title diff-title">Tecnologia que você sente na velocidade</h2>
-        <p class="section-subtitle diff-subtitle">A Ligeira investe constantemente em infraestrutura para entregar a
-          melhor experiência do Cariri.</p>
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="testimonials-section section" id="depoimentos" aria-label="Depoimentos dos clientes">
+    <div class="section-inner">
+      <div class="section-label" style="text-align: center;">O que dizem sobre nós</div>
+      <h2 class="section-title" style="text-align: center; color: white;">Depoimentos dos clientes</h2>
+      <p class="section-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 48px;">
+        <!-- Dados de teste fictícios - Substituir por reais conforme skill social-proof-engine -->
+        Veja quem já escolheu a fibra mais rápida e estável do Cariri.
+      </p>
 
-        <div class="diff-list" role="list" aria-label="Diferenciais técnicos">
-          <div class="diff-item" role="listitem">
-            <div class="diff-item-icon"><i data-lucide="telescope"></i></div>
-            <div>
-              <div class="diff-item-title">Rede 100% GPON</div>
-              <div class="diff-item-desc">Tecnologia óptica passiva de última geração para máxima estabilidade e
-                velocidade.</div>
-            </div>
+      <div class="testimonials-grid" role="list">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-stars">
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
           </div>
-          <div class="diff-item" role="listitem">
-            <div class="diff-item-icon"><i data-lucide="shield"></i></div>
+          <p class="testimonial-text">
+            "Excelente conexão! Uso para home office e nunca me deixou na mão. O suporte técnico é muito rápido e atencioso."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i data-lucide="user"></i></div>
             <div>
-              <div class="diff-item-title">Backbone com redundância</div>
-              <div class="diff-item-desc">Múltiplos links de backbone garantem disponibilidade mesmo em falhas de
-                operadoras.</div>
-            </div>
-          </div>
-          <div class="diff-item" role="listitem">
-            <div class="diff-item-icon"><i data-lucide="map-pin"></i></div>
-            <div>
-              <div class="diff-item-title">Equipe técnica regional</div>
-              <div class="diff-item-desc">Técnicos morando no Cariri, com atendimento ágil e conhecimento local da
-                região.</div>
-            </div>
-          </div>
-          <div class="diff-item" role="listitem">
-            <div class="diff-item-icon"><i data-lucide="bar-chart-2"></i></div>
-            <div>
-              <div class="diff-item-title">Monitoramento em tempo real</div>
-              <div class="diff-item-desc">Nossa rede é monitorada 24h por dia para garantir a melhor qualidade do
-                serviço.</div>
+              <div class="author-name">João Silva</div>
+              <div class="author-city">Juazeiro do Norte, CE</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: Numbers -->
-      <div>
-        <div class="diff-numbers" role="list" aria-label="Números da Ligeira">
-          <div class="diff-number-card highlight" role="listitem">
-            <div class="diff-number">10k<span class="unit">+</span></div>
-            <div class="diff-number-label">Assinantes ativos</div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-stars">
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
           </div>
-          <div class="diff-number-card" role="listitem">
-            <div class="diff-number">99<span class="unit">%</span></div>
-            <div class="diff-number-label">Disponibilidade</div>
+          <p class="testimonial-text">
+            "Troquei de operadora no mês passado e a diferença é gritante. A velocidade de download e upload é constante em qualquer horário."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i data-lucide="user"></i></div>
+            <div>
+              <div class="author-name">Maria Lima</div>
+              <div class="author-city">Brejo Santo, CE</div>
+            </div>
           </div>
-          <div class="diff-number-card" role="listitem">
-            <div class="diff-number">5</div>
-            <div class="diff-number-label">Cidades atendidas</div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card" role="listitem">
+          <div class="testimonial-stars">
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
           </div>
-          <div class="diff-number-card" role="listitem">
-            <div class="diff-number">24<span class="unit">h</span></div>
-            <div class="diff-number-label">Suporte técnico</div>
+          <p class="testimonial-text">
+            "Finalmente uma internet de fibra de verdade em Mauriti. O roteador tem um ótimo alcance e toda a família joga sem lag."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i data-lucide="user"></i></div>
+            <div>
+              <div class="author-name">Carlos Eduardo</div>
+              <div class="author-city">Mauriti, CE</div>
+            </div>
           </div>
         </div>
       </div>

@@ -217,7 +217,7 @@ function renderStep4() {
   return `
     <div style="text-align:center;padding:20px 0 32px;">
       <div style="width:80px;height:80px;background:rgba(16,185,129,0.12);border:2px solid rgba(16,185,129,0.3);border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">
-        <i data-lucide="check-circle-2" style="width:40px;height:40px;color:var(--green);"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
       </div>
       <h3 style="font-size:24px;font-weight:900;color:var(--gray-900);margin-bottom:8px;">Solicitação enviada!</h3>
       <p style="font-size:15px;color:var(--gray-600);line-height:1.6;max-width:380px;margin:0 auto 24px;">

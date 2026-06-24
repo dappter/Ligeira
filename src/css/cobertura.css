@@ -138,26 +138,56 @@
   flex-shrink: 0;
 }
 .coverage-method.active .coverage-method-icon {
-  background: var(--purple-mid);
-  border-color: var(--purple-mid);
+  background: var(--orange);
+  border-color: var(--orange);
 }
 .coverage-method-icon [data-lucide] { width: 18px; height: 18px; }
 .coverage-method-icon [data-lucide] svg { stroke: var(--purple-mid); }
-.coverage-method.active .coverage-method-icon [data-lucide] svg { stroke: white; }
+.coverage-method.active .coverage-method-icon [data-lucide] svg { stroke: var(--gray-900); }
 
 .coverage-method-label { font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 2px; }
 .coverage-method-desc { font-size: 13px; color: var(--gray-500); }
 .coverage-method.active .coverage-method-label { color: var(--purple-dark); }
 
-/* Input box (reusa .hero-search-box do style.css) */
+/* Input box */
 .coverage-input-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 8px 8px 8px 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   margin-bottom: 12px;
   border: 1.5px solid var(--gray-200);
+  transition: all 0.2s;
 }
 .coverage-input-box:focus-within {
   border-color: var(--purple-mid);
   box-shadow: 0 0 0 3px rgba(96,40,255,0.1);
+}
+.coverage-input-box .hero-search-icon {
+  color: var(--purple-mid);
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+.coverage-input-box .hero-search-icon [data-lucide] {
+  width: 22px;
+  height: 22px;
+}
+.coverage-input-box input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--gray-900);
+  font-family: inherit;
+  background: transparent;
+  min-width: 0;
+  padding: 12px 0;
+}
+.coverage-input-box input::placeholder {
+  color: var(--gray-400);
 }
 
 /* Mapa mockup */
@@ -252,27 +282,55 @@
 /* --- GPS --- */
 #gps-status { font-size: 13px; color: var(--gray-500); margin-top: 8px; }
 
-/* --- Trust bar na cobertura --- */
+/* --- Trust bar na cobertura (Marquee) --- */
 .cobertura-cities-bar {
-  background: var(--gray-50);
-  border-top: 1px solid var(--gray-200);
+  background: white;
   border-bottom: 1px solid var(--gray-200);
-  padding: 20px 24px;
+  padding: 16px 0;
+  overflow: hidden;
+  position: relative;
 }
-.cobertura-cities-inner {
-  max-width: 1100px;
-  margin: 0 auto;
+
+.marquee-wrapper {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  min-width: max-content;
+  animation: scroll-marquee 25s linear infinite;
+  padding-right: 32px;
 }
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
 .cobertura-cities-label {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--purple-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 32px;
+}
+
+.marquee-city {
+  font-size: 15px;
   font-weight: 600;
-  color: var(--gray-500);
-  margin-right: 8px;
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  margin: 0 32px;
 }
 
 /* ===================== RESPONSIVE COBERTURA ===================== */

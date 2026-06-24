@@ -127,7 +127,7 @@ function showResult(type, title, description) {
       <div class="result-title">${title}</div>
       <div class="result-desc">${description}</div>
       ${type === 'success'
-        ? `<button class="btn-plan primary" style="margin-top:14px;width:auto;padding:10px 20px;font-size:13px;" onclick="document.getElementById('wizard-overlay').classList.add('open')">Escolher plano</button>`
+        ? `<button class="btn-orange" style="margin-top:14px;" onclick="window.location.href='index.html#planos'">Escolher plano</button>`
         : `<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
              <input id="lead-name" placeholder="Seu nome" style="padding:8px 12px;border:1.5px solid var(--gray-300);border-radius:8px;font-size:13px;flex:1;min-width:120px;font-family:Montserrat,sans-serif;" />
              <input id="lead-phone" placeholder="WhatsApp" style="padding:8px 12px;border:1.5px solid var(--gray-300);border-radius:8px;font-size:13px;flex:1;min-width:120px;font-family:Montserrat,sans-serif;" />

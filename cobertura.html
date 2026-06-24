@@ -79,13 +79,23 @@
 
 <!-- ===================== CIDADES ATENDIDAS ===================== -->
 <div class="cobertura-cities-bar" role="region" aria-label="Cidades atendidas">
-  <div class="cobertura-cities-inner">
-    <span class="cobertura-cities-label">Cidades atendidas:</span>
-    <span class="footer-city">Juazeiro do Norte</span>
-    <span class="footer-city">Brejo Santo</span>
-    <span class="footer-city">Mauriti</span>
-    <span class="footer-city">Milagres</span>
-    <span class="footer-city">Penaforte</span>
+  <div class="marquee-wrapper">
+    <div class="marquee-content">
+      <span class="cobertura-cities-label">Cidades atendidas:</span>
+      <span class="marquee-city">Juazeiro do Norte</span><span class="dot"></span>
+      <span class="marquee-city">Brejo Santo</span><span class="dot"></span>
+      <span class="marquee-city">Mauriti</span><span class="dot"></span>
+      <span class="marquee-city">Milagres</span><span class="dot"></span>
+      <span class="marquee-city">Penaforte</span><span class="dot"></span>
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      <span class="cobertura-cities-label">Cidades atendidas:</span>
+      <span class="marquee-city">Juazeiro do Norte</span><span class="dot"></span>
+      <span class="marquee-city">Brejo Santo</span><span class="dot"></span>
+      <span class="marquee-city">Mauriti</span><span class="dot"></span>
+      <span class="marquee-city">Milagres</span><span class="dot"></span>
+      <span class="marquee-city">Penaforte</span><span class="dot"></span>
+    </div>
   </div>
 </div>
 
@@ -139,7 +149,7 @@
 
       <!-- GPS Input -->
       <div id="coverage-gps-input" style="display:none;">
-        <button class="btn-search" id="use-gps-btn" style="width:100%;padding:14px;">
+        <button class="btn-search" id="use-gps-btn" style="width:100%;padding:14px;display:flex;align-items:center;justify-content:center;gap:10px;">
           <i data-lucide="locate"></i> Usar minha localização atual
         </button>
         <div id="gps-status"></div>

@@ -66,6 +66,54 @@
   flex-wrap: wrap;
 }
 
+/* ===================== TRUSTED BY (LOGOS) ===================== */
+.trusted-by-section {
+  padding: 60px 24px;
+  background: white;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.trusted-by-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-400);
+  margin-bottom: 32px;
+}
+
+.trusted-by-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.trusted-logo-img {
+  max-width: 140px;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(0.5) brightness(1.2);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.trusted-logo-img.logo-dilly { transform: scale(1.6); }
+.trusted-logo-img.logo-boticario { transform: scale(1.4); }
+.trusted-logo-img.logo-cariri { transform: scale(1.4); }
+
+.trusted-logo-img.logo-dilly,
+.trusted-logo-img.logo-mauriti {
+  filter: grayscale(100%) contrast(0.8) brightness(0.6);
+  opacity: 0.85;
+}
+
 /* ===================== B2B FEATURES ===================== */
 .empresas-features-section {
   background: var(--gray-50);

@@ -9,7 +9,7 @@ import {
   createIcons,
   Zap, MapPin, Hash, Satellite, Locate, Wifi, Timer, Wrench, Home,
   Film, BookOpen, BookMarked, Leaf, Palette, Gamepad2, Music, Radio, Telescope,
-  BarChart2, Instagram, Users, MessageCircle, X, Plus, CheckCircle,
+  BarChart2, Instagram, Users, User, MessageCircle, X, Plus, CheckCircle,
   CheckCircle2, Check, ArrowRight, Phone, Mail, LayoutGrid, ChevronDown,
   ChevronLeft, ChevronRight,
   Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag
@@ -23,7 +23,7 @@ import { initWizard } from './js/wizard.js'
 const ICONS = {
   Zap, MapPin, Hash, Satellite, Locate, Wifi, Timer, Wrench, Home,
   Film, BookOpen, BookMarked, Leaf, Palette, Gamepad2, Music, Radio, Telescope,
-  BarChart2, Instagram, Users, MessageCircle, X, Plus, CheckCircle,
+  BarChart2, Instagram, Users, User, MessageCircle, X, Plus, CheckCircle,
   CheckCircle2, Check, ArrowRight, Phone, Mail, LayoutGrid, ChevronDown,
   ChevronLeft, ChevronRight,
   Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag
@@ -74,7 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
 
     function startAuto() {
-      autoTimer = setInterval(() => goTo(current + 1), 5000)
+      autoTimer = setInterval(() => goTo(current + 1), 8000)
     }
     function stopAuto() { clearInterval(autoTimer) }
 
