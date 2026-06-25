@@ -45,9 +45,9 @@ const TOTAL_STEPS = 4;
 const $ = (id) => document.getElementById(id);
 
 // ======================== OPEN / CLOSE ========================
-function openWizard(planId = '600') {
+function openWizard(planId = '600', step = 1) {
   selectedPlan = planId && PLANS[planId] ? planId : '600';
-  currentStep = 1;
+  currentStep = step;
   renderWizard();
   const overlay = $('wizard-overlay');
   if (overlay) {
@@ -81,8 +81,29 @@ function prevStep() {
 }
 
 // ======================== RENDER ========================
+function getDynamicPlanInfo(planId) {
+  const basePlan = PLANS[planId];
+  if (!basePlan) return null;
+  
+  if (window.__planAddons && window.__planAddons.calcTotal) {
+    const { total, extra } = window.__planAddons.calcTotal(planId);
+    if (extra > 0) {
+      const intPart = Math.floor(total);
+      const decPart = Math.round((total - intPart) * 100).toString().padStart(2, '0');
+      const fmtStr = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/,\d+$/, '');
+      return {
+        ...basePlan,
+        name: basePlan.name + ' (Personalizado)',
+        price: `R$ ${fmtStr},${decPart}`,
+        priceDisplay: `R$ ${fmtStr},<small>${decPart}</small><span>/mês</span>`
+      };
+    }
+  }
+  return basePlan;
+}
+
 function renderWizard() {
-  const plan = PLANS[selectedPlan];
+  const plan = getDynamicPlanInfo(selectedPlan);
 
   // Update step label & progress
   const stepLabel = document.querySelector('.wizard-step-label');
@@ -115,7 +136,10 @@ function renderWizard() {
         <div class="wizard-plan-price">${plan.priceDisplay}</div>
         <div style="font-size:11px;color:var(--gray-400);margin-top:2px;">${plan.note}</div>
       </div>
-      <button class="wizard-change" onclick="window.wizardChangePlan()">Trocar plano</button>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button class="wizard-change" onclick="window.wizardChangePlan()">Trocar plano</button>
+        <button class="wizard-change" style="color:var(--purple-mid)" onclick="window.__planAddons.handleToggle('${selectedPlan}')">Personalizar plano</button>
+      </div>
     </div>
   `;
 
@@ -213,7 +237,7 @@ function renderStep3() {
 }
 
 function renderStep4() {
-  const plan = PLANS[selectedPlan];
+  const plan = getDynamicPlanInfo(selectedPlan);
   return `
     <div style="text-align:center;padding:20px 0 32px;">
       <div style="width:80px;height:80px;background:rgba(16,185,129,0.12);border:2px solid rgba(16,185,129,0.3);border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;">

@@ -409,6 +409,26 @@ footer {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  /* Scrollbar fina personalizada */
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-light) transparent;
+}
+
+.wizard-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wizard-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wizard-modal::-webkit-scrollbar-thumb {
+  background: var(--purple-light);
+  border-radius: 999px;
+}
+
+.wizard-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-mid);
 }
 
 .wizard-header {

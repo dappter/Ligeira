@@ -227,7 +227,6 @@ function openDesktopPanel(planId) {
   if (!card) return
 
   const panel = card.querySelector('.plan-addon-panel')
-  const btn   = card.querySelector('.plan-addon-toggle')
 
   // Lazy render
   if (!panel.dataset.rendered) {
@@ -239,18 +238,12 @@ function openDesktopPanel(planId) {
 
   if (isOpen) {
     card.classList.remove('addon-open')
-    btn.setAttribute('aria-expanded', 'false')
-    btn.setAttribute('aria-label', `Personalizar plano ${planId} MEGA`)
-    btn.textContent = '+'
   } else {
     // Fechar qualquer outro aberto no desktop
     document.querySelectorAll('.plan-card.addon-open').forEach(c => {
       if (c !== card) closeDesktopPanel(c.dataset.planId)
     })
     card.classList.add('addon-open')
-    btn.setAttribute('aria-expanded', 'true')
-    btn.setAttribute('aria-label', `Fechar personalização do plano ${planId} MEGA`)
-    btn.textContent = '×'
 
     // Focus no primeiro checkbox
     setTimeout(() => {
@@ -264,12 +257,6 @@ function closeDesktopPanel(planId) {
   const card = document.querySelector(`.plan-card[data-plan-id="${planId}"]`)
   if (!card) return
   card.classList.remove('addon-open')
-  const btn = card.querySelector('.plan-addon-toggle')
-  if (btn) {
-    btn.setAttribute('aria-expanded', 'false')
-    btn.setAttribute('aria-label', `Personalizar plano ${planId} MEGA`)
-    btn.textContent = '+'
-  }
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -346,7 +333,8 @@ function buildSheetHTML(planId, type) {
 function openSheet(planId) {
   closeSheet()  // fecha qualquer sheet aberta
 
-  const type = getBreakpoint() === 'tablet' ? 'tablet' : 'mobile'
+  const bp = getBreakpoint()
+  const type = (bp === 'tablet' || bp === 'desktop') ? 'tablet' : 'mobile'
   activeSheetPlanId = planId
 
   const wrapper = document.createElement('div')
@@ -424,17 +412,6 @@ function closeSheet(planId) {
 
   document.body.classList.remove('addon-sheet-open')
   activeSheetPlanId = null
-
-  // Restore toggle btn
-  const card = document.querySelector(`.plan-card[data-plan-id="${id}"]`)
-  if (card) {
-    const btn = card.querySelector('.plan-addon-toggle')
-    if (btn) {
-      btn.textContent = '+'
-      btn.setAttribute('aria-expanded', 'false')
-      btn.setAttribute('aria-label', `Personalizar plano ${id} MEGA`)
-    }
-  }
 }
 
 function syncSheetCheckboxes(planId) {
@@ -462,25 +439,17 @@ function updateSheetBreakdown(planId) {
 
 function handleToggle(planId) {
   const bp = getBreakpoint()
+  const isWizardOpen = document.querySelector('.wizard-overlay')?.classList.contains('open')
 
-  if (bp === 'desktop') {
+  if (bp === 'desktop' && !isWizardOpen) {
     openDesktopPanel(planId)
   } else {
-    // tablet ou mobile → sheet
+    // tablet, mobile ou wizard aberto → sheet
     const sheetWrapper = document.getElementById(`addon-sheet-wrapper-${planId}`)
     if (sheetWrapper) {
       closeSheet(planId)
     } else {
       openSheet(planId)
-      // Update toggle button
-      const card = document.querySelector(`.plan-card[data-plan-id="${planId}"]`)
-      if (card) {
-        const btn = card.querySelector('.plan-addon-toggle')
-        if (btn) {
-          btn.textContent = '×'
-          btn.setAttribute('aria-expanded', 'true')
-        }
-      }
     }
   }
 }
@@ -493,9 +462,9 @@ function applyPlan(planId) {
   closeSheet(planId)
   closeDesktopPanel(planId)
 
-  // Dispara o wizard com o plano selecionado
+  // Dispara o wizard com o plano selecionado direto no passo 2
   if (typeof window.abrirWizard === 'function') {
-    window.abrirWizard(planId)
+    window.abrirWizard(planId, 2)
   }
 }
 
@@ -537,5 +506,5 @@ export function initPlanAddons() {
   })
 
   // Expor API global para atributos onclick inline no HTML
-  window.__planAddons = { handleToggle, closeSheet, applyPlan }
+  window.__planAddons = { handleToggle, closeSheet, applyPlan, calcTotal }
 }

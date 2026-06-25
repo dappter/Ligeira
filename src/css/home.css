@@ -320,7 +320,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .plan-card {
@@ -330,6 +330,8 @@
   padding: 28px 24px;
   position: relative;
   transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan-card:hover {
@@ -361,6 +363,12 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.plan-main-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .plan-badge [data-lucide] {
@@ -456,10 +464,12 @@
 
 .plan-features {
   list-style: none;
-  margin-bottom: 24px;
+  padding: 0;
+  margin: 0 0 28px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
 }
 
 .plan-features li {
@@ -1128,53 +1138,6 @@
 
 /* ===================== PLAN ADDONS — SISTEMA DE PERSONALIZAÇÃO ===================== */
 
-/* ── Botão toggle "+" no canto superior direito do card ── */
-.plan-addon-toggle {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--purple-pale);
-  border: 1.5px solid var(--purple-light);
-  color: var(--purple-mid);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 5;
-  font-family: 'Montserrat', sans-serif;
-  flex-shrink: 0;
-  min-width: 44px;
-  min-height: 44px;
-  /* Expand touch area without changing visual size */
-  box-shadow: 0 0 0 6px transparent;
-}
-
-.plan-addon-toggle:hover {
-  background: var(--purple-mid);
-  border-color: var(--purple-mid);
-  color: white;
-  transform: rotate(45deg) scale(1.08);
-  box-shadow: 0 4px 16px rgba(96, 40, 255, 0.3);
-}
-
-.plan-addon-toggle:focus-visible {
-  outline: 2px solid var(--purple-mid);
-  outline-offset: 3px;
-}
-
-.plan-card.addon-open .plan-addon-toggle {
-  background: var(--gray-700);
-  border-color: var(--gray-700);
-  color: white;
-  transform: rotate(45deg);
-}
 
 /* ── Badge de status (Plano Base / Plano Personalizado) ── */
 .plan-addon-status-badge {
@@ -1598,14 +1561,6 @@ body.addon-sheet-open {
   }
 }
 
-/* Nos planos em grid de 1 coluna (mobile), o botão não conflita com o badge */
-@media (max-width: 600px) {
-  .plan-addon-toggle {
-    top: 12px;
-    right: 12px;
-  }
-}
-
 /* Sheet items em telas maiores (dentro do sheet) precisam de mais espaço */
 @media (min-width: 768px) {
   .addon-items-list .addon-item {
@@ -1623,4 +1578,78 @@ body.addon-sheet-open {
   .addon-panel-subtitle {
     font-size: 12px;
   }
+}
+
+/* ===================== SCROLLBARS PERSONALIZADAS ===================== */
+
+/* ── Painel de adicionais (desktop) ── */
+.plan-addon-panel {
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-light) transparent;
+}
+
+.plan-addon-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.plan-addon-panel::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.plan-addon-panel::-webkit-scrollbar-thumb {
+  background: var(--purple-light);
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.plan-addon-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-mid);
+}
+
+/* ── Sheet body (tablet modal + bottom sheet mobile) ── */
+.sheet-body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-light) transparent;
+}
+
+.sheet-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sheet-body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.sheet-body::-webkit-scrollbar-thumb {
+  background: var(--purple-light);
+  border-radius: 999px;
+}
+
+.sheet-body::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-mid);
+}
+
+/* ── Tablet modal (barra lateral direita) ── */
+.addon-tablet-modal {
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-light) transparent;
+}
+
+.addon-tablet-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.addon-tablet-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.addon-tablet-modal::-webkit-scrollbar-thumb {
+  background: var(--purple-light);
+  border-radius: 999px;
+}
+
+.addon-tablet-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-mid);
 }
