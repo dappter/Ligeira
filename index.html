@@ -314,157 +314,170 @@
       <div class="plans-grid" role="list" aria-label="Grade de planos">
 
         <!-- PLANO 300 MEGA -->
-        <div class="plan-card" role="listitem">
-          <div class="plan-speed">Plano</div>
-          <div class="plan-speed-number">300</div>
-          <div class="plan-speed-unit">MEGA download</div>
-          <div class="plan-price-area">
-            <div class="plan-price-old">De R$ 85,90/mês</div>
-            <div class="plan-price-mid">Por R$ 75,90/mês (12 meses)</div>
-            <div class="plan-price">R$ 69,<small>90</small></div>
-            <div class="plan-price-note">
-              <i data-lucide="check"></i> Pagando até o vencimento
+        <div class="plan-card" role="listitem" data-plan-id="300">
+          <!-- Botão de personalização -->
+          <button
+            class="plan-addon-toggle"
+            data-plan-id="300"
+            aria-label="Personalizar plano 300 MEGA"
+            aria-expanded="false"
+            title="Adicionar serviços extras"
+          >+</button>
+
+          <!-- Coluna principal do plano -->
+          <div class="plan-main-col">
+            <div class="plan-addon-status-badge">Plano Base</div>
+            <div class="plan-speed">Plano</div>
+            <div class="plan-speed-number">300</div>
+            <div class="plan-speed-unit">MEGA download</div>
+            <div class="plan-price-area">
+              <div class="plan-price-old">De R$ 85,90/mês</div>
+              <div class="plan-price-mid">Por R$ 75,90/mês (12 meses)</div>
+              <div class="plan-price">R$ 69,<small>90</small></div>
+              <div class="plan-price-note">
+                <i data-lucide="check"></i> Pagando até o vencimento
+              </div>
             </div>
-          </div>
-          <ul class="plan-features" aria-label="Benefícios do plano 300 MEGA">
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Revistas
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Livros
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
-            </li>
-          </ul>
-          <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
-          <button class="btn-plan-secondary"
-            onclick="window.location.href='cobertura.html'">Verificar
-            cobertura</button>
+            <ul class="plan-features" aria-label="Benefícios do plano 300 MEGA">
+              <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
+              <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
+              <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
+            </ul>
+            <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
+            <button class="btn-plan-secondary" onclick="window.location.href='cobertura.html'">Verificar cobertura</button>
+          </div><!-- /plan-main-col -->
+
+          <!-- Painel de adicionais (desktop: flutuante; tablet/mobile: sheet) -->
+          <div class="plan-addon-panel" aria-hidden="true"></div>
         </div>
 
         <!-- PLANO 400 MEGA -->
-        <div class="plan-card" role="listitem">
-          <div class="plan-speed">Plano</div>
-          <div class="plan-speed-number">400</div>
-          <div class="plan-speed-unit">MEGA download</div>
-          <div class="plan-price-area">
-            <div class="plan-price-old">De R$ 95,90/mês</div>
-            <div class="plan-price-mid">Por R$ 85,90/mês (12 meses)</div>
-            <div class="plan-price">R$ 74,<small>90</small></div>
-            <div class="plan-price-note">
-              <i data-lucide="check"></i> Pagando até o vencimento
+        <div class="plan-card" role="listitem" data-plan-id="400">
+          <!-- Botão de personalização -->
+          <button
+            class="plan-addon-toggle"
+            data-plan-id="400"
+            aria-label="Personalizar plano 400 MEGA"
+            aria-expanded="false"
+            title="Adicionar serviços extras"
+          >+</button>
+
+          <!-- Coluna principal do plano -->
+          <div class="plan-main-col">
+            <div class="plan-addon-status-badge">Plano Base</div>
+            <div class="plan-speed">Plano</div>
+            <div class="plan-speed-number">400</div>
+            <div class="plan-speed-unit">MEGA download</div>
+            <div class="plan-price-area">
+              <div class="plan-price-old">De R$ 95,90/mês</div>
+              <div class="plan-price-mid">Por R$ 85,90/mês (12 meses)</div>
+              <div class="plan-price">R$ 74,<small>90</small></div>
+              <div class="plan-price-note">
+                <i data-lucide="check"></i> Pagando até o vencimento
+              </div>
             </div>
-          </div>
-          <ul class="plan-features" aria-label="Benefícios do plano 400 MEGA">
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Revistas
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Livros
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
-            </li>
-          </ul>
-          <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
-          <button class="btn-plan-secondary"
-            onclick="window.location.href='cobertura.html'">Verificar
-            cobertura</button>
+            <ul class="plan-features" aria-label="Benefícios do plano 400 MEGA">
+              <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
+              <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
+              <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
+            </ul>
+            <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
+            <button class="btn-plan-secondary" onclick="window.location.href='cobertura.html'">Verificar cobertura</button>
+          </div><!-- /plan-main-col -->
+
+          <!-- Painel de adicionais (desktop: flutuante; tablet/mobile: sheet) -->
+          <div class="plan-addon-panel" aria-hidden="true"></div>
         </div>
 
         <!-- PLANO 600 MEGA — FEATURED -->
-        <div class="plan-card featured" role="listitem">
+        <div class="plan-card featured" role="listitem" data-plan-id="600">
           <div class="plan-badge">
             <i data-lucide="star"></i> Mais popular
           </div>
-          <div class="plan-speed">Plano</div>
-          <div class="plan-speed-number" style="color:var(--purple-mid)">600</div>
-          <div class="plan-speed-unit">MEGA download</div>
-          <div class="plan-price-area">
-            <div class="plan-price-old">De R$ 99,90/mês</div>
-            <div class="plan-price-mid">Por R$ 89,90/mês (12 meses)</div>
-            <div class="plan-price" style="color:var(--purple-dark)">R$ 83,<small>90</small></div>
-            <div class="plan-price-note">
-              <i data-lucide="check"></i> Pagando até o vencimento
+
+          <!-- Botão de personalização -->
+          <button
+            class="plan-addon-toggle"
+            data-plan-id="600"
+            aria-label="Personalizar plano 600 MEGA"
+            aria-expanded="false"
+            title="Adicionar serviços extras"
+            style="top: 42px;"
+          >+</button>
+
+          <!-- Coluna principal do plano -->
+          <div class="plan-main-col">
+            <div class="plan-addon-status-badge">Plano Base</div>
+            <div class="plan-speed">Plano</div>
+            <div class="plan-speed-number" style="color:var(--purple-mid)">600</div>
+            <div class="plan-speed-unit">MEGA download</div>
+            <div class="plan-price-area">
+              <div class="plan-price-old">De R$ 99,90/mês</div>
+              <div class="plan-price-mid">Por R$ 89,90/mês (12 meses)</div>
+              <div class="plan-price" style="color:var(--purple-dark)">R$ 83,<small>90</small></div>
+              <div class="plan-price-note">
+                <i data-lucide="check"></i> Pagando até o vencimento
+              </div>
             </div>
-          </div>
-          <ul class="plan-features" aria-label="Benefícios do plano 600 MEGA">
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Revistas
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Livros
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Instalação prioritária
-            </li>
-          </ul>
-          <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este
-            plano</button>
-          <button class="btn-plan-secondary"
-            onclick="window.location.href='cobertura.html'">Verificar
-            cobertura</button>
+            <ul class="plan-features" aria-label="Benefícios do plano 600 MEGA">
+              <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
+              <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)</li>
+              <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Instalação prioritária</li>
+            </ul>
+            <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este plano</button>
+            <button class="btn-plan-secondary" onclick="window.location.href='cobertura.html'">Verificar cobertura</button>
+          </div><!-- /plan-main-col -->
+
+          <!-- Painel de adicionais (desktop: flutuante; tablet/mobile: sheet) -->
+          <div class="plan-addon-panel" aria-hidden="true"></div>
         </div>
 
         <!-- PLANO 800 MEGA -->
-        <div class="plan-card" role="listitem">
-          <div class="plan-speed">Plano</div>
-          <div class="plan-speed-number">800</div>
-          <div class="plan-speed-unit">MEGA download</div>
-          <div class="plan-price-area">
-            <div class="plan-price-old">De R$ 119,90/mês</div>
-            <div class="plan-price-mid">Por R$ 109,90/mês (12 meses)</div>
-            <div class="plan-price">R$ 99,<small>90</small></div>
-            <div class="plan-price-note">
-              <i data-lucide="check"></i> Pagando até o vencimento
+        <div class="plan-card" role="listitem" data-plan-id="800">
+          <!-- Botão de personalização -->
+          <button
+            class="plan-addon-toggle"
+            data-plan-id="800"
+            aria-label="Personalizar plano 800 MEGA"
+            aria-expanded="false"
+            title="Adicionar serviços extras"
+          >+</button>
+
+          <!-- Coluna principal do plano -->
+          <div class="plan-main-col">
+            <div class="plan-addon-status-badge">Plano Base</div>
+            <div class="plan-speed">Plano</div>
+            <div class="plan-speed-number">800</div>
+            <div class="plan-speed-unit">MEGA download</div>
+            <div class="plan-price-area">
+              <div class="plan-price-old">De R$ 119,90/mês</div>
+              <div class="plan-price-mid">Por R$ 109,90/mês (12 meses)</div>
+              <div class="plan-price">R$ 99,<small>90</small></div>
+              <div class="plan-price-note">
+                <i data-lucide="check"></i> Pagando até o vencimento
+              </div>
             </div>
-          </div>
-          <ul class="plan-features" aria-label="Benefícios do plano 800 MEGA">
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Revistas
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> App de Livros
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica
-            </li>
-            <li>
-              <div class="check"><i data-lucide="check"></i></div> Suporte VIP dedicado
-            </li>
-          </ul>
-          <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
-          <button class="btn-plan-secondary"
-            onclick="window.location.href='cobertura.html'">Verificar
-            cobertura</button>
+            <ul class="plan-features" aria-label="Benefícios do plano 800 MEGA">
+              <li><div class="check"><i data-lucide="check"></i></div> App de Revistas</li>
+              <li><div class="check"><i data-lucide="check"></i></div> App de Livros</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Clube de Vantagens Ligeira</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi Super Ligeiro (Wi-Fi 6)</li>
+              <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
+              <li><div class="check"><i data-lucide="check"></i></div> Suporte VIP dedicado</li>
+            </ul>
+            <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
+            <button class="btn-plan-secondary" onclick="window.location.href='cobertura.html'">Verificar cobertura</button>
+          </div><!-- /plan-main-col -->
+
+          <!-- Painel de adicionais (desktop: flutuante; tablet/mobile: sheet) -->
+          <div class="plan-addon-panel" aria-hidden="true"></div>
         </div>
 
       </div>

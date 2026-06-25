@@ -12,12 +12,13 @@ import {
   BarChart2, Instagram, Users, User, MessageCircle, X, Plus, CheckCircle,
   CheckCircle2, Check, ArrowRight, Phone, Mail, LayoutGrid, ChevronDown,
   ChevronLeft, ChevronRight,
-  Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag
+  Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag, Lock
 } from 'lucide'
 
 import { initNavbar } from './js/navbar.js'
 import { initFaq } from './js/faq.js'
 import { initWizard } from './js/wizard.js'
+import { initPlanAddons } from './js/plan-addons.js'
 
 // Initialize Lucide icons globally so dynamic content can re-use it
 const ICONS = {
@@ -26,7 +27,7 @@ const ICONS = {
   BarChart2, Instagram, Users, User, MessageCircle, X, Plus, CheckCircle,
   CheckCircle2, Check, ArrowRight, Phone, Mail, LayoutGrid, ChevronDown,
   ChevronLeft, ChevronRight,
-  Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag
+  Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag, Lock
 }
 
 window.lucide = { createIcons: () => createIcons({ icons: ICONS }) }
@@ -37,6 +38,7 @@ createIcons({ icons: ICONS })
 initNavbar()
 initFaq()
 initWizard()
+initPlanAddons()
 
 // Smooth scroll for anchor links
 // Vite force reload trigger 3
