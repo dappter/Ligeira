@@ -39,7 +39,7 @@ const PLANS = {
 // ======================== STATE ========================
 let selectedPlan = '600';
 let currentStep = 1;
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 
 // ======================== DOM HELPERS ========================
 const $ = (id) => document.getElementById(id);
@@ -143,6 +143,15 @@ function renderWizard() {
     </div>
   `;
 
+  window.renderWizardSummary = function(planId) {
+    if (planId !== selectedPlan) return;
+    const plan = getDynamicPlanInfo(planId);
+    const planNameEl = document.querySelector('.wizard-plan-name');
+    const planPriceEl = document.querySelector('.wizard-plan-price');
+    if (planNameEl) planNameEl.textContent = plan.name;
+    if (planPriceEl) planPriceEl.innerHTML = plan.priceDisplay;
+  };
+
   switch (currentStep) {
     case 1:
       if (wizardTitle) wizardTitle.textContent = 'Escolha seu plano';
@@ -158,8 +167,13 @@ function renderWizard() {
       applyAddressMask();
       break;
     case 4:
+      if (wizardTitle) wizardTitle.textContent = 'Personalize seu plano';
+      wizardBody.innerHTML = summaryHtml + renderStep4();
+      if (window.lucide) window.lucide.createIcons();
+      break;
+    case 5:
       if (wizardTitle) wizardTitle.textContent = 'Confirmação';
-      wizardBody.innerHTML = renderStep4();
+      wizardBody.innerHTML = renderStep5();
       break;
   }
 }
@@ -231,12 +245,27 @@ function renderStep3() {
     </div>
     <div class="wizard-footer">
       <button class="wizard-btn-back" onclick="window.wizardPrev()">Voltar</button>
-      <button class="wizard-btn-next" onclick="window.wizardNext()">Confirmar</button>
+      <button class="wizard-btn-next" onclick="window.wizardNext()">Continuar</button>
     </div>
   `;
 }
 
 function renderStep4() {
+  const addonsHtml = window.__planAddons && window.__planAddons.buildWizardAddonsHTML 
+                     ? window.__planAddons.buildWizardAddonsHTML(selectedPlan) 
+                     : '<p>Serviço de personalização indisponível.</p>';
+  return `
+    <div style="margin-bottom:24px;">
+      ${addonsHtml}
+    </div>
+    <div class="wizard-footer">
+      <button class="wizard-btn-back" onclick="window.wizardPrev()">Voltar</button>
+      <button class="wizard-btn-next" onclick="window.wizardNext()">Confirmar pedido</button>
+    </div>
+  `;
+}
+
+function renderStep5() {
   const plan = getDynamicPlanInfo(selectedPlan);
   return `
     <div style="text-align:center;padding:20px 0 32px;">

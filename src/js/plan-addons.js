@@ -109,8 +109,13 @@ function updateCardPrice(planId) {
   // Badge de status
   const badge = card.querySelector('.plan-addon-status-badge')
   if (badge) {
-    badge.textContent = hasExtras ? '✦ Plano Personalizado' : 'Plano Base'
+    if (hasExtras) {
+      badge.innerHTML = '✦ Plano Personalizado <span class="reset-plan-btn" onclick="window.__planAddons.resetPlan(event, \'' + planId + '\')" aria-label="Voltar para plano base"><i data-lucide="x"></i></span>'
+    } else {
+      badge.textContent = 'Plano Base'
+    }
     badge.classList.toggle('plan-addon-status-badge--active', hasExtras)
+    if (window.lucide && hasExtras) window.lucide.createIcons()
   }
 
   // Atualiza breakdown dentro do painel (desktop)
@@ -469,6 +474,81 @@ function applyPlan(planId) {
 }
 
 // ─────────────────────────────────────────────────────────────
+// RESET PLAN
+// ─────────────────────────────────────────────────────────────
+
+function resetPlan(e, planId) {
+  if (e) {
+    e.stopPropagation()
+    e.preventDefault()
+  }
+  getSelected(planId).clear()
+  persistSaved(planId, [])
+  updateCardPrice(planId)
+  syncSheetCheckboxes(planId)
+
+  const card = document.querySelector(`.plan-card[data-plan-id="${planId}"]`)
+  if (card) {
+    const panel = card.querySelector('.plan-addon-panel')
+    if (panel && panel.dataset.rendered) {
+      panel.querySelectorAll('.addon-checkbox').forEach(cb => cb.checked = false)
+      updatePanelBreakdown(planId)
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// WIZARD INTEGRATION
+// ─────────────────────────────────────────────────────────────
+
+function buildWizardAddonsHTML(planId) {
+  const selected = getSelected(planId)
+  
+  const items = ADDONS.map(a => `
+    <label class="addon-item" for="wizard-addon-${planId}-${a.id}">
+      <input
+        type="checkbox"
+        class="addon-checkbox"
+        id="wizard-addon-${planId}-${a.id}"
+        data-addon-id="${a.id}"
+        data-addon-price="${a.price}"
+        aria-label="Adicionar ${a.label} por R$ ${fmt(a.price)}/mês"
+        ${selected.has(a.id) ? 'checked' : ''}
+        onchange="window.__planAddons.handleWizardCheckboxChange(this, '${planId}')"
+      />
+      <span class="addon-item-icon"><i data-lucide="${a.icon}"></i></span>
+      <span class="addon-item-label">${a.label}</span>
+      <span class="addon-item-price">+R$ ${fmt(a.price)}</span>
+    </label>
+  `).join('')
+
+  return `
+    <div class="addon-items-list">
+      ${items}
+    </div>
+    <div class="addon-breakdown" id="wizard-addon-breakdown">
+      ${buildBreakdownHTML(planId)}
+    </div>
+  `
+}
+
+function handleWizardCheckboxChange(cb, planId) {
+  const addonId = cb.dataset.addonId
+  if (cb.checked) {
+    getSelected(planId).add(addonId)
+  } else {
+    getSelected(planId).delete(addonId)
+  }
+  persistSaved(planId, [...getSelected(planId)])
+  updateCardPrice(planId)
+  
+  const breakdownEl = document.getElementById('wizard-addon-breakdown')
+  if (breakdownEl) breakdownEl.innerHTML = buildBreakdownHTML(planId)
+  
+  if (window.renderWizardSummary) window.renderWizardSummary(planId)
+}
+
+// ─────────────────────────────────────────────────────────────
 // INICIALIZAÇÃO
 // ─────────────────────────────────────────────────────────────
 
@@ -506,5 +586,5 @@ export function initPlanAddons() {
   })
 
   // Expor API global para atributos onclick inline no HTML
-  window.__planAddons = { handleToggle, closeSheet, applyPlan, calcTotal }
+  window.__planAddons = { handleToggle, closeSheet, applyPlan, calcTotal, resetPlan, buildWizardAddonsHTML, handleWizardCheckboxChange }
 }

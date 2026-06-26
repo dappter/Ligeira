@@ -38,7 +38,7 @@
         aria-label="Verificar disponibilidade de cobertura">
         <i data-lucide="map-pin"></i> Verificar cobertura
       </a>
-      <button class="btn-orange" onclick="abrirWizard('600')" id="navbar-contratar-btn">
+      <button class="btn-orange" onclick="abrirWizard('600', 2)" id="navbar-contratar-btn">
         <i data-lucide="zap"></i> Contratar
       </button>
     </div>
@@ -136,7 +136,7 @@
             <div class="hero-content">
               <div class="hero-text-col">
                 <h1 class="slide-headline">
-                  A internet fibra<br>com preço fixo<br><span class="accent">até Jan/2028</span>
+                  <span class="accent">Internet ligeira</span> em todos<br>os ambientes de sua casa
                 </h1>
               </div>
               <div class="hero-image-col">
@@ -164,7 +164,7 @@
             <div class="hero-content">
               <div class="hero-text-col">
                 <h2 class="slide-headline">
-                  A fibra óptica mais<br><span class="accent">estável</span> do Cariri
+                  A internet mais<br><span class="accent">LIGEIRA</span> do Cariri
                 </h2>
               </div>
               <div class="hero-image-col">
@@ -333,7 +333,7 @@
               <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
               <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
             </ul>
-            <button class="btn-plan primary" onclick="abrirWizard('300')" id="btn-plan-300">Contratar este plano</button>
+            <button class="btn-plan primary" onclick="abrirWizard('300', 2)" id="btn-plan-300">Contratar este plano</button>
             <button class="btn-plan-secondary" onclick="window.__planAddons.handleToggle('300')">Personalizar plano</button>
           </div><!-- /plan-main-col -->
 
@@ -364,7 +364,7 @@
               <li><div class="check"><i data-lucide="check"></i></div> Wi-Fi 5G incluso</li>
               <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
             </ul>
-            <button class="btn-plan primary" onclick="abrirWizard('400')" id="btn-plan-400">Contratar este plano</button>
+            <button class="btn-plan primary" onclick="abrirWizard('400', 2)" id="btn-plan-400">Contratar este plano</button>
             <button class="btn-plan-secondary" onclick="window.__planAddons.handleToggle('400')">Personalizar plano</button>
           </div><!-- /plan-main-col -->
 
@@ -399,7 +399,7 @@
               <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
               <li><div class="check"><i data-lucide="check"></i></div> Instalação prioritária</li>
             </ul>
-            <button class="btn-plan featured-cta" onclick="abrirWizard('600')" id="btn-plan-600">Contratar este plano</button>
+            <button class="btn-plan featured-cta" onclick="abrirWizard('600', 2)" id="btn-plan-600">Contratar este plano</button>
             <button class="btn-plan-secondary white" onclick="window.__planAddons.handleToggle('600')">Personalizar plano</button>
           </div><!-- /plan-main-col -->
 
@@ -431,7 +431,7 @@
               <li><div class="check"><i data-lucide="check"></i></div> 100% Fibra óptica</li>
               <li><div class="check"><i data-lucide="check"></i></div> Suporte VIP dedicado</li>
             </ul>
-            <button class="btn-plan primary" onclick="abrirWizard('800')" id="btn-plan-800">Contratar este plano</button>
+            <button class="btn-plan primary" onclick="abrirWizard('800', 2)" id="btn-plan-800">Contratar este plano</button>
             <button class="btn-plan-secondary" onclick="window.__planAddons.handleToggle('800')">Personalizar plano</button>
           </div><!-- /plan-main-col -->
 
@@ -498,32 +498,41 @@
         </p>
       </div>
 
-      <div class="apps-grid" role="list" aria-label="Aplicativos inclusos">
-        <!-- App de Revistas -->
-        <div class="app-card" role="listitem" tabindex="0" aria-label="App de Revistas incluso no plano">
-          <div class="app-icon" style="background:linear-gradient(135deg,#6028FF,#9B59B6);">
-            <i data-lucide="book-open" style="color:white;"></i>
+      <div class="nio-apps-grid" role="list" aria-label="Aplicativos inclusos">
+        <!-- Card 1: App de Revistas -->
+        <div class="nio-app-card card-revistas" role="listitem" tabindex="0">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: var(--purple-mid); color: white;">
+              <b>APP DE REVISTAS</b>
+            </div>
+            <h3 class="nio-app-name">Leia as melhores publicações</h3>
+            <p class="nio-app-desc">Fique por dentro de tudo com as principais revistas diretamente no seu smartphone, tablet ou computador.</p>
           </div>
-          <div class="app-name">App de Revistas</div>
-          <div class="app-desc">Leia as melhores publicações</div>
         </div>
 
-        <!-- App de Livros -->
-        <div class="app-card" role="listitem" tabindex="0" aria-label="App de Livros incluso no plano">
-          <div class="app-icon" style="background:linear-gradient(135deg,#10B981,#059669);">
-            <i data-lucide="book-marked" style="color:white;"></i>
+        <!-- Card 2: App de Livros -->
+        <div class="nio-app-card card-livros" role="listitem" tabindex="0">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: var(--green); color: white;">
+              <b>APP DE LIVROS</b>
+            </div>
+            <h3 class="nio-app-name">Biblioteca digital ilimitada</h3>
+            <p class="nio-app-desc">Explore uma coleção incrível de best-sellers e obras clássicas. Leia quando e onde quiser, do seu jeito.</p>
           </div>
-          <div class="app-name">App de Livros</div>
-          <div class="app-desc">Biblioteca digital ilimitada</div>
         </div>
 
-        <!-- Clube de Vantagens -->
-        <div class="app-card" role="listitem" tabindex="0" aria-label="Clube de Vantagens Ligeira incluso no plano">
-          <div class="app-icon" style="background:linear-gradient(135deg,#FFBF1A,#f97316);">
-            <i data-lucide="star" style="color:white;"></i>
+        <!-- Card 3: Clube Ligeira -->
+        <div class="nio-app-card card-clube-ligeira" role="listitem" tabindex="0">
+          <div class="nio-app-overlay"></div>
+          <div class="nio-app-content-box">
+            <div class="nio-app-badge" style="background: var(--orange); color: #1a1a2e;">
+              <i data-lucide="star" style="width:14px;height:14px;"></i> <b>CLUBE LIGEIRA</b>
+            </div>
+            <h3 class="nio-app-name">Descontos e vantagens exclusivas</h3>
+            <p class="nio-app-desc">Benefícios de verdade para quem é Ligeira. Descontos em parceiros, sorteios e ofertas especiais só para você.</p>
           </div>
-          <div class="app-name">Clube Ligeira</div>
-          <div class="app-desc">Descontos e vantagens exclusivos</div>
         </div>
       </div>
 
@@ -713,7 +722,7 @@
         Escolha seu plano, verifique a cobertura e nossa equipe entra em contato rapidinho.
       </p>
       <div class="cta-buttons">
-        <button class="btn-primary-lg" onclick="abrirWizard('600')" id="cta-contratar-btn">
+        <button class="btn-primary-lg" onclick="abrirWizard('600', 2)" id="cta-contratar-btn">
           <i data-lucide="zap"></i> Escolher meu plano
         </button>
         <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-whatsapp-lg">

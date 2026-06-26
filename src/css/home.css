@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 75vh;
 }
 
 /* Carousel Structural Classes */
@@ -90,7 +91,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(26, 0, 51, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s;
   border: none;
@@ -100,7 +101,7 @@
 .carousel-dot.active {
   width: 24px;
   border-radius: 4px;
-  background: #ff2a5f;
+  background: var(--orange);
 }
 
 /* Base (Mobile) Layout */
@@ -109,7 +110,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 16px 140px 16px; /* Space at bottom for the CEP pill */
+  padding: 20px 16px 100px 16px; /* Space at bottom for the CEP pill */
 }
 
 /* Mobile: Text on top */
@@ -125,7 +126,7 @@
   font-size: clamp(32px, 8vw, 64px); 
   font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -1.5px;
+  letter-spacing: -2.5px;
   margin: 0;
 }
 
@@ -144,6 +145,7 @@
 .slide-hero-img {
   width: 100%;
   height: auto;
+  max-height: 55vh; /* Restrict height so it doesn't push container down */
   object-fit: contain;
   /* Avoid CLS by having explicit width/height natively, but rely on responsive sizing */
   transform: scale(1.05); /* Slight pop out effect */
@@ -154,7 +156,7 @@
   .hero-content {
     flex-direction: row;
     text-align: left;
-    padding: 80px 24px 180px 24px;
+    padding: 20px 24px 100px 24px;
     justify-content: space-between;
     align-items: center;
   }
@@ -177,7 +179,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 80px 16px 20px;
+  padding: 40px 16px 20px;
   background: linear-gradient(to bottom, transparent 0%, rgba(26,0,51,0.7) 40%, #1a0033 100%);
   display: flex;
   flex-direction: column;
@@ -993,6 +995,28 @@
   transform: translateY(-8px);
 }
 
+.nio-app-card.card-revistas {
+  background-image: url("/src/images/Clubes/APP DE REVISTAS.png");
+}
+.nio-app-card.card-livros {
+  background-image: url("/src/images/Clubes/APP DE LIVROS.png");
+}
+.nio-app-card.card-clube-ligeira {
+  background-image: url("/src/images/Clubes/CLUBE LIGEIRA.png");
+}
+
+@media (max-width: 767px) {
+  .nio-app-card.card-revistas {
+    background-image: url("/src/images/Clubes/APP DE REVISTAS (1).png");
+  }
+  .nio-app-card.card-livros {
+    background-image: url("/src/images/Clubes/APP DE LIVROS (1).png");
+  }
+  .nio-app-card.card-clube-ligeira {
+    background-image: url("/src/images/Clubes/CLUBE LIGEIRA (1).png");
+  }
+}
+
 .nio-app-overlay {
   position: absolute;
   inset: 0;
@@ -1108,7 +1132,8 @@
   }
 
   .carousel-arrow {
-    display: none; /* Hide arrows on mobile to avoid overlapping */
+    width: 36px;
+    height: 36px;
   }
 
   .benefits-section,
@@ -1161,6 +1186,30 @@
   color: var(--purple-mid);
   background: var(--purple-pale);
   border-color: rgba(96, 40, 255, 0.25);
+}
+
+.reset-plan-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(96, 40, 255, 0.1);
+  color: var(--purple-mid);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 2px;
+}
+
+.reset-plan-btn:hover {
+  background: var(--purple-mid);
+  color: white;
+}
+
+.reset-plan-btn [data-lucide] {
+  width: 10px;
+  height: 10px;
 }
 
 /* ── Animação de pulso no preço ── */
@@ -1222,7 +1271,7 @@
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
-    width: 280px;
+    width: 340px;
     background: white;
     border: 1.5px solid var(--purple-pale);
     box-shadow: 0 20px 60px rgba(96, 40, 255, 0.15);

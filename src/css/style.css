@@ -53,7 +53,7 @@ body {
   top: 0;
   z-index: 100;
   background: var(--purple-dark);
-  padding: 20px 60px; /* Aumentado padding superior/inferior e lateral */
+  padding: 12px 60px; /* Aumentado padding superior/inferior e lateral */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +68,7 @@ body {
 }
 
 .navbar-logo img {
-  height: 44px;
+  height: 38px;
   width: auto;
   object-fit: contain;
 }
@@ -224,7 +224,7 @@ body {
 .trust-bar {
   background: var(--gray-50);
   border-bottom: 1px solid var(--gray-200);
-  padding: 16px 24px;
+  padding: 10px 24px;
 }
 
 .trust-bar-inner {
@@ -257,6 +257,12 @@ body {
 .trust-icon.purple [data-lucide] svg { color: var(--purple-mid); stroke: var(--purple-mid); }
 .trust-icon.orange [data-lucide] svg { color: var(--orange); stroke: var(--orange); }
 .trust-icon [data-lucide] { width: 18px; height: 18px; }
+
+@media (max-width: 767px) {
+  .trust-bar {
+    display: none;
+  }
+}
 
 /* ===================== FOOTER ===================== */
 footer {
