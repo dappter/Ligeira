@@ -3,6 +3,19 @@
  * Handles: mobile menu toggle, scroll-based nav behavior
  */
 
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
 export function initNavbar() {
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -22,11 +35,11 @@ export function initNavbar() {
   // Navbar scroll shadow
   const navbar = document.querySelector('.navbar');
   if (navbar) {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', throttle(() => {
       navbar.style.boxShadow = window.scrollY > 10
         ? '0 4px 24px rgba(0,0,0,0.3)'
         : 'none';
-    }, { passive: true });
+    }, 100), { passive: true });
   }
 
   // Active link highlighting on scroll
@@ -34,7 +47,7 @@ export function initNavbar() {
   const navLinks = document.querySelectorAll('.navbar-links a[href^="#"]');
 
   if (sections.length > 0 && navLinks.length > 0) {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', throttle(() => {
       let current = '';
       sections.forEach(section => {
         const top = section.offsetTop - 100;
@@ -43,6 +56,6 @@ export function initNavbar() {
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
       });
-    }, { passive: true });
+    }, 100), { passive: true });
   }
 }

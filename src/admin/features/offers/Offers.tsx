@@ -1,0 +1,1 @@
+export function Offers() { return <div className="page-container"><div className="page-header"><h1>Central de Ofertas</h1><p>Gestão de Banners e Promoções</p></div><div className="page-content"><div className="card glass" style={{padding: '40px', textAlign: 'center', color: 'var(--text-muted)'}}>Em breve...</div></div></div> }

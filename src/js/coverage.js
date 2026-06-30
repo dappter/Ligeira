@@ -62,27 +62,30 @@ function handleSearch() {
   const resultArea = document.getElementById('coverage-result');
   if (!resultArea) return;
 
-  if (currentMethod === 'cep') {
-    const cep = document.getElementById('cep-input')?.value.replace(/\D/g, '') || '';
-    if (cep.length < 5) {
-      showResult('error', 'CEP inválido', 'Digite pelo menos os 5 primeiros dígitos do CEP.');
-      return;
+  // Use setTimeout to avoid freezing the main thread per performance-guardian
+  setTimeout(() => {
+    if (currentMethod === 'cep') {
+      const cep = document.getElementById('cep-input')?.value.replace(/\D/g, '') || '';
+      if (cep.length < 5) {
+        showResult('error', 'CEP inválido', 'Digite pelo menos os 5 primeiros dígitos do CEP.');
+        return;
+      }
+      const prefix = cep.slice(0, 5);
+      if (COVERED_CEPS.some(c => prefix.startsWith(c.slice(0, 5)))) {
+        showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra já atende sua região. Clique abaixo para escolher seu plano.');
+      } else {
+        showResult('error', 'Ops! Ainda não chegamos aí.', 'Infelizmente sua região ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
+      }
+    } else if (currentMethod === 'address') {
+      const addr = document.getElementById('address-input')?.value.toLowerCase() || '';
+      const covered = COVERED_CITIES.some(city => addr.includes(city));
+      if (covered) {
+        showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra atende sua cidade. Clique abaixo para escolher seu plano.');
+      } else {
+        showResult('error', 'Ops! Ainda não chegamos aí.', 'Sua cidade ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
+      }
     }
-    const prefix = cep.slice(0, 5);
-    if (COVERED_CEPS.some(c => prefix.startsWith(c.slice(0, 5)))) {
-      showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra já atende sua região. Clique abaixo para escolher seu plano.');
-    } else {
-      showResult('error', 'Ops! Ainda não chegamos aí.', 'Infelizmente sua região ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
-    }
-  } else if (currentMethod === 'address') {
-    const addr = document.getElementById('address-input')?.value.toLowerCase() || '';
-    const covered = COVERED_CITIES.some(city => addr.includes(city));
-    if (covered) {
-      showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra atende sua cidade. Clique abaixo para escolher seu plano.');
-    } else {
-      showResult('error', 'Ops! Ainda não chegamos aí.', 'Sua cidade ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
-    }
-  }
+  }, 100);
 }
 
 function useGPS() {

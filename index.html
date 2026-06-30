@@ -17,6 +17,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
   <script type="module" src="/src/main.js"></script>
+  <style>
+    .hero { background: #3a0faa; min-height: 80vh; display: flex; align-items: center; }
+  </style>
 </head>
 
 <body>
@@ -24,7 +27,7 @@
   <!-- ===================== NAVBAR ===================== -->
   <nav class="navbar" role="navigation" aria-label="Menu principal">
     <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Início">
-      <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png" alt="Logo Ligeira Telecom" />
+      <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png" alt="Logo Ligeira Telecom" width="180" height="48" />
     </a>
 
     <ul class="navbar-links" id="desktop-nav" aria-label="Links de navegação">
@@ -145,11 +148,13 @@
                   <img src="/src/images/WIFI%20%203D.png" 
                        alt="Wi-Fi 3D" 
                        class="floating-fiber" 
+                       width="130" height="130"
                        style="position: absolute; top: -10%; left: -10%; width: 130px; animation: float 6s ease-in-out infinite; z-index: 2; pointer-events: none;" />
 
                   <img src="/src/images/CASA%20SITE.png" 
                        alt="Casa conectada com fibra óptica Ligeira" 
                        class="slide-hero-img" 
+                       width="500" height="400"
                        loading="eager" 
                        fetchpriority="high" />
                 </div>
@@ -173,11 +178,13 @@
                   <img src="/src/images/ROTEADOR%20PATTERN%203D.png" 
                        alt="Roteador Pattern 3D" 
                        class="floating-fiber" 
+                       width="160" height="160"
                        style="position: absolute; bottom: 0%; left: -15%; width: 160px; animation: float 7s ease-in-out infinite reverse; z-index: 2; pointer-events: none; transform: rotate(-20deg);" />
 
                   <img src="/src/images/ROTEADOR%203D.png" 
                        alt="Roteador Wi-Fi Ligeira Telecom" 
                        class="slide-hero-img" 
+                       width="500" height="400"
                        loading="lazy" />
                 </div>
               </div>
@@ -198,6 +205,7 @@
                 <img src="/src/images/hero-slide-3-new.png" 
                      alt="Apps e vantagens inclusos nos planos Ligeira" 
                      class="slide-hero-img" 
+                     width="500" height="400"
                      loading="lazy" />
               </div>
             </div>
@@ -753,6 +761,7 @@
             <li><a href="#faq">Dúvidas</a></li>
             <li><a href="empresas.html">Empresas</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="admin.html" style="font-size: 13px; color: var(--gray-400); text-decoration: underline;">Área Restrita (Admin)</a></li>
           </ul>
         </div>
 
