@@ -29,8 +29,11 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <div className="sidebar-logo-icon">⚡</div>
-        <h2>Ligeira<span>.</span></h2>
+        <img
+          src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+          alt="Ligeira Telecom"
+          className="sidebar-logo-img"
+        />
         <span className="sidebar-badge">Admin</span>
       </div>
       <nav className="sidebar-nav">
