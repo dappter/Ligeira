@@ -437,12 +437,17 @@
   color: var(--gray-900);
   letter-spacing: -1px;
   line-height: 1;
+  font-family: 'Montserrat', sans-serif;
 }
 
+/* Centavos (,90) — mesma família, peso e tracking do preço principal */
 .plan-price small {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--gray-600);
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--gray-900);
+  letter-spacing: -1px;
+  font-family: 'Montserrat', sans-serif;
+  vertical-align: baseline;
 }
 
 .plan-price-note {
@@ -1701,4 +1706,193 @@ body.addon-sheet-open {
 
 .addon-tablet-modal::-webkit-scrollbar-thumb:hover {
   background: var(--purple-mid);
+}
+
+/* =====================================================================
+   MOBILE CAROUSELS — Apenas em telas ≤ 767px
+   Desktop e tablet não são afetados.
+   ===================================================================== */
+@media (max-width: 767px) {
+
+  /* ── Wrapper do carrossel ──────────────────────────────────────── */
+  .mob-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    /* overflow-x: clip corta o que sai lateralmente sem criar scroll context */
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+
+  /* ── Track: converte o grid em strip horizontal com scroll-snap ── */
+  .mob-carousel-wrapper .plans-grid,
+  .mob-carousel-wrapper .benefits-grid,
+  .mob-carousel-wrapper .testimonials-grid,
+  .mob-carousel-wrapper .nio-apps-grid {
+    /* Desativa o grid */
+    display: flex !important;
+    flex-direction: row !important;
+    grid-template-columns: unset !important;
+    
+    /* Scroll horizontal suave com snap */
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    
+    /* Esconde scrollbar nativa */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    gap: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 12px; /* Espaço para dots */
+    
+    /* Evita quebra de layout */
+    flex-wrap: nowrap !important;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+
+  /* Remove scrollbar webkit */
+  .mob-carousel-wrapper .plans-grid::-webkit-scrollbar,
+  .mob-carousel-wrapper .benefits-grid::-webkit-scrollbar,
+  .mob-carousel-wrapper .testimonials-grid::-webkit-scrollbar,
+  .mob-carousel-wrapper .nio-apps-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Itens do carrossel ─────────────────────────────────────────── */
+  .mob-carousel-wrapper .plan-card,
+  .mob-carousel-wrapper .benefit-card,
+  .mob-carousel-wrapper .testimonial-card,
+  .mob-carousel-wrapper .nio-app-card {
+    /* Cada card ocupa a tela inteira (com padding lateral) */
+    flex: 0 0 calc(100% - 40px) !important;
+    width: calc(100% - 40px) !important;
+    min-width: calc(100% - 40px) !important;
+    max-width: calc(100% - 40px) !important;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+    /* Sem efeito de escala ou opacidade — cards sempre em evidência total */
+  }
+
+
+  /* ── Botões de navegação ────────────────────────────────────────── */
+  .mob-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%); /* Levemente acima do centro por causa dos dots */
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--purple-main, #4e1dd4);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Efeito de pressão nos botões */
+  .mob-carousel-btn:active {
+    transform: translateY(-60%) scale(0.88);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .mob-carousel-btn:hover,
+  .mob-carousel-btn:focus-visible {
+    background: var(--orange, #FFBF1A);
+    color: white;
+    transform: translateY(-60%) scale(1.08);
+    outline: none;
+  }
+
+  .mob-carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .mob-carousel-prev {
+    left: 4px;
+  }
+
+  .mob-carousel-next {
+    right: 4px;
+  }
+
+  /* Para seção de depoimentos (fundo escuro), botões com tema escuro */
+  .testimonials-section .mob-carousel-btn {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+  }
+
+  .testimonials-section .mob-carousel-btn:hover,
+  .testimonials-section .mob-carousel-btn:focus-visible {
+    background: var(--orange, #FFBF1A);
+    color: #1a1a2e;
+    border-color: var(--orange, #FFBF1A);
+  }
+
+  /* ── Dots (indicadores de posição) ──────────────────────────────── */
+  .mob-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0 4px;
+  }
+
+  .mob-carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gray-300, #D1D5DB);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mob-carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--purple-mid, #6028FF);
+  }
+
+  /* Dots na seção de depoimentos (fundo escuro) */
+  .testimonials-section .mob-carousel-dot {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .testimonials-section .mob-carousel-dot.active {
+    background: var(--orange, #FFBF1A);
+    animation: mob-dot-pulse 2s ease-in-out infinite;
+  }
+
+  /* Dot ativo padrão: pulsa sutilmente */
+  .mob-carousel-dot.active {
+    animation: mob-dot-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes mob-dot-pulse {
+    0%, 100% { opacity: 1; box-shadow: none; }
+    50% { opacity: 0.8; box-shadow: 0 0 6px currentColor; }
+  }
+
+  /* ── Overrides para anular os media queries existentes ──────────── */
+  /* Garante que os grids não sejam redefinidos em colunas pelo CSS anterior */
+  .mob-carousel-wrapper .nio-apps-grid {
+    grid-template-columns: unset !important;
+  }
 }

@@ -176,6 +176,11 @@ body {
   line-height: 1.15;
 }
 
+/* Título da seção de depoimentos — espaçamento sutil entre letras */
+.testimonials-section .section-title {
+  letter-spacing: 0.3px;
+}
+
 .section-subtitle {
   font-size: 17px;
   color: var(--gray-600);
@@ -275,10 +280,28 @@ footer {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.2fr 1.5fr 1.3fr 1fr;
+  gap: 40px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Endereços — lista com linhas mais compactas */
+.footer-addresses {
+  gap: 14px !important;
+}
+
+.footer-addresses li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+}
+
+.footer-addresses strong {
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  display: block;
+  margin-bottom: 1px;
 }
 
 .footer-brand-desc {
@@ -510,8 +533,8 @@ footer {
 
 .wizard-plan-name { font-size: 15px; font-weight: 700; color: var(--gray-900); }
 .wizard-plan-speed { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
-.wizard-plan-price { font-size: 22px; font-weight: 900; color: var(--purple-dark); }
-.wizard-plan-price small { font-size: 13px; font-weight: 500; color: var(--gray-500); }
+.wizard-plan-price { font-size: 22px; font-weight: 900; color: var(--purple-dark); letter-spacing: -0.5px; }
+.wizard-plan-price small { font-size: 13px; font-weight: 900; color: var(--purple-dark); letter-spacing: -0.5px; vertical-align: baseline; }
 
 .wizard-change {
   font-size: 13px;
@@ -680,10 +703,14 @@ footer {
   .navbar { padding: 10px 16px; }
   .navbar-links { display: none; }
   .navbar-cta .btn-outline-white { display: none; }
-  .hamburger { display: flex; }
+  /* Mobile: esconde hamburguer e mantém o btn Contratar visível no lado direito */
+  .hamburger { display: none !important; }
+  .navbar-cta { display: flex; }
+  .navbar-cta .btn-orange { display: inline-flex; }
   .mobile-bar { display: flex; }
   body { padding-bottom: 70px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-addresses { gap: 12px !important; }
 }
 
 @media (max-width: 600px) {

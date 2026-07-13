@@ -19,6 +19,7 @@ import { initNavbar } from './js/navbar.js'
 import { initFaq } from './js/faq.js'
 import { initWizard } from './js/wizard.js'
 import { initPlanAddons } from './js/plan-addons.js'
+import { initMobileCarousels } from './js/mobile-carousel.js'
 
 // Initialize Lucide icons globally so dynamic content can re-use it
 const ICONS = {
@@ -39,6 +40,8 @@ initNavbar()
 initFaq()
 initWizard()
 initPlanAddons()
+initMobileCarousels()
+
 
 // Smooth scroll for anchor links
 // Vite force reload trigger 3
