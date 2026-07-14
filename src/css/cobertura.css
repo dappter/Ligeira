@@ -24,6 +24,21 @@ body {
   z-index: 2;
 }
 
+/* Custom Scrollbar */
+.cov-form-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.cov-form-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+.cov-form-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.cov-form-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .cov-sidebar-header {
   display: flex;
   align-items: center;
@@ -204,49 +219,60 @@ body {
 
 /* Result box */
 .cov-result {
-  margin-top: 20px;
-  padding: 18px 20px;
-  border-radius: 12px;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 16px;
+  z-index: 1000;
   display: none;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 .cov-result.success, .cov-result.error { display: block; }
 
 .cov-result.success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  background: var(--purple-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .cov-result.error {
-  background: rgba(249, 115, 22, 0.08);
-  border: 1.5px solid rgba(249, 115, 22, 0.25);
+  background: rgba(26, 0, 102, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(249, 115, 22, 0.4);
 }
 
-.cov-result-icon { font-size: 26px; margin-bottom: 8px; }
+.cov-result-icon { font-size: 32px; margin-bottom: 12px; }
 .cov-result-title {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: white;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.3;
 }
 .cov-result-desc {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
 }
 
 .cov-btn-plan {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 14px 20px;
   background: var(--orange);
-  color: #1a0066;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 13px;
+  color: var(--purple-dark);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 15px;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
-.cov-btn-plan:hover { background: var(--orange-dark); }
+.cov-btn-plan:hover { background: var(--orange-dark); transform: translateY(-2px); }
 
 .cov-lead-form {
   display: flex;

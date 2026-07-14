@@ -289,14 +289,25 @@ function onConfirm() {
   const covered = COVERED_CEPS.some(c => prefix === c || c.startsWith(prefix) || prefix.startsWith(c));
 
   hideConfirmBar();
-  goToStep1();
 
-  setTimeout(() => showResult(covered), isMobile() ? 380 : 0);
+  setTimeout(() => showResult(covered), 50);
 }
 
 function showResult(covered) {
   const el = document.getElementById('cov-result');
   if (!el) return;
+
+  const endereco = document.getElementById('cov-endereco')?.value || '';
+  const bairro   = document.getElementById('cov-bairro')?.value || '';
+  const cidade   = document.getElementById('cov-cidade')?.value || '';
+  
+  const params = new URLSearchParams({
+    cep: currentCEP,
+    endereco,
+    bairro,
+    cidade
+  }).toString();
+  const planUrl = `index.html?${params}#planos`;
 
   if (covered) {
     el.className = 'cov-result success';
@@ -304,7 +315,7 @@ function showResult(covered) {
       <div class="cov-result-icon">🎉</div>
       <div class="cov-result-title">Boa noticia! Sua regiao tem cobertura Ligeira.</div>
       <div class="cov-result-desc">A fibra Ligeira ja atende sua rua. Escolha seu plano agora!</div>
-      <a href="index.html#planos" class="cov-btn-plan">Ver planos disponiveis →</a>
+      <a href="${planUrl}" class="cov-btn-plan">Ver planos disponiveis →</a>
     `;
   } else {
     el.className = 'cov-result error';
