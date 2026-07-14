@@ -45,6 +45,12 @@ const CAROUSEL_CONFIGS = [
     itemSelector: '.testimonial-card',
     label: 'Carrossel Depoimentos',
   },
+  {
+    id: 'mob-carousel-empresas-features',
+    trackSelector: '.empresas-features-grid',
+    itemSelector: '.empresas-feature-card',
+    label: 'Carrossel Para sua empresa',
+  },
 ]
 
 /** Armazena referências dos wrappers criados para poder destruir no resize */

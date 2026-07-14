@@ -68,10 +68,11 @@
 
 /* ===================== TRUSTED BY (LOGOS) ===================== */
 .trusted-by-section {
-  padding: 60px 24px;
+  padding: 60px 0;
   background: white;
   text-align: center;
   border-bottom: 1px solid var(--gray-200);
+  overflow: hidden;
 }
 
 .trusted-by-title {
@@ -83,14 +84,23 @@
   margin-bottom: 32px;
 }
 
-.trusted-by-grid {
+.b2b-marquee-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  width: max-content;
+}
+
+.b2b-marquee-content {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px 60px;
-  max-width: 1000px;
-  margin: 0 auto;
+  min-width: max-content;
+  animation: b2b-scroll 35s linear infinite;
+  gap: 70px;
+  padding-right: 70px;
+}
+
+@keyframes b2b-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 .trusted-logo-img {
@@ -234,7 +244,81 @@
 @media (max-width: 600px) {
   .empresas-hero { padding: 56px 16px 72px; }
   .empresas-features-section, .empresas-contact-section { padding: 56px 16px; }
-  .empresas-features-grid { grid-template-columns: 1fr; }
+  /* ── Mobile Carousel overrides ── */
+  .mob-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+  .mob-carousel-wrapper .empresas-features-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 12px;
+    flex-wrap: nowrap !important;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+  .mob-carousel-wrapper .empresas-features-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .mob-carousel-wrapper .empresas-feature-card {
+    flex: 0 0 calc(100% - 40px) !important;
+    width: calc(100% - 40px) !important;
+    min-width: calc(100% - 40px) !important;
+    max-width: calc(100% - 40px) !important;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+  }
+  .mob-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--purple-main, #4e1dd4);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .mob-carousel-prev { left: 4px; }
+  .mob-carousel-next { right: 4px; }
+  .mob-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0 4px;
+  }
+  .mob-carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    border: none;
+    cursor: pointer;
+  }
+  .mob-carousel-dot.active {
+    width: 24px;
+    border-radius: 4px;
+    background: var(--purple-mid);
+  }
+  
   .empresas-contact-inner { padding: 32px 20px; }
   .form-row { grid-template-columns: 1fr; }
 }

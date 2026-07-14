@@ -11,44 +11,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <!-- Leaflet CSS (must be before module script) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <!-- Leaflet JS (must be before module script) -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPaA=" crossorigin=""></script>
   <script type="module" src="/src/cobertura.js"></script>
 </head>
 <body>
 
-<!-- ===================== NAVBAR ===================== -->
-<nav class="navbar" role="navigation" aria-label="Menu principal">
-  <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Inicio">
-    <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
-         alt="Logo Ligeira Telecom" />
-  </a>
 
-  <ul class="navbar-links" aria-label="Links de navegacao">
-    <li><a href="index.html#planos">Planos</a></li>
-    <li><a href="cobertura.html" class="active">Cobertura</a></li>
-    <li><a href="empresas.html">Empresas</a></li>
-    <li><a href="blog.html">Blog</a></li>
-  </ul>
-
-  <div class="navbar-cta">
-    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-outline-white" aria-label="Falar com atendimento pelo WhatsApp">
-      <i data-lucide="message-circle"></i> Atendimento
-    </a>
-    <a href="index.html#planos" class="btn-orange" id="navbar-contratar-btn">
-      <i data-lucide="zap"></i> Ver planos
-    </a>
-  </div>
-
-  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
 <!-- Mobile menu overlay -->
-<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:99;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
+<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
      class="" aria-label="Menu mobile">
   <style>
     #mobile-menu.open { display:flex !important; }
@@ -71,12 +41,17 @@
 
   <!-- ---- FORM PANEL (Esquerda) ---- -->
   <div class="cov-form-panel" id="cov-step-form">
-    <div class="cov-form-inner">
+    <!-- Sidebar Header -->
+    <div class="cov-sidebar-header">
+      <a href="/" class="cov-logo-link" aria-label="Ligeira Telecom — Inicio">
+        <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png" alt="Logo Ligeira Telecom" style="height: 32px; width: auto;" />
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu" style="display: flex;">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-      <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
-           alt="Ligeira Telecom"
-           class="cov-logo"
-           width="120" height="34" />
+    <div class="cov-form-inner">
 
       <div class="cov-badge" aria-hidden="true">
         <i data-lucide="map-pin"></i>
@@ -213,108 +188,6 @@
   </div>
 
 </section>
-
-<!-- ===================== CIDADES ATENDIDAS ===================== -->
-<div class="cobertura-cities-bar" role="region" aria-label="Cidades atendidas">
-  <div class="marquee-wrapper">
-    <div class="marquee-content">
-      <span class="cobertura-cities-label">Cidades atendidas:</span>
-      <span class="marquee-city">Juazeiro do Norte</span><span class="dot"></span>
-      <span class="marquee-city">Brejo Santo</span><span class="dot"></span>
-      <span class="marquee-city">Mauriti</span><span class="dot"></span>
-      <span class="marquee-city">Milagres</span><span class="dot"></span>
-      <span class="marquee-city">Penaforte</span><span class="dot"></span>
-    </div>
-    <div class="marquee-content" aria-hidden="true">
-      <span class="cobertura-cities-label">Cidades atendidas:</span>
-      <span class="marquee-city">Juazeiro do Norte</span><span class="dot"></span>
-      <span class="marquee-city">Brejo Santo</span><span class="dot"></span>
-      <span class="marquee-city">Mauriti</span><span class="dot"></span>
-      <span class="marquee-city">Milagres</span><span class="dot"></span>
-      <span class="marquee-city">Penaforte</span><span class="dot"></span>
-    </div>
-  </div>
-</div>
-
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <!-- Brand -->
-      <div>
-        <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
-             alt="Logo Ligeira Telecom" style="height:40px;width:auto;" />
-        <p class="footer-brand-desc">
-          Internet fibra optica de verdade para o Cariri. Conectando familias e empresas com velocidade, estabilidade e suporte local.
-        </p>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <div class="footer-col-title">Navegacao</div>
-        <ul class="footer-links">
-          <li><a href="index.html#planos">Planos</a></li>
-          <li><a href="cobertura.html">Cobertura</a></li>
-          <li><a href="index.html#beneficios">Beneficios</a></li>
-          <li><a href="index.html#faq">Duvidas</a></li>
-          <li><a href="empresas.html">Empresas</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="admin.html" style="color: var(--brand-orange)">Painel Admin</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <div class="footer-col-title">Atendimento</div>
-        <ul class="footer-links">
-          <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">(88) 9637-0021</a></li>
-          <li><a href="mailto:atendimento@ligeiranet.com.br">atendimento@ligeiranet.com.br</a></li>
-          <li><a href="#">Segunda-feira a Sabado</a></li>
-          <li><a href="#">08h as 18h</a></li>
-        </ul>
-      </div>
-
-      <!-- Cities -->
-      <div>
-        <div class="footer-col-title">Cidades atendidas</div>
-        <div class="footer-cities">
-          <span class="footer-city">Juazeiro do Norte</span>
-          <span class="footer-city">Brejo Santo</span>
-          <span class="footer-city">Mauriti</span>
-          <span class="footer-city">Milagres</span>
-          <span class="footer-city">Penaforte</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        &copy; 2025 Ligeira Telecom. Todos os direitos reservados.
-      </p>
-      <div class="footer-social" aria-label="Redes sociais">
-        <a href="https://instagram.com/ligeiranet" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
-          <i data-lucide="instagram"></i>
-        </a>
-        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
-          <i data-lucide="message-circle"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Mobile Bottom Bar -->
-<div class="mobile-bar" role="navigation" aria-label="Acoes rapidas mobile">
-  <a href="index.html" class="mobile-bar-btn ghost">
-    <i data-lucide="home"></i> Inicio
-  </a>
-  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green">
-    <i data-lucide="message-circle"></i> WhatsApp
-  </a>
-  <a href="index.html#planos" class="mobile-bar-btn purple">
-    <i data-lucide="zap"></i> Planos
-  </a>
-</div>
 
 </body>
 </html>

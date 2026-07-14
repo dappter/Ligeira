@@ -13,6 +13,7 @@ import {
 } from 'lucide'
 
 import { initNavbar } from './js/navbar.js'
+import { initMobileCarousels } from './js/mobile-carousel.js'
 
 const ICONS = {
   Zap, MapPin, Wifi, Shield, Building2, Instagram, Users, MessageCircle,
@@ -20,10 +21,17 @@ const ICONS = {
   Globe, Lock, Clock, Server, Layers, Home, X
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
   createIcons({ icons: ICONS })
   initNavbar()
-})
+  initMobileCarousels()
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init)
+} else {
+  init()
+}
 
 // WhatsApp B2B form
 const submitBtn = document.getElementById('btn-b2b-submit')

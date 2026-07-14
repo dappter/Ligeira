@@ -2,6 +2,8 @@
  * Coverage Module — Ligeira Telecom
  * Handles: CEP auto-fill (ViaCEP), Leaflet map, Nominatim geocoding, mobile step flow
  */
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const COVERED_CEPS = [
   '63010', '63011', '63012', '63013', '63014', '63015', '63016', '63017',
@@ -31,7 +33,7 @@ export function initCoverage() {
 // ============================================================
 
 function initMap() {
-  if (typeof L === 'undefined') return;
+  if (!document.getElementById('cov-map')) return;
 
   map = L.map('cov-map', {
     center: [DEFAULT_LAT, DEFAULT_LON],
@@ -58,6 +60,10 @@ function initMap() {
   }).addTo(map);
 
   marker.on('dragend', showConfirmBar);
+
+  setTimeout(() => {
+    if (map) map.invalidateSize();
+  }, 200);
 }
 
 // ============================================================

@@ -7,7 +7,7 @@
 .cov-section {
   display: grid;
   grid-template-columns: 400px 1fr;
-  min-height: calc(100vh - 65px);
+  height: 100vh;
 }
 
 /* ===================== FORM PANEL (LEFT) ===================== */
@@ -18,16 +18,15 @@
   z-index: 2;
 }
 
-.cov-form-inner {
-  padding: 36px 32px 56px;
+.cov-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px 0px;
 }
 
-.cov-logo {
-  height: 34px;
-  width: auto;
-  border-radius: 6px;
-  margin-bottom: 28px;
-  display: block;
+.cov-form-inner {
+  padding: 32px 32px 56px;
 }
 
 /* Badge */

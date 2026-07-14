@@ -31,16 +31,21 @@ const ICONS = {
   Star, Smartphone, Signal, Shield, Building2, Rss, Clock, Tag, Lock
 }
 
-window.lucide = { createIcons: () => createIcons({ icons: ICONS }) }
+function init() {
+  window.lucide = { createIcons: () => createIcons({ icons: ICONS }) }
+  createIcons({ icons: ICONS })
+  initNavbar()
+  initFaq()
+  initWizard()
+  initPlanAddons()
+  initMobileCarousels()
+}
 
-createIcons({ icons: ICONS })
-
-// Initialize modules
-initNavbar()
-initFaq()
-initWizard()
-initPlanAddons()
-initMobileCarousels()
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init)
+} else {
+  init()
+}
 
 
 // Smooth scroll for anchor links

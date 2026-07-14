@@ -21,9 +21,15 @@ const ICONS = {
   Instagram, MessageCircle, X, Home,
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
   window.lucide = { createIcons: () => createIcons({ icons: ICONS }) }
   createIcons({ icons: ICONS })
   initNavbar()
   initCoverage()
-})
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init)
+} else {
+  init()
+}
