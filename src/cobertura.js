@@ -9,7 +9,7 @@ import {
   createIcons,
   Zap, MapPin, Info, Check, ArrowLeft,
   CheckCircle, AlertCircle,
-  Instagram, MessageCircle, X, Home,
+  Instagram, MessageCircle, X, Home, Locate,
 } from 'lucide'
 
 import { initNavbar } from './js/navbar.js'
@@ -18,7 +18,7 @@ import { initCoverage } from './js/coverage.js'
 const ICONS = {
   Zap, MapPin, Info, Check, ArrowLeft,
   CheckCircle, AlertCircle,
-  Instagram, MessageCircle, X, Home,
+  Instagram, MessageCircle, X, Home, Locate,
 }
 
 function init() {

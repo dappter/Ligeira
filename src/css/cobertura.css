@@ -173,6 +173,29 @@
 .cov-btn-verify [data-lucide] { width: 16px; height: 16px; }
 .cov-btn-verify [data-lucide] svg { stroke: #1a0066; }
 
+.cov-btn-location {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  margin-top: 12px;
+}
+.cov-btn-location:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.cov-btn-location [data-lucide] { width: 16px; height: 16px; }
+
 /* Result box */
 .cov-result {
   margin-top: 20px;

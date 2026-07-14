@@ -82,6 +82,77 @@ function bindEvents() {
 
   const backBtn = document.getElementById('cov-btn-back');
   if (backBtn) backBtn.addEventListener('click', goToStep1);
+
+  const locBtn = document.getElementById('cov-btn-location');
+  if (locBtn) locBtn.addEventListener('click', useGeolocation);
+}
+
+// ============================================================
+// GEOLOCATION
+// ============================================================
+
+async function useGeolocation() {
+  if (!navigator.geolocation) {
+    alert('Geolocalização não é suportada pelo seu navegador.');
+    return;
+  }
+  
+  const btn = document.getElementById('cov-btn-location');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = 'Buscando...';
+  btn.disabled = true;
+
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      
+      if (map && marker) {
+        map.setView([lat, lon], 17);
+        marker.setLatLng([lat, lon]);
+      }
+      
+      try {
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+        const data = await res.json();
+        if (data && data.address) {
+          const cepInput = document.getElementById('cov-cep');
+          const addressInput = document.getElementById('cov-endereco');
+          const bairroInput = document.getElementById('cov-bairro');
+          const cidadeInput = document.getElementById('cov-cidade');
+          
+          if (cepInput && data.address.postcode) cepInput.value = data.address.postcode;
+          if (addressInput && data.address.road) addressInput.value = data.address.road;
+          if (bairroInput) bairroInput.value = data.address.suburb || data.address.neighbourhood || '';
+          if (cidadeInput) cidadeInput.value = data.address.city || data.address.town || data.address.village || '';
+        }
+      } catch (err) {
+        console.error('Reverse geocoding failed', err);
+      }
+      
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      if (window.lucide) window.lucide.createIcons();
+      
+      // Go to map step
+      const formPanel = document.getElementById('cov-step-form');
+      const mapPanel = document.getElementById('cov-step-map');
+      if (formPanel) formPanel.classList.add('hide');
+      if (mapPanel) mapPanel.classList.add('show');
+      
+      setTimeout(() => {
+        if (map) map.invalidateSize();
+      }, 300);
+    },
+    (err) => {
+      console.error(err);
+      alert('Não foi possível obter sua localização. Por favor, digite seu CEP.');
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      if (window.lucide) window.lucide.createIcons();
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
 }
 
 // ============================================================
