@@ -4,25 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verificar Cobertura — Ligeira Telecom Fibra no Cariri</title>
-  <meta name="description" content="Verifique se a internet fibra da Ligeira Telecom já chegou na sua rua. Consulte por CEP, endereço ou GPS. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
+  <meta name="description" content="Verifique se a internet fibra da Ligeira Telecom ja chegou na sua rua. Digite o CEP e descubra agora. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
   <meta property="og:title" content="Verificar Cobertura — Ligeira Telecom" />
-  <meta property="og:description" content="Descubra se a fibra da Ligeira já chegou na sua rua. Consulta rápida por CEP, endereço ou localização GPS." />
+  <meta property="og:description" content="Descubra se a fibra da Ligeira ja chegou na sua rua. Consulta rapida por CEP com mapa interativo." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Leaflet CSS (must be before module script) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Leaflet JS (must be before module script) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPaA=" crossorigin=""></script>
   <script type="module" src="/src/cobertura.js"></script>
 </head>
 <body>
 
 <!-- ===================== NAVBAR ===================== -->
 <nav class="navbar" role="navigation" aria-label="Menu principal">
-  <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Início">
+  <a href="/" class="navbar-logo" aria-label="Ligeira Telecom — Inicio">
     <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
          alt="Logo Ligeira Telecom" />
   </a>
 
-  <ul class="navbar-links" aria-label="Links de navegação">
+  <ul class="navbar-links" aria-label="Links de navegacao">
     <li><a href="index.html#planos">Planos</a></li>
     <li><a href="cobertura.html" class="active">Cobertura</a></li>
     <li><a href="empresas.html">Empresas</a></li>
@@ -62,19 +66,152 @@
   <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
 </div>
 
-<!-- ===================== HERO COMPACTO ===================== -->
-<section class="cobertura-hero" aria-label="Verificar cobertura de fibra">
-  <div class="cobertura-hero-inner">
-    <div class="cobertura-hero-badge">
-      <i data-lucide="map-pin"></i> Verificação de cobertura
+<!-- ===================== COBERTURA SPLIT ===================== -->
+<section class="cov-section" id="cobertura" aria-label="Verificar cobertura de fibra optica">
+
+  <!-- ---- FORM PANEL (Esquerda) ---- -->
+  <div class="cov-form-panel" id="cov-step-form">
+    <div class="cov-form-inner">
+
+      <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
+           alt="Ligeira Telecom"
+           class="cov-logo"
+           width="120" height="34" />
+
+      <div class="cov-badge" aria-hidden="true">
+        <i data-lucide="map-pin"></i>
+        Verificacao de Cobertura
+      </div>
+
+      <h1 class="cov-title">
+        A Ligeira chegou<br>
+        na <span class="cov-accent">sua rua?</span>
+      </h1>
+      <p class="cov-subtitle">
+        Informe seu endereco abaixo para consultar a viabilidade
+      </p>
+
+      <form class="cov-form" id="cov-form" novalidate>
+
+        <!-- CEP (primeiro campo — dispara o auto-fill) -->
+        <div class="cov-field">
+          <label class="cov-label" for="cov-cep">CEP</label>
+          <input
+            type="text"
+            id="cov-cep"
+            class="cov-input"
+            placeholder="00000-000"
+            maxlength="9"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            aria-describedby="cov-cep-status"
+          />
+          <div class="cov-cep-status" id="cov-cep-status" aria-live="polite"></div>
+        </div>
+
+        <!-- Numero + Bairro -->
+        <div class="cov-field-row">
+          <div class="cov-field" style="flex: 0 0 88px;">
+            <label class="cov-label" for="cov-numero">Numero</label>
+            <input
+              type="text"
+              id="cov-numero"
+              class="cov-input"
+              placeholder="No"
+              inputmode="numeric"
+              autocomplete="address-line2"
+            />
+          </div>
+          <div class="cov-field" style="flex: 1;">
+            <label class="cov-label" for="cov-bairro">Bairro</label>
+            <input
+              type="text"
+              id="cov-bairro"
+              class="cov-input cov-auto"
+              placeholder="Bairro"
+              aria-label="Bairro (preenchido automaticamente pelo CEP)"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- Endereco (auto-fill) -->
+        <div class="cov-field">
+          <label class="cov-label" for="cov-endereco">Endereco</label>
+          <input
+            type="text"
+            id="cov-endereco"
+            class="cov-input cov-auto"
+            placeholder="Preenchido automaticamente pelo CEP"
+            aria-label="Endereco (preenchido automaticamente pelo CEP)"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Cidade + Estado (auto-fill) -->
+        <div class="cov-field-row">
+          <div class="cov-field" style="flex: 1;">
+            <label class="cov-label" for="cov-cidade">Cidade</label>
+            <input
+              type="text"
+              id="cov-cidade"
+              class="cov-input cov-auto"
+              placeholder="Cidade"
+              autocomplete="off"
+            />
+          </div>
+          <div class="cov-field" style="flex: 0 0 68px;">
+            <label class="cov-label" for="cov-estado">UF</label>
+            <input
+              type="text"
+              id="cov-estado"
+              class="cov-input cov-auto"
+              placeholder="UF"
+              maxlength="2"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="cov-btn-verify" id="cov-btn-verify">
+          <i data-lucide="map-pin"></i>
+          Verificar Viabilidade
+        </button>
+
+      </form>
+
+      <!-- Resultado da verificacao -->
+      <div class="cov-result" id="cov-result" aria-live="polite"></div>
+
     </div>
-    <h1 class="cobertura-hero-title">
-      A Ligeira chegou<br>na <span class="accent">sua rua?</span>
-    </h1>
-    <p class="cobertura-hero-subtitle">
-      Consulte agora se sua região já tem fibra óptica disponível. Basta informar o CEP, endereço ou usar sua localização.
-    </p>
   </div>
+
+  <!-- ---- MAP PANEL (Direita / Mobile: tela cheia) ---- -->
+  <div class="cov-map-panel" id="cov-step-map">
+
+    <!-- Voltar (apenas mobile) -->
+    <button class="cov-btn-back" id="cov-btn-back" aria-label="Voltar ao formulario">
+      <i data-lucide="arrow-left"></i>
+      Voltar
+    </button>
+
+    <!-- Mapa Leaflet -->
+    <div id="cov-map" role="region" aria-label="Mapa de localizacao interativo"></div>
+
+    <!-- Barra de confirmacao -->
+    <div class="cov-confirm-bar" id="cov-confirm-bar">
+      <div class="cov-confirm-note">
+        <i data-lucide="info"></i>
+        Verifique se o pin esta na sua rua antes de confirmar
+      </div>
+      <button class="cov-btn-confirm" id="cov-btn-confirm">
+        <i data-lucide="check"></i>
+        Confirmar Local
+      </button>
+    </div>
+
+  </div>
+
 </section>
 
 <!-- ===================== CIDADES ATENDIDAS ===================== -->
@@ -99,88 +236,6 @@
   </div>
 </div>
 
-<!-- ===================== COBERTURA ===================== -->
-<section class="coverage-section" id="cobertura" aria-label="Verificar cobertura">
-  <div class="coverage-inner">
-    <!-- Left: Search -->
-    <div>
-      <div class="section-label coverage-label">Verifique agora</div>
-      <h2 class="coverage-title">Escolha como<br>quer verificar</h2>
-      <p class="coverage-subtitle">Mais de 5 cidades atendidas com fibra óptica de verdade no Cariri.</p>
-
-      <!-- Method tabs -->
-      <div class="coverage-methods" role="group" aria-label="Método de verificação">
-        <div class="coverage-method active" data-method="cep" tabindex="0" role="button" aria-pressed="true">
-          <div class="coverage-method-icon"><i data-lucide="hash"></i></div>
-          <div>
-            <div class="coverage-method-label">Por CEP</div>
-            <div class="coverage-method-desc">Digite o CEP do seu endereço</div>
-          </div>
-        </div>
-        <div class="coverage-method" data-method="address" tabindex="0" role="button" aria-pressed="false">
-          <div class="coverage-method-icon"><i data-lucide="map-pin"></i></div>
-          <div>
-            <div class="coverage-method-label">Por Endereço</div>
-            <div class="coverage-method-desc">Informe rua e cidade</div>
-          </div>
-        </div>
-        <div class="coverage-method" data-method="gps" tabindex="0" role="button" aria-pressed="false">
-          <div class="coverage-method-icon"><i data-lucide="locate"></i></div>
-          <div>
-            <div class="coverage-method-label">Usar minha localização</div>
-            <div class="coverage-method-desc">Detecção automática por GPS</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CEP Input -->
-      <div id="coverage-cep-input" class="hero-search-box coverage-input-box" style="display:flex;">
-        <div class="hero-search-icon"><i data-lucide="hash"></i></div>
-        <input type="text" id="cep-input" placeholder="00000-000" maxlength="9" aria-label="CEP" />
-        <button class="btn-search btn-coverage-search">Verificar</button>
-      </div>
-
-      <!-- Address Input -->
-      <div id="coverage-address-input" class="hero-search-box coverage-input-box" style="display:none;">
-        <div class="hero-search-icon"><i data-lucide="map-pin"></i></div>
-        <input type="text" id="address-input" placeholder="Ex: Juazeiro do Norte, Rua das Flores" aria-label="Endereço" />
-        <button class="btn-search btn-coverage-search">Verificar</button>
-      </div>
-
-      <!-- GPS Input -->
-      <div id="coverage-gps-input" style="display:none;">
-        <button class="btn-search" id="use-gps-btn" style="width:100%;padding:14px;display:flex;align-items:center;justify-content:center;gap:10px;">
-          <i data-lucide="locate"></i> Usar minha localização atual
-        </button>
-        <div id="gps-status"></div>
-      </div>
-
-      <!-- Result -->
-      <div id="coverage-result" class="coverage-result-box" role="alert" aria-live="polite"></div>
-    </div>
-
-    <!-- Right: Map Mockup -->
-    <div class="coverage-map-mockup" aria-label="Mapa de cobertura da Ligeira Telecom" role="img">
-      <div class="map-placeholder">
-        <div class="map-grid"></div>
-        <div class="map-dot" style="top:35%;left:45%;"></div>
-        <div class="map-dot green" style="top:55%;left:35%;"></div>
-        <div class="map-dot green" style="top:25%;left:60%;"></div>
-        <div class="map-dot" style="top:65%;left:55%;"></div>
-        <div class="map-dot green" style="top:45%;left:25%;"></div>
-        <div class="map-area" style="top:28%;left:38%;width:30%;height:35%;"></div>
-      </div>
-      <div class="map-overlay">
-        <div class="map-overlay-icon"><i data-lucide="check-circle"></i></div>
-        <div>
-          <div class="map-overlay-text">5 cidades com cobertura ativa</div>
-          <div class="map-overlay-sub">Juazeiro · Brejo Santo · Mauriti · Milagres · Penaforte</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-inner">
@@ -190,18 +245,18 @@
         <img src="/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png"
              alt="Logo Ligeira Telecom" style="height:40px;width:auto;" />
         <p class="footer-brand-desc">
-          Internet fibra óptica de verdade para o Cariri. Conectando famílias e empresas com velocidade, estabilidade e suporte local.
+          Internet fibra optica de verdade para o Cariri. Conectando familias e empresas com velocidade, estabilidade e suporte local.
         </p>
       </div>
 
       <!-- Links -->
       <div>
-        <div class="footer-col-title">Navegação</div>
+        <div class="footer-col-title">Navegacao</div>
         <ul class="footer-links">
           <li><a href="index.html#planos">Planos</a></li>
           <li><a href="cobertura.html">Cobertura</a></li>
-          <li><a href="index.html#beneficios">Benefícios</a></li>
-          <li><a href="index.html#faq">Dúvidas</a></li>
+          <li><a href="index.html#beneficios">Beneficios</a></li>
+          <li><a href="index.html#faq">Duvidas</a></li>
           <li><a href="empresas.html">Empresas</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="admin.html" style="color: var(--brand-orange)">Painel Admin</a></li>
@@ -214,8 +269,8 @@
         <ul class="footer-links">
           <li><a href="https://wa.me/5588963700021" target="_blank" rel="noopener">(88) 9637-0021</a></li>
           <li><a href="mailto:atendimento@ligeiranet.com.br">atendimento@ligeiranet.com.br</a></li>
-          <li><a href="#">Segunda-feira a Sábado</a></li>
-          <li><a href="#">08h às 18h</a></li>
+          <li><a href="#">Segunda-feira a Sabado</a></li>
+          <li><a href="#">08h as 18h</a></li>
         </ul>
       </div>
 
@@ -249,9 +304,9 @@
 </footer>
 
 <!-- Mobile Bottom Bar -->
-<div class="mobile-bar" role="navigation" aria-label="Ações rápidas mobile">
+<div class="mobile-bar" role="navigation" aria-label="Acoes rapidas mobile">
   <a href="index.html" class="mobile-bar-btn ghost">
-    <i data-lucide="home"></i> Início
+    <i data-lucide="home"></i> Inicio
   </a>
   <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green">
     <i data-lucide="message-circle"></i> WhatsApp

@@ -1,11 +1,7 @@
 /**
  * Coverage Module — Ligeira Telecom
- * Handles: CEP / address / GPS coverage check flow
+ * Handles: CEP auto-fill (ViaCEP), Leaflet map, Nominatim geocoding, mobile step flow
  */
-
-const COVERED_CITIES = [
-  'juazeiro do norte', 'brejo santo', 'mauriti', 'milagres', 'penaforte'
-];
 
 const COVERED_CEPS = [
   '63010', '63011', '63012', '63013', '63014', '63015', '63016', '63017',
@@ -16,130 +12,305 @@ const COVERED_CEPS = [
   '63170', '63171', '63172', '63173',
 ];
 
-let currentMethod = 'cep';
+const DEFAULT_LAT = -7.2095;
+const DEFAULT_LON = -39.3175;
+
+let map = null;
+let marker = null;
+let currentCEP = '';
+let cepTimer = null;
 
 export function initCoverage() {
-  // Method tabs
-  const methodBtns = document.querySelectorAll('[data-method]');
-  const cepInput = document.getElementById('coverage-cep-input');
-  const addressInput = document.getElementById('coverage-address-input');
-  const gpsInput = document.getElementById('coverage-gps-input');
-
-  methodBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      methodBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentMethod = btn.dataset.method;
-
-      if (cepInput) cepInput.style.display = currentMethod === 'cep' ? 'flex' : 'none';
-      if (addressInput) addressInput.style.display = currentMethod === 'address' ? 'flex' : 'none';
-      if (gpsInput) gpsInput.style.display = currentMethod === 'gps' ? 'flex' : 'none';
-    });
-  });
-
-  // CEP masking
-  const cepField = document.getElementById('cep-input');
-  if (cepField) {
-    cepField.addEventListener('input', (e) => {
-      let val = e.target.value.replace(/\D/g, '');
-      if (val.length > 5) val = val.slice(0, 5) + '-' + val.slice(5, 8);
-      e.target.value = val;
-    });
-  }
-
-  // Search buttons
-  const searchBtns = document.querySelectorAll('.btn-coverage-search');
-  searchBtns.forEach(btn => {
-    btn.addEventListener('click', handleSearch);
-  });
-
-  // GPS button
-  const gpsBtn = document.getElementById('use-gps-btn');
-  if (gpsBtn) gpsBtn.addEventListener('click', useGPS);
+  initMap();
+  bindEvents();
+  handleURLParams();
 }
 
-function handleSearch() {
-  const resultArea = document.getElementById('coverage-result');
-  if (!resultArea) return;
+// ============================================================
+// MAP
+// ============================================================
 
-  // Use setTimeout to avoid freezing the main thread per performance-guardian
-  setTimeout(() => {
-    if (currentMethod === 'cep') {
-      const cep = document.getElementById('cep-input')?.value.replace(/\D/g, '') || '';
-      if (cep.length < 5) {
-        showResult('error', 'CEP inválido', 'Digite pelo menos os 5 primeiros dígitos do CEP.');
-        return;
-      }
-      const prefix = cep.slice(0, 5);
-      if (COVERED_CEPS.some(c => prefix.startsWith(c.slice(0, 5)))) {
-        showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra já atende sua região. Clique abaixo para escolher seu plano.');
-      } else {
-        showResult('error', 'Ops! Ainda não chegamos aí.', 'Infelizmente sua região ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
-      }
-    } else if (currentMethod === 'address') {
-      const addr = document.getElementById('address-input')?.value.toLowerCase() || '';
-      const covered = COVERED_CITIES.some(city => addr.includes(city));
-      if (covered) {
-        showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra atende sua cidade. Clique abaixo para escolher seu plano.');
-      } else {
-        showResult('error', 'Ops! Ainda não chegamos aí.', 'Sua cidade ainda não possui cobertura. Deixe seu contato e avisamos quando chegar.');
-      }
-    }
-  }, 100);
+function initMap() {
+  if (typeof L === 'undefined') return;
+
+  map = L.map('cov-map', {
+    center: [DEFAULT_LAT, DEFAULT_LON],
+    zoom: 13,
+    zoomControl: true,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const customIcon = L.divIcon({
+    className: 'cov-leaflet-icon',
+    html: '<div class="cov-pin"><span></span></div>',
+    iconSize: [32, 44],
+    iconAnchor: [16, 44],
+  });
+
+  marker = L.marker([DEFAULT_LAT, DEFAULT_LON], {
+    icon: customIcon,
+    draggable: true,
+  }).addTo(map);
+
+  marker.on('dragend', showConfirmBar);
 }
 
-function useGPS() {
-  const gpsStatus = document.getElementById('gps-status');
-  if (!navigator.geolocation) {
-    if (gpsStatus) gpsStatus.textContent = 'Geolocalização não suportada neste navegador.';
-    return;
+// ============================================================
+// EVENTS
+// ============================================================
+
+function bindEvents() {
+  const cepInput = document.getElementById('cov-cep');
+  if (cepInput) cepInput.addEventListener('input', onCEPInput);
+
+  const form = document.getElementById('cov-form');
+  if (form) form.addEventListener('submit', onVerify);
+
+  const confirmBtn = document.getElementById('cov-btn-confirm');
+  if (confirmBtn) confirmBtn.addEventListener('click', onConfirm);
+
+  const backBtn = document.getElementById('cov-btn-back');
+  if (backBtn) backBtn.addEventListener('click', goToStep1);
+}
+
+// ============================================================
+// CEP AUTO-FILL
+// ============================================================
+
+function onCEPInput(e) {
+  let val = e.target.value.replace(/\D/g, '');
+  if (val.length > 5) val = val.slice(0, 5) + '-' + val.slice(5, 8);
+  e.target.value = val;
+
+  const digits = val.replace(/\D/g, '');
+  currentCEP = digits;
+
+  clearTimeout(cepTimer);
+
+  if (digits.length === 8) {
+    setCEPStatus('Buscando endereco...', '');
+    cepTimer = setTimeout(() => lookupCEP(digits), 500);
+  } else {
+    setCEPStatus('', '');
   }
-  if (gpsStatus) gpsStatus.textContent = 'Obtendo sua localização...';
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const { latitude, longitude } = pos.coords;
-      // Rough bounding box for Cariri region
-      const inCariri =
-        latitude >= -7.5 && latitude <= -6.5 &&
-        longitude >= -40.0 && longitude <= -38.5;
-      if (gpsStatus) gpsStatus.textContent = `Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`;
-      if (inCariri) {
-        showResult('success', 'Boa notícia! Sua região tem cobertura Ligeira.', 'A Ligeira Fibra atende sua área. Clique abaixo para escolher seu plano.');
-      } else {
-        showResult('error', 'Ops! Ainda não chegamos aí.', 'Sua localização está fora da nossa área de cobertura atual.');
-      }
-    },
-    () => {
-      if (gpsStatus) gpsStatus.textContent = 'Não foi possível obter sua localização. Verifique as permissões.';
+}
+
+async function lookupCEP(cep) {
+  try {
+    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await res.json();
+
+    if (data.erro) {
+      setCEPStatus('CEP nao encontrado. Verifique e tente novamente.', 'error');
+      clearAutoFields();
+      return;
     }
+
+    fillField('cov-endereco', data.logradouro || '');
+    fillField('cov-bairro', data.bairro || '');
+    fillField('cov-cidade', data.localidade || '');
+    fillField('cov-estado', data.uf || '');
+
+    setCEPStatus('Endereco encontrado!', 'success');
+
+    const numEl = document.getElementById('cov-numero');
+    if (numEl) setTimeout(() => numEl.focus(), 120);
+  } catch {
+    setCEPStatus('Erro ao buscar CEP. Verifique sua conexao.', 'error');
+  }
+}
+
+function fillField(id, value) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.value = value;
+  el.classList.toggle('filled', Boolean(value));
+}
+
+function clearAutoFields() {
+  ['cov-endereco', 'cov-bairro', 'cov-cidade', 'cov-estado'].forEach(id =>
+    fillField(id, '')
   );
 }
 
-function showResult(type, title, description) {
-  const resultArea = document.getElementById('coverage-result');
-  if (!resultArea) return;
+function setCEPStatus(msg, type) {
+  const el = document.getElementById('cov-cep-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = `cov-cep-status${type ? ' ' + type : ''}`;
+}
 
-  resultArea.className = `coverage-result-box ${type}`;
+// ============================================================
+// VERIFY (geocode + show map)
+// ============================================================
 
-  const iconName = type === 'success' ? 'check-circle' : 'alert-circle';
-  resultArea.innerHTML = `
-    <div class="result-icon">
-      <i data-lucide="${iconName}"></i>
-    </div>
-    <div>
-      <div class="result-title">${title}</div>
-      <div class="result-desc">${description}</div>
-      ${type === 'success'
-        ? `<button class="btn-orange" style="margin-top:14px;" onclick="window.location.href='index.html#planos'">Escolher plano</button>`
-        : `<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-             <input id="lead-name" placeholder="Seu nome" style="padding:8px 12px;border:1.5px solid var(--gray-300);border-radius:8px;font-size:13px;flex:1;min-width:120px;font-family:Montserrat,sans-serif;" />
-             <input id="lead-phone" placeholder="WhatsApp" style="padding:8px 12px;border:1.5px solid var(--gray-300);border-radius:8px;font-size:13px;flex:1;min-width:120px;font-family:Montserrat,sans-serif;" />
-             <button onclick="alert('Cadastro realizado! Entraremos em contato.')" style="padding:8px 14px;background:var(--orange);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:Montserrat,sans-serif;">Avisar-me</button>
-           </div>`
+async function onVerify(e) {
+  e.preventDefault();
+
+  if (currentCEP.length < 8) {
+    setCEPStatus('Por favor, informe um CEP valido.', 'error');
+    document.getElementById('cov-cep')?.focus();
+    return;
+  }
+
+  const endereco = document.getElementById('cov-endereco')?.value || '';
+  const numero   = document.getElementById('cov-numero')?.value   || '';
+  const bairro   = document.getElementById('cov-bairro')?.value   || '';
+  const cidade   = document.getElementById('cov-cidade')?.value   || '';
+  const estado   = document.getElementById('cov-estado')?.value   || '';
+
+  const btn = document.getElementById('cov-btn-verify');
+  if (btn) { btn.disabled = true; btn.textContent = 'Localizando...'; }
+
+  try {
+    const parts = [endereco, numero, bairro, cidade, estado, 'Brasil'].filter(Boolean);
+    let coords = await geocode(parts.join(', '));
+
+    if (!coords && cidade) {
+      coords = await geocode(`${cidade}, ${estado}, Brasil`);
+    }
+
+    if (coords && map && marker) {
+      marker.setLatLng([coords.lat, coords.lon]);
+      map.flyTo([coords.lat, coords.lon], 16, { duration: 1.2, easeLinearity: 0.25 });
+    }
+  } catch {
+    // Continue even if geocoding fails
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<i data-lucide="map-pin"></i> Verificar Viabilidade';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  }
+
+  showConfirmBar();
+  goToStep2();
+}
+
+async function geocode(query) {
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1&countrycodes=br`;
+  const res = await fetch(url, { headers: { 'Accept-Language': 'pt-BR,pt;q=0.9' } });
+  const data = await res.json();
+  if (data && data.length > 0) {
+    return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+  }
+  return null;
+}
+
+// ============================================================
+// CONFIRM
+// ============================================================
+
+function onConfirm() {
+  const prefix  = currentCEP.slice(0, 5);
+  const covered = COVERED_CEPS.some(c => prefix === c || c.startsWith(prefix) || prefix.startsWith(c));
+
+  hideConfirmBar();
+  goToStep1();
+
+  setTimeout(() => showResult(covered), isMobile() ? 380 : 0);
+}
+
+function showResult(covered) {
+  const el = document.getElementById('cov-result');
+  if (!el) return;
+
+  if (covered) {
+    el.className = 'cov-result success';
+    el.innerHTML = `
+      <div class="cov-result-icon">🎉</div>
+      <div class="cov-result-title">Boa noticia! Sua regiao tem cobertura Ligeira.</div>
+      <div class="cov-result-desc">A fibra Ligeira ja atende sua rua. Escolha seu plano agora!</div>
+      <a href="index.html#planos" class="cov-btn-plan">Ver planos disponiveis →</a>
+    `;
+  } else {
+    el.className = 'cov-result error';
+    el.innerHTML = `
+      <div class="cov-result-icon">😕</div>
+      <div class="cov-result-title">Ainda nao chegamos ai.</div>
+      <div class="cov-result-desc">Sua regiao ainda nao possui cobertura, mas estamos expandindo! Deixe seu contato e te avisamos assim que chegar.</div>
+      <div class="cov-lead-form">
+        <input id="lead-name"  class="cov-input cov-lead-inp" placeholder="Seu nome" />
+        <input id="lead-phone" class="cov-input cov-lead-inp" placeholder="WhatsApp (88) 9..." inputmode="tel" />
+        <button class="cov-btn-lead" id="cov-btn-lead">Me avisar quando chegar</button>
+      </div>
+    `;
+    document.getElementById('cov-btn-lead')?.addEventListener('click', () => {
+      const name  = document.getElementById('lead-name')?.value.trim();
+      const phone = document.getElementById('lead-phone')?.value.trim();
+      if (!name || !phone) {
+        alert('Por favor, preencha seu nome e WhatsApp.');
+        return;
       }
-    </div>
-  `;
+      alert(`Obrigado, ${name}! Avisaremos no WhatsApp quando a Ligeira chegar na sua rua.`);
+    });
+  }
 
-  // Re-initialize Lucide icons for dynamically added icons
-  if (typeof lucide !== 'undefined') lucide.createIcons();
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ============================================================
+// STEP CONTROL
+// ============================================================
+
+function isMobile() {
+  return window.innerWidth < 900;
+}
+
+function goToStep2() {
+  if (isMobile()) {
+    const mapPanel = document.getElementById('cov-step-map');
+    if (mapPanel) {
+      mapPanel.classList.add('active');
+      setTimeout(() => map?.invalidateSize(), 200);
+    }
+  } else {
+    setTimeout(() => map?.invalidateSize(), 100);
+  }
+}
+
+function goToStep1() {
+  const mapPanel = document.getElementById('cov-step-map');
+  if (mapPanel) mapPanel.classList.remove('active');
+}
+
+function showConfirmBar() {
+  const bar = document.getElementById('cov-confirm-bar');
+  if (bar) bar.classList.add('visible');
+}
+
+function hideConfirmBar() {
+  const bar = document.getElementById('cov-confirm-bar');
+  if (bar) bar.classList.remove('visible');
+}
+
+// ============================================================
+// URL PARAMS (?cep=XXXXX from hero bar)
+// ============================================================
+
+function handleURLParams() {
+  const params = new URLSearchParams(window.location.search);
+  const cepParam = params.get('cep');
+  if (!cepParam) return;
+
+  const digits = cepParam.replace(/\D/g, '');
+  if (!digits) return;
+
+  currentCEP = digits;
+  const input = document.getElementById('cov-cep');
+  if (input) {
+    let formatted = digits;
+    if (digits.length > 5) formatted = digits.slice(0, 5) + '-' + digits.slice(5, 8);
+    input.value = formatted;
+  }
+
+  if (digits.length === 8) {
+    setTimeout(() => lookupCEP(digits), 700);
+  }
 }

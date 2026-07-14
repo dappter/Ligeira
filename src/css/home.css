@@ -126,7 +126,7 @@
   font-size: clamp(32px, 8vw, 64px); 
   font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -0.8px;
+  letter-spacing: 0.1px;
   margin: 0;
 }
 
@@ -396,7 +396,7 @@
   font-weight: 900;
   color: var(--purple-dark);
   line-height: 1;
-  letter-spacing: -0.5px;
+  letter-spacing: 0px;
   margin-bottom: 2px;
 }
 
@@ -435,7 +435,7 @@
   font-size: 30px;
   font-weight: 900;
   color: var(--gray-900);
-  letter-spacing: -1px;
+  letter-spacing: -0.3px;
   line-height: 1;
   font-family: 'Montserrat', sans-serif;
 }
@@ -445,7 +445,7 @@
   font-size: 16px;
   font-weight: 900;
   color: var(--gray-900);
-  letter-spacing: -1px;
+  letter-spacing: -0.3px;
   font-family: 'Montserrat', sans-serif;
   vertical-align: baseline;
 }
