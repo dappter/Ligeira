@@ -16,31 +16,29 @@
 <body>
 
 
-
-<!-- Mobile menu overlay -->
-<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;"
-     class="" aria-label="Menu mobile">
-  <style>
-    #mobile-menu.open { display:flex !important; }
-    #mobile-menu a { display:block;padding:16px;color:white;font-size:18px;font-weight:700;text-decoration:none;border-radius:12px; }
-    #mobile-menu a:hover { background:rgba(255,255,255,0.1); }
-    #mobile-menu .close-menu { position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;color:white;display:flex;align-items:center;justify-content:center; }
-  </style>
-  <button class="close-menu" onclick="document.getElementById('mobile-menu').classList.remove('open')" aria-label="Fechar menu">
-    <i data-lucide="x"></i>
-  </button>
-  <a href="index.html#planos">Planos</a>
-  <a href="cobertura.html">Cobertura</a>
-  <a href="empresas.html">Empresas</a>
-  <a href="blog.html">Blog</a>
-  <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
-</div>
-
 <!-- ===================== COBERTURA SPLIT ===================== -->
 <section class="cov-section" id="cobertura" aria-label="Verificar cobertura de fibra optica">
 
   <!-- ---- FORM PANEL (Esquerda) ---- -->
   <div class="cov-form-panel" id="cov-step-form">
+    <!-- Mobile menu overlay (scoped to sidebar) -->
+    <div id="mobile-menu" style="display:none;position:absolute;inset:0;z-index:9999;background:rgba(26,0,102,0.97);padding:80px 24px 24px;flex-direction:column;gap:8px;" aria-label="Menu mobile">
+      <style>
+        #mobile-menu.open { display:flex !important; }
+        #mobile-menu a { display:block;padding:16px;color:white;font-size:18px;font-weight:700;text-decoration:none;border-radius:12px; }
+        #mobile-menu a:hover { background:rgba(255,255,255,0.1); }
+        #mobile-menu .close-menu { position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;color:white;display:flex;align-items:center;justify-content:center; }
+      </style>
+      <button class="close-menu" onclick="document.getElementById('mobile-menu').classList.remove('open')" aria-label="Fechar menu">
+        <i data-lucide="x"></i>
+      </button>
+      <a href="index.html#planos">Planos</a>
+      <a href="cobertura.html">Cobertura</a>
+      <a href="empresas.html">Empresas</a>
+      <a href="blog.html">Blog</a>
+      <a href="https://wa.me/5588963700021" target="_blank" rel="noopener">Atendimento WhatsApp</a>
+    </div>
+
     <!-- Sidebar Header -->
     <div class="cov-sidebar-header">
       <a href="/" class="cov-logo-link" aria-label="Ligeira Telecom — Inicio">
@@ -52,11 +50,6 @@
     </div>
 
     <div class="cov-form-inner">
-
-      <div class="cov-badge" aria-hidden="true">
-        <i data-lucide="map-pin"></i>
-        Verificacao de Cobertura
-      </div>
 
       <h1 class="cov-title">
         A Ligeira chegou<br>

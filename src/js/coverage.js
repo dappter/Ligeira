@@ -37,7 +37,7 @@ function initMap() {
 
   map = L.map('cov-map', {
     center: [DEFAULT_LAT, DEFAULT_LON],
-    zoom: 13,
+    zoom: 16,
     zoomControl: true,
   });
 

@@ -4,10 +4,16 @@
    ===================================================== */
 
 /* ===================== SPLIT SECTION ===================== */
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(170deg, #08001f 0%, #14004f 45%, #1e0080 100%);
+}
 .cov-section {
   display: grid;
   grid-template-columns: 400px 1fr;
-  height: 100vh;
+  height: 100dvh;
 }
 
 /* ===================== FORM PANEL (LEFT) ===================== */
@@ -442,7 +448,7 @@
 @media (max-width: 900px) {
   .cov-section {
     grid-template-columns: 1fr;
-    min-height: auto;
+    height: 100dvh;
   }
 
   .cov-form-panel {
