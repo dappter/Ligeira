@@ -126,7 +126,7 @@
   font-size: clamp(32px, 8vw, 64px); 
   font-weight: 900;
   line-height: 1.1;
-  letter-spacing: -2.5px;
+  letter-spacing: -0.8px;
   margin: 0;
 }
 
@@ -396,7 +396,7 @@
   font-weight: 900;
   color: var(--purple-dark);
   line-height: 1;
-  letter-spacing: -2px;
+  letter-spacing: -0.5px;
   margin-bottom: 2px;
 }
 

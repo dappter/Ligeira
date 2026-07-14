@@ -79,9 +79,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
 
     function startAuto() {
-      autoTimer = setInterval(() => goTo(current + 1), 8000)
+      clearInterval(autoTimer) // garante que nunca acumula timers
+      autoTimer = setInterval(() => goTo(current + 1), 12000)
     }
-    function stopAuto() { clearInterval(autoTimer) }
+    function stopAuto() { clearInterval(autoTimer); autoTimer = null }
 
     if (prevBtn) prevBtn.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto() })
     if (nextBtn) nextBtn.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto() })

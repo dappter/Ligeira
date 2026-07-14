@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { DataTable } from '../../components/DataTable'
-import { Check, X, Trash2 } from 'lucide-react'
+import { Check, X, Trash2, Plus } from 'lucide-react'
 
 interface Testimonial {
   id: number
@@ -20,6 +20,13 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
 
 export function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  
+  // Form states
+  const [name, setName] = useState('')
+  const [city, setCity] = useState('')
+  const [content, setContent] = useState('')
+  const [rating, setRating] = useState('5')
 
   useEffect(() => {
     const saved = localStorage.getItem('admin_testimonials')
@@ -55,6 +62,32 @@ export function Testimonials() {
       const updated = testimonials.filter(t => t.id !== id)
       saveToLocalStorage(updated)
     }
+  }
+
+  const handleOpenAddModal = () => {
+    setName('')
+    setCity('')
+    setContent('')
+    setRating('5')
+    setIsModalOpen(true)
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!name || !city || !content) return
+
+    const newTestimonial: Testimonial = {
+      id: Date.now(),
+      name,
+      city,
+      content,
+      rating: Number(rating),
+      status: 'Aprovado'
+    }
+    
+    // Add to beginning of list
+    saveToLocalStorage([newTestimonial, ...testimonials])
+    setIsModalOpen(false)
   }
 
   const columns = [
@@ -95,9 +128,28 @@ export function Testimonials() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <h1>Moderação de Depoimentos</h1>
-        <p>Aprove ou recuse os depoimentos enviados pelos clientes para exibição na página inicial.</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1>Moderação de Depoimentos</h1>
+          <p>Aprove, recuse ou adicione manualmente depoimentos para exibição na página inicial.</p>
+        </div>
+        <button 
+          onClick={handleOpenAddModal}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            backgroundColor: 'var(--brand-orange)',
+            color: 'white',
+            border: 'none',
+            padding: '10px 16px',
+            borderRadius: 'var(--radius-md)',
+            fontWeight: 600,
+            cursor: 'pointer'
+          }}
+        >
+          <Plus size={18} /> Novo Depoimento
+        </button>
       </div>
       
       <div className="page-content">
@@ -139,6 +191,109 @@ export function Testimonials() {
           )}
         />
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          backdropFilter: 'blur(4px)'
+        }}>
+          <div className="card glass" style={{
+            width: '90%',
+            maxWidth: '500px',
+            padding: '24px',
+            borderRadius: '16px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            position: 'relative'
+          }}>
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'transparent',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer'
+              }}
+            >
+              <X size={20} />
+            </button>
+            <h2 style={{ marginBottom: '20px' }}>Novo Depoimento</h2>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '13px', fontWeight: 600 }}>Nome do Cliente</label>
+                <input 
+                  type="text" 
+                  value={name} 
+                  onChange={e => setName(e.target.value)} 
+                  placeholder="Ex: João Silva"
+                  required
+                  style={{ padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: 'white' }}
+                />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '13px', fontWeight: 600 }}>Cidade</label>
+                <input 
+                  type="text" 
+                  value={city} 
+                  onChange={e => setCity(e.target.value)} 
+                  placeholder="Ex: Juazeiro do Norte"
+                  required
+                  style={{ padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: 'white' }}
+                />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '13px', fontWeight: 600 }}>Depoimento</label>
+                <textarea 
+                  value={content} 
+                  onChange={e => setContent(e.target.value)} 
+                  placeholder="Escreva o depoimento..."
+                  required
+                  rows={4}
+                  style={{ padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: 'white', resize: 'vertical' }}
+                />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '13px', fontWeight: 600 }}>Avaliação (Estrelas)</label>
+                <select 
+                  value={rating} 
+                  onChange={e => setRating(e.target.value)}
+                  style={{ padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.8)', color: 'white' }}
+                >
+                  <option value="5">5 Estrelas</option>
+                  <option value="4">4 Estrelas</option>
+                  <option value="3">3 Estrelas</option>
+                  <option value="2">2 Estrelas</option>
+                  <option value="1">1 Estrela</option>
+                </select>
+              </div>
+              <button 
+                type="submit"
+                style={{
+                  marginTop: '10px',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  background: 'var(--brand-orange)',
+                  color: '#1a0066',
+                  border: 'none',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Adicionar Depoimento
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
