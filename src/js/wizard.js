@@ -170,6 +170,10 @@ function renderWizard() {
       if (wizardTitle) wizardTitle.textContent = 'Personalize seu plano';
       wizardBody.innerHTML = summaryHtml + renderStep4();
       if (window.lucide) window.lucide.createIcons();
+      // Bind events for new addons (steppers + checkboxes)
+      if (window.__planAddons && window.__planAddons.initWizardAddonsEvents) {
+        window.__planAddons.initWizardAddonsEvents(selectedPlan);
+      }
       break;
     case 5:
       if (wizardTitle) wizardTitle.textContent = 'Confirmação';
@@ -283,7 +287,7 @@ function renderStep5() {
         <div style="font-size:14px;color:var(--gray-600);margin-top:4px;">${plan.price}<span style="font-size:12px;color:var(--gray-400);">/mês · ${plan.note}</span></div>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-        <a href="https://wa.me/5588963700021?text=Ol%C3%A1!%20Acabei%20de%20solicitar%20o%20${encodeURIComponent(plan.name)}%20e%20quero%20confirmar%20o%20pedido."
+        <a href="https://wa.me/5588997810100?text=Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Ligeira%20Telecom."
            target="_blank" class="btn-whatsapp-lg" style="font-size:14px;padding:12px 22px;">
           <i data-lucide="message-circle"></i> Confirmar pelo WhatsApp
         </a>

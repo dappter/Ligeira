@@ -4,18 +4,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ligeira Telecom — Internet Fibra no Cariri | 300 a 800 MEGA</title>
-  <meta name="description"
-    content="Internet fibra óptica de verdade no Cariri. Planos de 300 a 800 MEGA com Wi-Fi incluso. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
-  <meta name="keywords"
-    content="internet fibra, ligeira telecom, juazeiro do norte, brejo santo, cariri, plano internet residencial" />
-  <meta property="og:title" content="Ligeira Telecom — Fibra de Verdade no Cariri" />
-  <meta property="og:description" content="Planos de 300 a 800 MEGA com Wi-Fi incluso. 100% fibra óptica." />
+
+  <!-- ═══ SEO PRIMÁRIO ═══ -->
+  <title>Ligeira Telecom — Internet Fibra no Cariri | Planos 300 a 800 MEGA</title>
+  <meta name="description" content="Internet fibra óptica de verdade no Cariri. Planos de 300 a 800 MEGA com Wi-Fi incluso. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte. Contrate agora!" />
+  <meta name="keywords" content="internet fibra, ligeira telecom, juazeiro do norte, brejo santo, cariri, plano internet residencial, fibra óptica cariri" />
+  <link rel="canonical" href="https://ligeira.net/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#3A0FAA" />
+  <meta name="author" content="Ligeira Telecom" />
+
+  <!-- ═══ OPEN GRAPH ═══ -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ligeira Telecom" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content="https://ligeira.net/" />
+  <meta property="og:title" content="Ligeira Telecom — Internet Fibra de Verdade no Cariri" />
+  <meta property="og:description" content="Planos de 300 a 800 MEGA com Wi-Fi incluso. 100% fibra óptica. Atendemos Juazeiro do Norte, Brejo Santo, Mauriti, Milagres e Penaforte." />
+  <meta property="og:image" content="https://ligeira.net/src/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ligeira Telecom — Internet Fibra no Cariri" />
+
+  <!-- ═══ TWITTER CARDS ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ligeira Telecom — Internet Fibra de Verdade no Cariri" />
+  <meta name="twitter:description" content="Planos de 300 a 800 MEGA com Wi-Fi incluso. 100% fibra óptica no Cariri." />
+  <meta name="twitter:image" content="https://ligeira.net/src/images/og-image.png" />
+
+
+
+  <!-- ═══ FONTES ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
   <script type="module" src="/src/main.js"></script>
   <style>
     .hero { background: #3a0faa; min-height: 80vh; display: flex; align-items: center; }
@@ -33,14 +56,11 @@
     <ul class="navbar-links" id="desktop-nav" aria-label="Links de navegação">
       <li><a href="#planos">Planos</a></li>
       <li><a href="empresas.html">Empresas</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <!-- Blog: oculto até o banco de dados estar pronto -->
     </ul>
 
     <div class="navbar-cta">
-      <a href="cobertura.html" class="btn-outline-white"
-        aria-label="Verificar disponibilidade de cobertura">
-        <i data-lucide="map-pin"></i> Verificar cobertura
-      </a>
+      <!-- Verificar cobertura: oculto até o backend estar pronto -->
       <button class="btn-orange" onclick="abrirWizard('600', 1)" id="navbar-contratar-btn">
         <i data-lucide="zap"></i> Contratar
       </button>
@@ -96,8 +116,7 @@
     </button>
     <a href="#planos">Planos</a>
     <a href="empresas.html">Empresas</a>
-    <a href="blog.html">Blog</a>
-    <a href="cobertura.html">Verificar cobertura</a>
+    <!-- Blog e Cobertura: ocultos até os backends estarem prontos -->
   </div>
 
   <!-- ===================== TRUST BAR ===================== -->
@@ -224,26 +243,11 @@
 
     </div><!-- /hero-slides-wrapper -->
 
-    <!-- Fixed CEP Form Overlay & Carousel Dots -->
-    <div class="nio-cep-pill-wrapper">
-      <h2 class="nio-cep-pill-title">Será que a Ligeira chegou aí?</h2>
-      <form class="nio-cep-form" id="cep-form-hero">
-        <div class="nio-cep-input-group">
-          <input type="text" id="hero-cep-input" class="nio-cep-input" placeholder="Digite seu CEP" maxlength="9" aria-label="CEP para verificação de cobertura" />
-        </div>
-        <div class="nio-cep-divider" aria-hidden="true"></div>
-        <div class="nio-cep-input-group nio-cep-num-group">
-          <input type="text" id="hero-num-input" class="nio-cep-input" placeholder="Nº casa/apto" aria-label="Número da residência" />
-        </div>
-        <button type="submit" class="nio-cep-btn" aria-label="Verificar disponibilidade">
-          <i data-lucide="chevron-right"></i>
-        </button>
-      </form>
-      <button class="hero-nao-sei" id="hero-nao-sei-btn" type="button">
-        Não sei meu CEP / Não tenho CEP
-      </button>
+    <!-- CEP Form: oculto até o backend de cobertura estar pronto -->
+    <!-- <div class="nio-cep-pill-wrapper">...</div> -->
 
-      <!-- Carousel Dots -->
+    <!-- Carousel Dots (mantidos) -->
+    <div class="nio-cep-pill-wrapper" style="padding-top:0;">
       <div class="hero-carousel-dots" id="carousel-dots" role="tablist" aria-label="Slides do carousel">
         <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
         <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
@@ -730,7 +734,7 @@
         <button class="btn-primary-lg" onclick="abrirWizard('600', 1)" id="cta-contratar-btn">
           <i data-lucide="zap"></i> Escolher meu plano
         </button>
-        <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="btn-whatsapp-lg">
+        <a href="https://wa.me/5588997810100?text=Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Ligeira%20Telecom." target="_blank" rel="noopener" class="btn-whatsapp-lg">
           <i data-lucide="message-circle"></i> Falar pelo WhatsApp
         </a>
       </div>
@@ -807,9 +811,7 @@
             <li><a href="#planos">Planos</a></li>
             <li><a href="#beneficios">Benefícios</a></li>
             <li><a href="empresas.html">Empresas</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="cobertura.html">Verificar Cobertura</a></li>
-            <li><a href="admin.html" style="font-size: 13px; color: var(--gray-400); text-decoration: underline;">Área Restrita (Admin)</a></li>
+            <!-- Blog e Cobertura: ocultos até os backends estarem prontos -->
           </ul>
         </div>
       </div>
@@ -827,7 +829,7 @@
             aria-label="Facebook da Ligeira">
             <i data-lucide="users"></i>
           </a>
-          <a href="https://wa.me/558899781010" target="_blank" rel="noopener" class="social-btn"
+          <a href="https://wa.me/5588997810100?text=Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Ligeira%20Telecom." target="_blank" rel="noopener" class="social-btn"
             aria-label="WhatsApp da Ligeira">
             <i data-lucide="message-circle"></i>
           </a>
@@ -842,7 +844,7 @@
     <button class="mobile-bar-btn ghost" id="mobile-btn-planos" onclick="abrirWizard()" aria-label="Ver planos">
       <i data-lucide="layout-grid"></i> Planos
     </button>
-    <a href="https://wa.me/5588963700021" target="_blank" rel="noopener" class="mobile-bar-btn green"
+    <a href="https://wa.me/5588997810100?text=Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Ligeira%20Telecom." target="_blank" rel="noopener" class="mobile-bar-btn green"
       aria-label="WhatsApp">
       <i data-lucide="message-circle"></i> WhatsApp
     </a>

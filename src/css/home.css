@@ -1226,64 +1226,38 @@
 
 .plan-price-pulse {
   animation: pricePulse 0.4s ease-out forwards;
-}
-
-/* ── Wrapper interno do card (main col + addon panel) ── */
-.plan-card-inner {
-  display: grid;
-  grid-template-columns: 1fr 0fr;
-  transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  gap: 0;
-}
-
-/* ── Painel de adicionais (desktop) — SEMPRE fora do fluxo ── */
+}/* ── Painel de adicionais (desktop) — posicionado de forma oculta por padrão ── */
 .plan-addon-panel {
-  /* Sempre absoluto: nunca afeta a altura do card pai */
-  position: absolute;
-  top: 0;
-  left: calc(100% + 12px);
-  width: 0;
-  height: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateX(12px);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease,
-    width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  /* Garante que não haja borda/fundo fantasma enquanto fechado */
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-xl);
-  z-index: 20;
+  display: none;
 }
 
-/* Estado aberto no desktop */
+/* Estado aberto no desktop (≥ 1024px) */
 @media (min-width: 1024px) {
   .plan-card {
-    /* Necessário para o painel absoluto se posicionar corretamente */
-    position: relative;
+    transition: all 0.2s ease;
   }
 
-  .plan-card.addon-open {
-    z-index: 10;
+  /* Quando o card está aberto para personalização, oculta a info principal do plano e exibe o painel de adicionais na mesma div */
+  .plan-card.addon-open .plan-main-col {
+    display: none !important;
   }
 
   .plan-card.addon-open .plan-addon-panel {
+    display: block !important;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
     opacity: 1;
-    transform: translateX(0);
     pointer-events: auto;
-    width: 340px;
-    background: white;
-    border: 1.5px solid var(--purple-pale);
-    box-shadow: 0 20px 60px rgba(96, 40, 255, 0.15);
-    overflow-y: auto;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
   }
 }
-
 
 /* ── Conteúdo do painel ── */
 .addon-panel-inner {

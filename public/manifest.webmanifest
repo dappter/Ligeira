@@ -1,0 +1,17 @@
+{
+  "name": "Ligeira Telecom",
+  "short_name": "Ligeira",
+  "description": "Internet fibra óptica de verdade no Cariri. Planos de 300 a 800 MEGA com Wi-Fi incluso.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0D0727",
+  "theme_color": "#3A0FAA",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/src/images/LIGEIRA LOGO HORIZONTAL - FUNDO ROXO.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin
+Disallow: /src/admin/
+
+Sitemap: https://ligeira.net/sitemap.xml
